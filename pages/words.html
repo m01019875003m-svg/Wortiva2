@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wortiva - الكلمات</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <a href="../index.html" class="logo">
+        <span class="logo-icon">W</span>
+        <span>Wortiva</span>
+    </a>
+
+    <div class="header-actions">
+
+        <button class="icon-button" id="themeButton">
+            🌙
+        </button>
+
+        <a href="profile.html" class="profile-button">
+
+            <div class="profile-avatar">
+                👤
+            </div>
+
+            <div class="profile-info">
+                <span class="profile-name">
+                    Mohammed
+                </span>
+
+                <small>
+                    حسابي
+                </small>
+            </div>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<main class="words-page">
+
+    <!-- ================= HEADER ================= -->
+
+    <section class="words-heading">
+
+        <a href="categories.html" class="back-button">
+            → الفئات
+        </a>
+
+        <div class="page-icon">
+            📖
+        </div>
+
+        <h1 id="wordsTitle">
+            الكلمات
+        </h1>
+
+        <p id="wordsSubtitle">
+            تعلم كلمات Netzwerk
+        </p>
+
+    </section>
+
+
+    <!-- ================= CONTROLS ================= -->
+
+    <section class="words-controls">
+
+        <div class="search-box">
+
+            <span>🔎</span>
+
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="ابحث عن كلمة بالألماني أو العربي..."
+            >
+
+        </div>
+
+
+        <div class="sort-box">
+
+            <label for="sortSelect">
+                ترتيب حسب
+            </label>
+
+            <select id="sortSelect">
+
+                <option value="default">
+                    الترتيب الأصلي
+                </option>
+
+                <option value="german">
+                    الألمانية
+                </option>
+
+                <option value="arabic">
+                    العربية
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= WORD COUNT ================= -->
+
+    <div class="words-count">
+
+        <span id="wordCount">
+            0 كلمة
+        </span>
+
+    </div>
+
+
+    <!-- ================= WORDS ================= -->
+
+    <section>
+
+        <div
+            id="wordsGrid"
+            class="words-grid">
+        </div>
+
+    </section>
+
+
+    <!-- ================= NAVIGATION ================= -->
+
+    <div class="words-navigation">
+
+        <button id="previousWord">
+            → السابق
+        </button>
+
+        <button id="nextWord">
+            التالي ←
+        </button>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-logo">
+        Wortiva
+    </div>
+
+    <p>
+        تعلم الألمانية بطريقة أسهل 🇩🇪
+    </p>
+
+    <div class="copyright">
+        creating by mohamed Ibrahim khafagy
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   THEME
+===================================================== */
+
+const themeButton =
+    document.getElementById("themeButton");
+
+
+if (
+    localStorage.getItem("theme") === "dark"
+) {
+
+    document.body.classList.add("dark");
+
+    themeButton.textContent = "☀️";
+
+}
+
+
+themeButton.addEventListener(
+    "click",
+    function () {
+
+        document.body.classList.toggle("dark");
+
+        const dark =
+            document.body.classList.contains("dark");
+
+        localStorage.setItem(
+            "theme",
+            dark ? "dark" : "light"
+        );
+
+        themeButton.textContent =
+            dark ? "☀️" : "🌙";
+
+    }
+);
+
+
+/* =====================================================
+   CURRENT LOCATION
+===================================================== */
+
+const level =
+    localStorage.getItem(
+        "netzwerkLevel"
+    ) || "A1";
+
+
+const chapter =
+    Number(
+        localStorage.getItem(
+            "netzwerkKapitel"
+        ) || 1
+    );
+
+
+const chapterTitle =
+    localStorage.getItem(
+        "netzwerkKapitelTitle"
+    ) || "";
+
+
+const category =
+    localStorage.getItem(
+        "netzwerkCategory"
+    );
+
+
+const categoryTitle =
+    localStorage.getItem(
+        "netzwerkCategoryTitle"
+    );
+
+
+const showAll =
+    localStorage.getItem(
+        "netzwerkShowAllChapterWords"
+    ) === "true";
+
+
+/* =====================================================
+   PAGE TITLE
+===================================================== */
+
+const wordsTitle =
+    document.getElementById("wordsTitle");
+
+
+const wordsSubtitle =
+    document.getElementById("wordsSubtitle");
+
+
+if (showAll) {
+
+    wordsTitle.textContent =
+        `Kapitel ${chapter} – ${chapterTitle}`;
+
+    wordsSubtitle.textContent =
+        `Netzwerk ${level} • جميع كلمات الـKapitel`;
+
+} else {
+
+    wordsTitle.textContent =
+        categoryTitle || "الكلمات";
+
+    wordsSubtitle.textContent =
+        `Kapitel ${chapter} – ${chapterTitle}`;
+
+}
+
+
+/* =====================================================
+   WORD DATA
+===================================================== */
+
+/*
+   هذه كلمات تجريبية فقط.
+   بعد ذلك سنضع بيانات Netzwerk الحقيقية.
+*/
+
+const words = [
+
+    {
+        id: 1,
+
+        german: "Wohnung",
+
+        article: "die",
+
+        plural: "Wohnungen",
+
+        arabic: "شقة",
+
+        type: "Nomen",
+
+        sentence:
+            "Meine Wohnung ist klein.",
+
+        sentenceArabic:
+            "شقتي صغيرة.",
+
+        chapter: 9,
+
+        category: "1a"
+
+    },
+
+    {
+        id: 2,
+
+        german: "Familie",
+
+        article: "die",
+
+        plural: "Familien",
+
+        arabic: "عائلة",
+
+        type: "Nomen",
+
+        sentence:
+            "Meine Familie ist groß.",
+
+        sentenceArabic:
+            "عائلتي كبيرة.",
+
+        chapter: 2,
+
+        category: "1a"
+
+    },
+
+    {
+        id: 3,
+
+        german: "arbeiten",
+
+        article: "",
+
+        plural: "",
+
+        arabic: "يعمل",
+
+        type: "Verb",
+
+        sentence:
+            "Ich arbeite heute.",
+
+        sentenceArabic:
+            "أنا أعمل اليوم.",
+
+        chapter: 7,
+
+        category: "1a"
+
+    },
+
+    {
+        id: 4,
+
+        german: "gesund",
+
+        article: "",
+
+        plural: "",
+
+        arabic: "صحي",
+
+        type: "Adjektiv",
+
+        sentence:
+            "Ich bin gesund.",
+
+        sentenceArabic:
+            "أنا بصحة جيدة.",
+
+        chapter: 8,
+
+        category: "1a"
+
+    }
+
+];
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const wordsGrid =
+    document.getElementById(
+        "wordsGrid"
+    );
+
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+
+const sortSelect =
+    document.getElementById(
+        "sortSelect"
+    );
+
+
+const wordCount =
+    document.getElementById(
+        "wordCount"
+    );
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+function getCurrentWords() {
+
+    let result = words.filter(
+        function (word) {
+
+            if (showAll) {
+
+                return (
+                    word.chapter === chapter
+                );
+
+            }
+
+            return (
+                word.chapter === chapter &&
+                word.category === category
+            );
+
+        }
+    );
+
+
+    const search =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+
+    if (search) {
+
+        result = result.filter(
+            function (word) {
+
+                return (
+
+                    word.german
+                        .toLowerCase()
+                        .includes(search)
+
+                    ||
+
+                    word.arabic
+                        .toLowerCase()
+                        .includes(search)
+
+                    ||
+
+                    word.plural
+                        .toLowerCase()
+                        .includes(search)
+
+                    ||
+
+                    word.article
+                        .toLowerCase()
+                        .includes(search)
+
+                );
+
+            }
+        );
+
+    }
+
+
+    /* SORT */
+
+    const sort =
+        sortSelect.value;
+
+
+    if (sort === "german") {
+
+        result.sort(
+            function (a, b) {
+
+                return a.german.localeCompare(
+                    b.german,
+                    "de"
+                );
+
+            }
+        );
+
+    }
+
+
+    if (sort === "arabic") {
+
+        result.sort(
+            function (a, b) {
+
+                return a.arabic.localeCompare(
+                    b.arabic,
+                    "ar"
+                );
+
+            }
+        );
+
+    }
+
+
+    return result;
+
+}
+
+
+/* =====================================================
+   RENDER
+===================================================== */
+
+function renderWords() {
+
+    const currentWords =
+        getCurrentWords();
+
+
+    wordsGrid.innerHTML = "";
+
+
+    wordCount.textContent =
+        `${currentWords.length} كلمة`;
+
+
+    if (
+        currentWords.length === 0
+    ) {
+
+        wordsGrid.innerHTML = `
+
+            <div class="empty-chapters">
+
+                <div>
+                    📖
+                </div>
+
+                <h3>
+                    لا توجد كلمات هنا حاليًا
+                </h3>
+
+                <p>
+                    سيتم إضافة كلمات Netzwerk
+                    في هذه الفئة.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    currentWords.forEach(
+        function (word, index) {
+
+            const card =
+                document.createElement("article");
+
+
+            card.className =
+                "word-card";
+
+
+            const fullWord =
+                word.article
+                    ? `${word.article} ${word.german}`
+                    : word.german;
+
+
+            card.innerHTML = `
+
+                <div class="word-top">
+
+                    <span class="word-type">
+                        ${word.type}
+                    </span>
+
+                    <button
+                        class="pronunciation"
+                        title="نطق الكلمة"
+                        data-text="${fullWord}">
+                        🔊
+                    </button>
+
+                </div>
+
+
+                <div class="german-word">
+
+                    ${fullWord}
+
+                </div>
+
+
+                ${
+                    word.plural
+                    ?
+
+                    `
+                    <div class="word-plural">
+
+                        <strong>
+                            Plural:
+                        </strong>
+
+                        ${word.plural}
+
+                        <button
+                            class="plural-sound"
+                            data-text="${word.plural}">
+                            🔊
+                        </button>
+
+                    </div>
+                    `
+
+                    :
+
+                    ""
+                }
+
+
+                <div class="word-arabic">
+
+                    ${word.arabic}
+
+                </div>
+
+
+                <div class="example-box">
+
+                    <div class="example-title">
+                        Beispiel
+                    </div>
+
+                    <div class="example-german">
+                        🇩🇪 ${word.sentence}
+
+                        <button
+                            class="sentence-sound"
+                            data-text="${word.sentence}">
+                            🔊
+                        </button>
+                    </div>
+
+                    <div class="example-arabic">
+                        🇪🇬 ${word.sentenceArabic}
+                    </div>
+
+                </div>
+
+
+                <div class="word-actions">
+
+                    <button
+                        class="known-button">
+                        ✓ عرفتها
+                    </button>
+
+                    <button
+                        class="review-button">
+                        ↻ مراجعة
+                    </button>
+
+                </div>
+
+            `;
+
+
+            wordsGrid.appendChild(card);
+
+        }
+    );
+
+
+    /* =================================================
+       PRONUNCIATION
+    ================================================= */
+
+    document
+        .querySelectorAll(
+            ".pronunciation, .plural-sound, .sentence-sound"
+        )
+        .forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        speak(
+                            button.dataset.text
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+/* =====================================================
+   SPEECH
+===================================================== */
+
+function speak(text) {
+
+    if (
+        !("speechSynthesis" in window)
+    ) {
+
+        return;
+
+    }
+
+
+    window.speechSynthesis.cancel();
+
+
+    const utterance =
+        new SpeechSynthesisUtterance(text);
+
+
+    utterance.lang = "de-DE";
+
+    utterance.rate = 0.85;
+
+
+    window.speechSynthesis.speak(
+        utterance
+    );
+
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+searchInput.addEventListener(
+    "input",
+    renderWords
+);
+
+
+sortSelect.addEventListener(
+    "change",
+    renderWords
+);
+
+
+/* =====================================================
+   PREVIOUS / NEXT
+===================================================== */
+
+document
+    .getElementById("previousWord")
+    .addEventListener(
+        "click",
+        function () {
+
+            window.history.back();
+
+        }
+    );
+
+
+document
+    .getElementById("nextWord")
+    .addEventListener(
+        "click",
+        function () {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+    );
+
+
+/* =====================================================
+   START
+===================================================== */
+
+renderWords();
+
+</script>
+
+</body>
+  </html>
