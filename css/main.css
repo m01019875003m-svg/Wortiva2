@@ -1728,3 +1728,533 @@ body.dark .category-content p {
     }
 
 }
+
+/* =========================
+   WORDS PAGE
+========================= */
+
+.words-page {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 40px 20px 70px;
+}
+
+
+.words-heading {
+
+    text-align: center;
+
+    position: relative;
+
+    margin-bottom: 35px;
+
+    padding-top: 5px;
+}
+
+
+.words-heading .back-button {
+
+    top: 0;
+}
+
+
+.words-heading h1 {
+
+    font-size: 30px;
+
+    margin-bottom: 8px;
+}
+
+
+.words-heading p {
+
+    color: #7c8495;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   CONTROLS
+========================= */
+
+.words-controls {
+
+    display: flex;
+
+    gap: 15px;
+
+    margin-bottom: 18px;
+}
+
+
+.search-box {
+
+    flex: 1;
+
+    height: 50px;
+
+    background: white;
+
+    border: 1px solid #e5e8f0;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 0 15px;
+}
+
+
+.search-box input {
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    width: 100%;
+
+    font-size: 14px;
+
+    color: #182033;
+}
+
+
+.sort-box {
+
+    background: white;
+
+    border: 1px solid #e5e8f0;
+
+    border-radius: 15px;
+
+    padding: 7px 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.sort-box label {
+
+    font-size: 12px;
+
+    color: #7c8495;
+}
+
+
+.sort-box select {
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   COUNT
+========================= */
+
+.words-count {
+
+    margin-bottom: 15px;
+
+    color: #7c8495;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   WORD GRID
+========================= */
+
+.words-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+}
+
+
+/* =========================
+   WORD CARD
+========================= */
+
+.word-card {
+
+    background: white;
+
+    border: 1px solid #e5e8f0;
+
+    border-radius: 22px;
+
+    padding: 22px;
+
+    transition: 0.25s;
+}
+
+
+.word-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 14px 32px
+        rgba(30, 40, 80, 0.08);
+}
+
+
+.word-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 12px;
+}
+
+
+.word-type {
+
+    background: #eef1ff;
+
+    color: #3157d5;
+
+    border-radius: 8px;
+
+    padding: 5px 9px;
+
+    font-size: 11px;
+}
+
+
+.pronunciation,
+.plural-sound,
+.sentence-sound {
+
+    border: none;
+
+    background: #f1f3f8;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    width: 34px;
+
+    height: 34px;
+
+    font-size: 15px;
+}
+
+
+.pronunciation:hover,
+.plural-sound:hover,
+.sentence-sound:hover {
+
+    background: #e3e7f5;
+}
+
+
+/* =========================
+   GERMAN
+========================= */
+
+.german-word {
+
+    direction: ltr;
+
+    text-align: left;
+
+    font-size: 29px;
+
+    font-weight: 800;
+
+    color: #1f2b48;
+
+    margin-bottom: 10px;
+}
+
+
+.word-plural {
+
+    direction: ltr;
+
+    text-align: left;
+
+    font-size: 13px;
+
+    color: #667086;
+
+    margin-bottom: 12px;
+}
+
+
+.word-plural strong {
+
+    color: #30394d;
+}
+
+
+.word-arabic {
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    margin-bottom: 17px;
+}
+
+
+/* =========================
+   EXAMPLE
+========================= */
+
+.example-box {
+
+    background: #f7f8fc;
+
+    border-radius: 15px;
+
+    padding: 15px;
+
+    margin-bottom: 17px;
+}
+
+
+.example-title {
+
+    font-size: 11px;
+
+    color: #7c8495;
+
+    margin-bottom: 8px;
+}
+
+
+.example-german {
+
+    direction: ltr;
+
+    text-align: left;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    line-height: 1.7;
+}
+
+
+.example-german .sentence-sound {
+
+    width: 29px;
+
+    height: 29px;
+
+    font-size: 13px;
+
+    margin-left: 5px;
+
+    vertical-align: middle;
+}
+
+
+.example-arabic {
+
+    margin-top: 7px;
+
+    color: #6d7587;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   ACTIONS
+========================= */
+
+.word-actions {
+
+    display: flex;
+
+    gap: 10px;
+}
+
+
+.known-button,
+.review-button {
+
+    flex: 1;
+
+    border: none;
+
+    padding: 11px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.known-button {
+
+    background: #e8f7ed;
+
+    color: #258348;
+}
+
+
+.review-button {
+
+    background: #fff2df;
+
+    color: #a86b12;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.words-navigation {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 30px;
+}
+
+
+.words-navigation button {
+
+    border: 1px solid #e5e8f0;
+
+    background: white;
+
+    border-radius: 12px;
+
+    padding: 11px 20px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+body.dark .search-box,
+body.dark .sort-box,
+body.dark .word-card,
+body.dark .words-navigation button {
+
+    background: #181e2c;
+
+    border-color: #293144;
+
+    color: #edf0f7;
+}
+
+
+body.dark .search-box input {
+
+    color: #edf0f7;
+}
+
+
+body.dark .german-word {
+
+    color: #edf0f7;
+}
+
+
+body.dark .word-plural,
+body.dark .word-plural strong {
+
+    color: #aeb6c8;
+}
+
+
+body.dark .example-box {
+
+    background: #202738;
+}
+
+
+body.dark .example-arabic {
+
+    color: #aeb6c8;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .words-page {
+
+        padding:
+            25px 15px 50px;
+    }
+
+
+    .words-controls {
+
+        flex-direction: column;
+    }
+
+
+    .sort-box {
+
+        justify-content: space-between;
+    }
+
+
+    .words-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .german-word {
+
+        font-size: 27px;
+    }
+
+       }
