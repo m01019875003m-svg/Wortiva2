@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wortiva - الفئات</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <a href="../index.html" class="logo">
+        <span class="logo-icon">W</span>
+        <span>Wortiva</span>
+    </a>
+
+    <div class="header-actions">
+
+        <button class="icon-button" id="themeButton">
+            🌙
+        </button>
+
+        <a href="profile.html" class="profile-button">
+
+            <div class="profile-avatar">
+                👤
+            </div>
+
+            <div class="profile-info">
+                <span class="profile-name">
+                    Mohammed
+                </span>
+
+                <small>
+                    حسابي
+                </small>
+            </div>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<main class="categories-page">
+
+    <section class="page-heading">
+
+        <a href="chapters.html" class="back-button">
+            → Kapitel
+        </a>
+
+        <div class="page-icon">
+            🗂️
+        </div>
+
+        <h1 id="chapterTitle">
+            Kapitel
+        </h1>
+
+        <p id="chapterSubtitle">
+            اختر الفئة التي تريد تعلمها
+        </p>
+
+    </section>
+
+
+    <section class="categories-section">
+
+        <div
+            id="categoriesGrid"
+            class="categories-grid">
+        </div>
+
+    </section>
+
+
+    <section class="all-words-box">
+
+        <button id="allChapterWords">
+
+            📖
+            <span>
+                جميع كلمات هذا الـKapitel
+            </span>
+
+            <span>
+                ←
+            </span>
+
+        </button>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-logo">
+        Wortiva
+    </div>
+
+    <p>
+        تعلم الألمانية بطريقة أسهل 🇩🇪
+    </p>
+
+    <div class="copyright">
+        creating by mohamed Ibrahim khafagy
+    </div>
+
+</footer>
+
+
+<script>
+
+    /* =========================
+       THEME
+    ========================= */
+
+    const themeButton =
+        document.getElementById("themeButton");
+
+
+    if (
+        localStorage.getItem("theme") === "dark"
+    ) {
+
+        document.body.classList.add("dark");
+
+        themeButton.textContent = "☀️";
+
+    }
+
+
+    themeButton.addEventListener(
+        "click",
+        function () {
+
+            document.body.classList.toggle("dark");
+
+            const dark =
+                document.body.classList.contains("dark");
+
+            localStorage.setItem(
+                "theme",
+                dark ? "dark" : "light"
+            );
+
+            themeButton.textContent =
+                dark ? "☀️" : "🌙";
+
+        }
+    );
+
+
+    /* =========================
+       CURRENT KAPITEL
+    ========================= */
+
+    const level =
+        localStorage.getItem(
+            "netzwerkLevel"
+        ) || "A1";
+
+
+    const chapter =
+        Number(
+            localStorage.getItem(
+                "netzwerkKapitel"
+            ) || 1
+        );
+
+
+    const chapterTitle =
+        localStorage.getItem(
+            "netzwerkKapitelTitle"
+        ) || "";
+
+
+    document.getElementById(
+        "chapterTitle"
+    ).textContent =
+        `Kapitel ${chapter} – ${chapterTitle}`;
+
+
+    document.getElementById(
+        "chapterSubtitle"
+    ).textContent =
+        `Netzwerk ${level} • اختر الفئة التي تريد تعلمها`;
+
+
+    /* =========================
+       CATEGORY DATA
+    ========================= */
+
+    const categories = {
+
+        A1: {
+
+            1: [
+
+                {
+                    id: "1a",
+                    german: "1a",
+                    arabic: "القسم 1a"
+                },
+
+                {
+                    id: "1b",
+                    german: "1b",
+                    arabic: "القسم 1b"
+                },
+
+                {
+                    id: "2",
+                    german: "2",
+                    arabic: "القسم 2"
+                },
+
+                {
+                    id: "3a",
+                    german: "3a",
+                    arabic: "القسم 3a"
+                },
+
+                {
+                    id: "other",
+                    german: "Andere Wörter",
+                    arabic: "فئات أخرى"
+                }
+
+            ],
+
+
+            2: [
+
+                {
+                    id: "1a",
+                    german: "1a",
+                    arabic: "القسم 1a"
+                },
+
+                {
+                    id: "1b",
+                    german: "1b",
+                    arabic: "القسم 1b"
+                },
+
+                {
+                    id: "2",
+                    german: "2",
+                    arabic: "القسم 2"
+                },
+
+                {
+                    id: "other",
+                    german: "Andere Wörter",
+                    arabic: "فئات أخرى"
+                }
+
+            ],
+
+
+            3: [
+
+                {
+                    id: "1a",
+                    german: "1a",
+                    arabic: "القسم 1a"
+                },
+
+                {
+                    id: "2",
+                    german: "2",
+                    arabic: "القسم 2"
+                },
+
+                {
+                    id: "3a",
+                    german: "3a",
+                    arabic: "القسم 3a"
+                },
+
+                {
+                    id: "other",
+                    german: "Andere Wörter",
+                    arabic: "فئات أخرى"
+                }
+
+            ],
+
+
+            4: [
+
+                {
+                    id: "1a",
+                    german: "1a",
+                    arabic: "القسم 1a"
+                },
+
+                {
+                    id: "2",
+                    german: "2",
+                    arabic: "القسم 2"
+                },
+
+                {
+                    id: "other",
+                    german: "Andere Wörter",
+                    arabic: "فئات أخرى"
+                }
+
+            ],
+
+
+            5: [
+
+                {
+                    id: "1a",
+                    german: "1a",
+                    arabic: "القسم 1a"
+                },
+
+                {
+                    id: "1b",
+                    german: "1b",
+                    arabic: "القسم 1b"
+                },
+
+                {
+                    id: "2",
+                    german: "2",
+                    arabic: "القسم 2"
+                },
+
+                {
+                    id: "other",
+                    german: "Andere Wörter",
+                    arabic: "فئات أخرى"
+                }
+
+            ],
+
+
+            6: [
+
+                {
+                    id: "1a",
+                    german: "1a",
+                    arabic: "القسم 1a"
+                },
+
+                {
+                    id: "3a",
+                    german: "3a",
+                    arabic: "القسم 3a"
+                },
+
+                {
+                    id: "4a",
+                    german: "4a",
+                    arabic: "القسم 4a"
+                },
+
+                {
+                    id: "8",
+                    german: "8",
+                    arabic: "القسم 8"
+                },
+
+                {
+                    id: "other",
+                    german: "Andere Wörter",
+                    arabic: "فئات أخرى"
+                }
+
+            ],
+
+
+            7: [
+
+                {
+                    id: "1a",
+                    german: "1a",
+                    arabic: "القسم 1a"
+                },
+
+                {
+                    id: "1b",
+                    german: "1b",
+                    arabic: "القسم 1b"
+                },
+
+                {
+                    id: "2",
+                    german: "2",
+                    arabic: "القسم 2"
+                },
+
+                {
+                    id: "3a",
+                    german: "3a",
+                    arabic: "القسم 3a"
+                },
+
+                {
+                    id: "other",
+                    german: "Andere Wörter",
+                    arabic: "فئات أخرى"
+                }
+
+            ],
+
+
+            8: [
+
+                {
+                    id: "1a",
+                    german: "1a",
+                    arabic: "القسم 1a"
+                },
+
+                {
+                    id: "2",
+                    german: "2",
+                    arabic: "القسم 2"
+                },
+
+                {
+                    id: "3a",
+                    german: "3a",
+                    arabic: "القسم 3a"
+                },
+
+                {
+                    id: "other",
+                    german: "Andere Wörter",
+                    arabic: "فئات أخرى"
+                }
+
+            ],
+
+
+            9: [
+
+                {
+                    id: "1a",
+                    german: "1a",
+                    arabic: "القسم 1a"
+                },
+
+                {
+                    id: "2",
+                    german: "2",
+                    arabic: "القسم 2"
+                },
+
+                {
+                    id: "3a",
+                    german: "3a",
+                    arabic: "القسم 3a"
+                },
+
+                {
+                    id: "other",
+                    german: "Andere Wörter",
+                    arabic: "فئات أخرى"
+                }
+
+            ],
+
+
+            10: [
+
+                {
+                    id: "1a",
+                    german: "1a",
+                    arabic: "القسم 1a"
+                },
+
+                {
+                    id: "2",
+                    german: "2",
+                    arabic: "القسم 2"
+                },
+
+                {
+                    id: "3a",
+                    german: "3a",
+                    arabic: "القسم 3a"
+                },
+
+                {
+                    id: "other",
+                    german: "Andere Wörter",
+                    arabic: "فئات أخرى"
+                }
+
+            ],
+
+
+            11: [
+
+                {
+                    id: "1a",
+                    german: "1a",
+                    arabic: "القسم 1a"
+                },
+
+                {
+                    id: "2",
+                    german: "2",
+                    arabic: "القسم 2"
+                },
+
+                {
+                    id: "other",
+                    german: "Andere Wörter",
+                    arabic: "فئات أخرى"
+                }
+
+            ],
+
+
+            12: [
+
+                {
+                    id: "1a",
+                    german: "1a",
+                    arabic: "القسم 1a"
+                },
+
+                {
+                    id: "2",
+                    german: "2",
+                    arabic: "القسم 2"
+                },
+
+                {
+                    id: "other",
+                    german: "Andere Wörter",
+                    arabic: "فئات أخرى"
+                }
+
+            ]
+
+        },
+
+
+        A2: {},
+
+        B1: {},
+
+        B2: {}
+
+    };
+
+
+    /* =========================
+       DISPLAY CATEGORIES
+    ========================= */
+
+    const categoriesGrid =
+        document.getElementById(
+            "categoriesGrid"
+        );
+
+
+    const currentCategories =
+        categories[level]?.[chapter] || [];
+
+
+    if (
+        currentCategories.length === 0
+    ) {
+
+        categoriesGrid.innerHTML = `
+
+            <div class="empty-chapters">
+
+                <div>
+                    🗂️
+                </div>
+
+                <h3>
+                    لا توجد فئات بعد
+                </h3>
+
+                <p>
+                    سيتم إضافة محتوى هذا
+                    الـKapitel قريبًا.
+                </p>
+
+            </div>
+
+        `;
+
+    } else {
+
+        currentCategories.forEach(
+            function (category, index) {
+
+                const card =
+                    document.createElement("button");
+
+
+                card.className =
+                    "category-card";
+
+
+                card.innerHTML = `
+
+                    <div class="category-number">
+                        ${index + 1}
+                    </div>
+
+                    <div class="category-icon">
+                        📖
+                    </div>
+
+                    <div class="category-content">
+
+                        <span>
+                            Kategorie
+                        </span>
+
+                        <h2>
+                            ${category.german}
+                        </h2>
+
+                        <p>
+                            ${category.arabic}
+                        </p>
+
+                    </div>
+
+                    <div class="category-arrow">
+                        ←
+                    </div>
+
+                `;
+
+
+                card.addEventListener(
+                    "click",
+                    function () {
+
+                        localStorage.setItem(
+                            "netzwerkCategory",
+                            category.id
+                        );
+
+                        localStorage.setItem(
+                            "netzwerkCategoryTitle",
+                            category.german
+                        );
+
+                        localStorage.setItem(
+                            "netzwerkShowAllChapterWords",
+                            "false"
+                        );
+
+                        window.location.href =
+                            "words.html";
+
+                    }
+                );
+
+
+                categoriesGrid.appendChild(
+                    card
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =========================
+       ALL CHAPTER WORDS
+    ========================= */
+
+    document.getElementById(
+        "allChapterWords"
+    ).addEventListener(
+        "click",
+        function () {
+
+            localStorage.setItem(
+                "netzwerkShowAllChapterWords",
+                "true"
+            );
+
+            localStorage.removeItem(
+                "netzwerkCategory"
+            );
+
+            localStorage.removeItem(
+                "netzwerkCategoryTitle"
+            );
+
+            window.location.href =
+                "words.html";
+
+        }
+    );
+
+</script>
+
+</body>
+  </html>
