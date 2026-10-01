@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wortiva - Netzwerk</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="topbar">
+
+        <a href="../index.html" class="logo">
+            <span class="logo-icon">W</span>
+            <span>Wortiva</span>
+        </a>
+
+        <div class="header-actions">
+
+            <button class="icon-button" id="themeButton">
+                🌙
+            </button>
+
+            <a href="profile.html" class="profile-button">
+
+                <div class="profile-avatar">
+                    👤
+                </div>
+
+                <div class="profile-info">
+                    <span class="profile-name">
+                        Mohammed
+                    </span>
+
+                    <small>
+                        حسابي
+                    </small>
+                </div>
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- Main -->
+
+    <main class="netzwerk-page">
+
+        <!-- Page Header -->
+
+        <section class="page-heading">
+
+            <a href="../index.html" class="back-button">
+                → الرئيسية
+            </a>
+
+            <div class="page-icon">
+                📚
+            </div>
+
+            <h1>
+                Netzwerk
+            </h1>
+
+            <p>
+                اختر المستوى الذي تريد تعلمه
+            </p>
+
+        </section>
+
+
+        <!-- Levels -->
+
+        <section class="levels-section">
+
+            <div class="level-grid">
+
+
+                <!-- A1 -->
+
+                <button
+                    class="level-card"
+                    data-level="A1">
+
+                    <div class="level-icon">
+                        🇩🇪
+                    </div>
+
+                    <div class="level-content">
+
+                        <span class="level-number">
+                            المستوى الأول
+                        </span>
+
+                        <h2>
+                            A1
+                        </h2>
+
+                        <p>
+                            Anfänger
+                        </p>
+
+                    </div>
+
+                    <span class="level-arrow">
+                        ←
+                    </span>
+
+                </button>
+
+
+                <!-- A2 -->
+
+                <button
+                    class="level-card"
+                    data-level="A2">
+
+                    <div class="level-icon">
+                        🇩🇪
+                    </div>
+
+                    <div class="level-content">
+
+                        <span class="level-number">
+                            المستوى الثاني
+                        </span>
+
+                        <h2>
+                            A2
+                        </h2>
+
+                        <p>
+                            Grundstufe
+                        </p>
+
+                    </div>
+
+                    <span class="level-arrow">
+                        ←
+                    </span>
+
+                </button>
+
+
+                <!-- B1 -->
+
+                <button
+                    class="level-card"
+                    data-level="B1">
+
+                    <div class="level-icon">
+                        🇩🇪
+                    </div>
+
+                    <div class="level-content">
+
+                        <span class="level-number">
+                            المستوى الثالث
+                        </span>
+
+                        <h2>
+                            B1
+                        </h2>
+
+                        <p>
+                            Mittelstufe
+                        </p>
+
+                    </div>
+
+                    <span class="level-arrow">
+                        ←
+                    </span>
+
+                </button>
+
+
+                <!-- B2 -->
+
+                <button
+                    class="level-card"
+                    data-level="B2">
+
+                    <div class="level-icon">
+                        🇩🇪
+                    </div>
+
+                    <div class="level-content">
+
+                        <span class="level-number">
+                            المستوى الرابع
+                        </span>
+
+                        <h2>
+                            B2
+                        </h2>
+
+                        <p>
+                            Fortgeschritten
+                        </p>
+
+                    </div>
+
+                    <span class="level-arrow">
+                        ←
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Coming Soon -->
+
+        <section
+            class="netzwerk-info">
+
+            <div class="info-icon">
+                💡
+            </div>
+
+            <div>
+
+                <h3>
+                    تعلم بطريقة منظمة
+                </h3>
+
+                <p>
+                    اختر المستوى ثم الـ Kapitel
+                    وبعدها الفئة والكلمات.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="footer-logo">
+            Wortiva
+        </div>
+
+        <p>
+            تعلم الألمانية بطريقة أسهل 🇩🇪
+        </p>
+
+        <div class="copyright">
+            creating by mohamed Ibrahim khafagy
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        /* =========================
+           THEME
+        ========================= */
+
+        const themeButton =
+            document.getElementById("themeButton");
+
+
+        themeButton.addEventListener(
+            "click",
+            function () {
+
+                document.body.classList.toggle("dark");
+
+                if (
+                    document.body.classList.contains("dark")
+                ) {
+
+                    themeButton.textContent = "☀️";
+
+                    localStorage.setItem(
+                        "theme",
+                        "dark"
+                    );
+
+                } else {
+
+                    themeButton.textContent = "🌙";
+
+                    localStorage.setItem(
+                        "theme",
+                        "light"
+                    );
+                }
+
+            }
+        );
+
+
+        if (
+            localStorage.getItem("theme") === "dark"
+        ) {
+
+            document.body.classList.add("dark");
+
+            themeButton.textContent = "☀️";
+
+        }
+
+
+        /* =========================
+           LEVEL SELECTION
+        ========================= */
+
+        const levelCards =
+            document.querySelectorAll(".level-card");
+
+
+        levelCards.forEach(function (card) {
+
+            card.addEventListener(
+                "click",
+                function () {
+
+                    const level =
+                        card.dataset.level;
+
+                    localStorage.setItem(
+                        "selectedNetzwerkLevel",
+                        level
+                    );
+
+                    /*
+                     * مؤقتًا:
+                     * بعد إنشاء صفحة Kapitel
+                     * سننتقل إليها هنا.
+                     */
+
+                    alert(
+                        "تم اختيار مستوى " +
+                        level
+                    );
+
+                }
+            );
+
+        });
+
+    </script>
+
+</body>
+
+</html>
