@@ -861,3 +861,379 @@ body.dark .menu-divider {
     }
 
   }
+
+/* =========================
+   NETZWERK PAGE
+========================= */
+
+.netzwerk-page {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 40px 20px 70px;
+}
+
+
+/* =========================
+   PAGE HEADING
+========================= */
+
+.page-heading {
+
+    text-align: center;
+
+    margin-bottom: 45px;
+
+    position: relative;
+}
+
+
+.back-button {
+
+    position: absolute;
+
+    right: 0;
+
+    top: 0;
+
+    padding: 9px 14px;
+
+    background: white;
+
+    border: 1px solid #e5e8ef;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+
+    color: #4b5568;
+
+    transition: 0.2s;
+}
+
+
+.back-button:hover {
+
+    background: #f1f3f8;
+
+    transform: translateX(3px);
+}
+
+
+.page-icon {
+
+    width: 75px;
+
+    height: 75px;
+
+    border-radius: 23px;
+
+    margin: 10px auto 18px;
+
+    background: #eef1ff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 36px;
+}
+
+
+.page-heading h1 {
+
+    font-size: 38px;
+
+    margin-bottom: 8px;
+}
+
+
+.page-heading p {
+
+    color: #7a8293;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   LEVEL GRID
+========================= */
+
+.level-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+
+.level-card {
+
+    border: 1px solid #e5e8f0;
+
+    background: white;
+
+    border-radius: 24px;
+
+    padding: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    text-align: right;
+
+    cursor: pointer;
+
+    position: relative;
+
+    transition:
+        transform 0.25s,
+        box-shadow 0.25s,
+        border-color 0.25s;
+}
+
+
+.level-card:hover {
+
+    transform: translateY(-5px);
+
+    border-color: #cbd4ff;
+
+    box-shadow:
+        0 15px 35px
+        rgba(30, 40, 80, 0.09);
+}
+
+
+.level-icon {
+
+    width: 65px;
+
+    height: 65px;
+
+    border-radius: 19px;
+
+    background: #f0f3ff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 30px;
+
+    flex-shrink: 0;
+}
+
+
+.level-content {
+
+    flex: 1;
+}
+
+
+.level-number {
+
+    color: #7c8495;
+
+    font-size: 12px;
+}
+
+
+.level-content h2 {
+
+    font-size: 32px;
+
+    margin: 3px 0;
+
+    color: #3157d5;
+}
+
+
+.level-content p {
+
+    color: #7c8495;
+
+    font-size: 13px;
+}
+
+
+.level-arrow {
+
+    color: #3157d5;
+
+    font-size: 22px;
+}
+
+
+/* =========================
+   INFO BOX
+========================= */
+
+.netzwerk-info {
+
+    margin-top: 30px;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    background: #eef3ff;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.info-icon {
+
+    font-size: 25px;
+}
+
+
+.netzwerk-info h3 {
+
+    font-size: 15px;
+
+    margin-bottom: 5px;
+}
+
+
+.netzwerk-info p {
+
+    font-size: 13px;
+
+    color: #687188;
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+body.dark .back-button,
+body.dark .level-card {
+
+    background: #181e2c;
+
+    border-color: #293144;
+
+    color: #edf0f7;
+}
+
+
+body.dark .back-button:hover {
+
+    background: #232b3d;
+}
+
+
+body.dark .level-number,
+body.dark .level-content p,
+body.dark .page-heading p {
+
+    color: #aeb6c8;
+}
+
+
+body.dark .page-icon,
+body.dark .level-icon {
+
+    background: #232b3d;
+}
+
+
+body.dark .netzwerk-info {
+
+    background: #1d2940;
+}
+
+
+body.dark .netzwerk-info p {
+
+    color: #aeb6c8;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .netzwerk-page {
+
+        padding:
+            25px 15px 50px;
+    }
+
+
+    .page-heading {
+
+        margin-bottom: 30px;
+
+        padding-top: 45px;
+    }
+
+
+    .back-button {
+
+        right: auto;
+
+        left: 0;
+
+        top: 0;
+    }
+
+
+    .page-heading h1 {
+
+        font-size: 32px;
+    }
+
+
+    .level-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+    }
+
+
+    .level-card {
+
+        padding: 20px;
+
+        border-radius: 20px;
+    }
+
+
+    .level-icon {
+
+        width: 55px;
+
+        height: 55px;
+    }
+
+
+    .level-content h2 {
+
+        font-size: 27px;
+    }
+
+}
