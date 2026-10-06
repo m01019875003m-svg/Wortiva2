@@ -1,0 +1,897 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Wortiva</title>
+
+    <link
+        rel="stylesheet"
+        href="css/main.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="topbar">
+
+    <a
+        class="logo"
+        href="index.html"
+    >
+
+        <span class="logo-icon">
+            W
+        </span>
+
+        <span>
+            Wortiva
+        </span>
+
+    </a>
+
+
+    <div class="header-actions">
+
+        <!-- THEME -->
+
+        <button
+            id="theme"
+            class="icon-button"
+            type="button"
+            aria-label="تغيير الوضع"
+        >
+            🌙
+        </button>
+
+
+        <!-- AUTH / PROFILE -->
+
+        <div
+            id="authArea"
+            class="header-auth-area"
+        >
+
+            <!-- NOT LOGGED IN -->
+
+            <a
+                id="loginButton"
+                class="profile-button"
+                href="pages/login.html"
+            >
+
+                <div class="profile-avatar">
+                    👤
+                </div>
+
+
+                <div class="profile-info">
+
+                    <span class="profile-name">
+                        تسجيل الدخول
+                    </span>
+
+                    <small>
+                        إلى حسابك
+                    </small>
+
+                </div>
+
+            </a>
+
+
+            <!-- LOGGED IN -->
+
+            <a
+                id="profileButton"
+                class="profile-button"
+                href="pages/profile.html"
+                style="display: none;"
+            >
+
+                <div class="profile-avatar">
+
+                    <img
+                        id="headerAvatar"
+                        src=""
+                        alt="صورة المستخدم"
+                        style="display: none;"
+                    >
+
+                    <span id="headerAvatarDefault">
+                        👤
+                    </span>
+
+                </div>
+
+
+                <div class="profile-info">
+
+                    <span
+                        id="headerUsername"
+                        class="profile-name"
+                    >
+                        حسابي
+                    </span>
+
+                    <small>
+                        حسابي
+                    </small>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="home-page">
+
+
+    <!-- PAGE HEADING -->
+
+    <section class="page-heading">
+
+        <div class="page-icon">
+            🇩🇪
+        </div>
+
+
+        <h1>
+            Wortiva
+        </h1>
+
+
+        <p>
+            برنامجك لحفظ كلمات Netzwerk
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         MAIN OPTIONS
+    ================================================= -->
+
+    <section class="levels-section">
+
+        <div class="level-grid">
+
+
+            <!-- NETZWERK -->
+
+            <button
+                class="level-card"
+                type="button"
+                onclick="location.href='pages/netzwerk.html'"
+            >
+
+                <div class="level-icon">
+                    📚
+                </div>
+
+
+                <div class="level-content">
+
+                    <span class="level-number">
+                        تعلم الألمانية
+                    </span>
+
+                    <h2>
+                        كلمات Netzwerk
+                    </h2>
+
+                    <p>
+                        المستويات والـ Kapitel والفئات
+                    </p>
+
+                </div>
+
+
+                <span class="level-arrow">
+                    ←
+                </span>
+
+            </button>
+
+
+
+            <!-- TESTS -->
+
+            <button
+                class="level-card"
+                type="button"
+                onclick="location.href='pages/tests.html'"
+            >
+
+                <div class="level-icon">
+                    📝
+                </div>
+
+
+                <div class="level-content">
+
+                    <span class="level-number">
+                        اختبارات
+                    </span>
+
+                    <h2>
+                        الاختبارات
+                    </h2>
+
+                    <p>
+                        اختبر نفسك في كلمات Netzwerk
+                    </p>
+
+                </div>
+
+
+                <span class="level-arrow">
+                    ←
+                </span>
+
+            </button>
+
+
+
+            <!-- STATISTICS -->
+
+            <button
+                class="level-card"
+                type="button"
+                onclick="location.href='pages/statistics.html'"
+            >
+
+                <div class="level-icon">
+                    📊
+                </div>
+
+
+                <div class="level-content">
+
+                    <span class="level-number">
+                        إحصائيات
+                    </span>
+
+                    <h2>
+                        تقدمك
+                    </h2>
+
+                    <p>
+                        شاهد تقدمك وXP والـ Streak
+                    </p>
+
+                </div>
+
+
+                <span class="level-arrow">
+                    ←
+                </span>
+
+            </button>
+
+
+
+            <!-- SMART REVIEW -->
+
+            <button
+                class="level-card"
+                type="button"
+                onclick="location.href='pages/review.html'"
+            >
+
+                <div class="level-icon">
+                    🔄
+                </div>
+
+
+                <div class="level-content">
+
+                    <span class="level-number">
+                        مراجعة
+                    </span>
+
+                    <h2>
+                        المراجعة الذكية
+                    </h2>
+
+                    <p>
+                        الكلمات التي حان وقت مراجعتها
+                    </p>
+
+                </div>
+
+
+                <span class="level-arrow">
+                    ←
+                </span>
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PROGRESS
+    ================================================= -->
+
+    <section class="home-progress-section">
+
+        <div class="home-progress-card">
+
+            <div class="home-progress-header">
+
+                <div>
+
+                    <span class="home-progress-label">
+                        📊 تقدمك
+                    </span>
+
+                    <h2>
+                        Netzwerk A1
+                    </h2>
+
+                </div>
+
+
+                <div
+                    id="homeProgressPercent"
+                    class="home-progress-percent"
+                >
+                    0%
+                </div>
+
+            </div>
+
+
+            <div class="home-progress-bar">
+
+                <div
+                    id="homeProgressFill"
+                    class="home-progress-fill"
+                ></div>
+
+            </div>
+
+
+            <div class="home-progress-footer">
+
+                <span id="homeKnownWords">
+                    0 كلمة متقنة
+                </span>
+
+                <span id="homeTotalWords">
+                    من 0 كلمة
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-logo">
+        Wortiva
+    </div>
+
+
+    <p>
+        تعلم الألمانية بطريقة أسهل 🇩🇪
+    </p>
+
+
+    <div class="footer-support">
+
+        <a
+            href="pages/support.html"
+            class="support-link"
+        >
+
+            <span class="support-link-icon">
+                🛠️
+            </span>
+
+
+            <span class="support-link-content">
+
+                <strong>
+                    الدعم والشكاوى
+                </strong>
+
+                <small>
+                    ساعدنا في تحسين Wortiva
+                </small>
+
+            </span>
+
+
+            <span class="support-link-arrow">
+                ←
+            </span>
+
+        </a>
+
+    </div>
+
+
+    <div class="copyright">
+        creating by mohamed Ibrahim khafagy
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="data/supabase.js"></script>
+
+<script src="data/a1.js"></script>
+
+
+
+<!-- =====================================================
+     THEME
+===================================================== -->
+
+<script>
+
+const themeButton =
+    document.getElementById("theme");
+
+
+/* تحميل الوضع المحفوظ */
+
+if (
+    localStorage.getItem("theme") === "dark"
+) {
+
+    document.body.classList.add("dark");
+
+    themeButton.textContent = "☀️";
+
+}
+
+
+/* تغيير الوضع */
+
+themeButton.addEventListener(
+    "click",
+    function () {
+
+        document.body.classList.toggle("dark");
+
+
+        const dark =
+            document.body.classList.contains("dark");
+
+
+        localStorage.setItem(
+            "theme",
+            dark
+                ? "dark"
+                : "light"
+        );
+
+
+        themeButton.textContent =
+            dark
+                ? "☀️"
+                : "🌙";
+
+    }
+);
+
+</script>
+
+
+
+<!-- =====================================================
+     HOME PROGRESS
+===================================================== -->
+
+<script>
+
+function getKnownWords() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                "wortivaKnownWords"
+            ) || "[]"
+        );
+
+    }
+
+    catch {
+
+        return [];
+
+    }
+
+}
+
+
+
+function getWordKey(word) {
+
+    return [
+
+        word.chapter,
+        word.category,
+        word.order,
+        word.german
+
+    ].join("|");
+
+}
+
+
+
+function updateHomeProgress() {
+
+    const progressPercent =
+        document.getElementById(
+            "homeProgressPercent"
+        );
+
+
+    const progressFill =
+        document.getElementById(
+            "homeProgressFill"
+        );
+
+
+    const knownWordsElement =
+        document.getElementById(
+            "homeKnownWords"
+        );
+
+
+    const totalWordsElement =
+        document.getElementById(
+            "homeTotalWords"
+        );
+
+
+    if (
+        !progressPercent ||
+        !progressFill ||
+        !knownWordsElement ||
+        !totalWordsElement
+    ) {
+
+        return;
+
+    }
+
+
+    const words =
+        Array.isArray(netzwerkA1Words)
+            ? netzwerkA1Words.filter(
+                word =>
+                    word &&
+                    word.german
+            )
+            : [];
+
+
+    const total =
+        words.length;
+
+
+    const knownWords =
+        getKnownWords();
+
+
+    let known = 0;
+
+
+    words.forEach(
+        function(word) {
+
+            const key =
+                getWordKey(word);
+
+
+            if (
+                knownWords.includes(key)
+            ) {
+
+                known++;
+
+            }
+
+        }
+    );
+
+
+    const percent =
+        total > 0
+            ? Math.round(
+                (known / total) * 100
+            )
+            : 0;
+
+
+    progressPercent.textContent =
+        `${percent}%`;
+
+
+    progressFill.style.width =
+        `${percent}%`;
+
+
+    knownWordsElement.textContent =
+        `${known} كلمة متقنة`;
+
+
+    totalWordsElement.textContent =
+        `من ${total} كلمة`;
+
+}
+
+
+
+updateHomeProgress();
+
+</script>
+
+
+
+<!-- =====================================================
+     HEADER USER
+===================================================== -->
+
+<script>
+
+async function loadHeaderUser() {
+
+    try {
+
+        const {
+            data: {
+                session
+            }
+        } =
+            await supabaseClient.auth.getSession();
+
+
+        const loginButton =
+            document.getElementById(
+                "loginButton"
+            );
+
+
+        const profileButton =
+            document.getElementById(
+                "profileButton"
+            );
+
+
+        const username =
+            document.getElementById(
+                "headerUsername"
+            );
+
+
+        const avatar =
+            document.getElementById(
+                "headerAvatar"
+            );
+
+
+        const defaultAvatar =
+            document.getElementById(
+                "headerAvatarDefault"
+            );
+
+
+        /* =========================================
+           NOT LOGGED IN
+        ========================================= */
+
+        if (!session) {
+
+            if (loginButton) {
+
+                loginButton.style.display =
+                    "flex";
+
+            }
+
+
+            if (profileButton) {
+
+                profileButton.style.display =
+                    "none";
+
+            }
+
+
+            return;
+
+        }
+
+
+        /* =========================================
+           LOGGED IN
+        ========================================= */
+
+        const user =
+            session.user;
+
+
+        const metadata =
+            user.user_metadata || {};
+
+
+        const name =
+            metadata.username ||
+            metadata.name ||
+            user.email?.split("@")[0] ||
+            "مستخدم Wortiva";
+
+
+        const avatarUrl =
+            metadata.avatar_url ||
+            "";
+
+
+        if (username) {
+
+            username.textContent =
+                name;
+
+        }
+
+
+        if (
+            avatarUrl &&
+            avatar
+        ) {
+
+            avatar.src =
+                avatarUrl;
+
+
+            avatar.style.display =
+                "block";
+
+
+            if (defaultAvatar) {
+
+                defaultAvatar.style.display =
+                    "none";
+
+            }
+
+        }
+
+        else {
+
+            if (avatar) {
+
+                avatar.style.display =
+                    "none";
+
+            }
+
+
+            if (defaultAvatar) {
+
+                defaultAvatar.style.display =
+                    "inline";
+
+            }
+
+        }
+
+
+        if (loginButton) {
+
+            loginButton.style.display =
+                "none";
+
+        }
+
+
+        if (profileButton) {
+
+            profileButton.style.display =
+                "flex";
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Header profile error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* تحميل المستخدم */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        loadHeaderUser();
+
+    }
+);
+
+
+/* تحديث الهيدر عند تغير حالة تسجيل الدخول */
+
+if (
+    typeof supabaseClient !== "undefined"
+) {
+
+    supabaseClient.auth.onAuthStateChange(
+        function() {
+
+            loadHeaderUser();
+
+        }
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>

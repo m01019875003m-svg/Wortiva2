@@ -1,0 +1,2290 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Wortiva - الكلمات</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/main.css"
+    >
+
+    <!-- Netzwerk A1 -->
+    <script src="../data/a1.js"></script>
+
+    <!-- Activity / XP / Streak -->
+    <script src="../data/activity.js"></script>
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../data/supabase.js"></script>
+    <script src="../data/supabase-progress.js"></script>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="topbar">
+
+    <a
+        href="../index.html"
+        class="logo"
+    >
+
+        <span class="logo-icon">
+            W
+        </span>
+
+        <span>
+            Wortiva
+        </span>
+
+    </a>
+
+
+    <div class="header-actions">
+
+        <!-- THEME -->
+
+        <button
+            class="icon-button"
+            id="themeButton"
+            type="button"
+            aria-label="تغيير الوضع"
+        >
+            🌙
+        </button>
+
+
+        <!-- PROFILE -->
+
+        <a
+            href="profile.html"
+            class="profile-button"
+        >
+
+            <div class="profile-avatar">
+
+                <img
+                    id="headerAvatar"
+                    src=""
+                    alt="صورة المستخدم"
+                    style="display:none;"
+                >
+
+                <span id="headerAvatarDefault">
+                    👤
+                </span>
+
+            </div>
+
+
+            <div class="profile-info">
+
+                <span
+                    id="headerUsername"
+                    class="profile-name"
+                >
+                    حسابي
+                </span>
+
+                <small id="headerAccountText">
+                    تسجيل الدخول
+                </small>
+
+            </div>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="words-page">
+
+
+    <!-- =================================================
+         PAGE HEADING
+    ================================================= -->
+
+    <section class="words-heading">
+
+        <a
+            href="categories.html"
+            class="back-button"
+        >
+            → الفئات
+        </a>
+
+
+        <div class="page-icon">
+            📖
+        </div>
+
+
+        <h1 id="wordsTitle">
+            الكلمات
+        </h1>
+
+
+        <p id="wordsSubtitle">
+            تعلم كلمات Netzwerk
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         CONTROLS
+    ================================================= -->
+
+    <section class="words-controls">
+
+        <div class="search-box">
+
+            <span
+                class="search-icon"
+                aria-hidden="true"
+            >
+                🔎
+            </span>
+
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="ابحث عن كلمة بالألماني أو العربي..."
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <div class="sort-box">
+
+            <label for="sortSelect">
+                ترتيب حسب
+            </label>
+
+
+            <select id="sortSelect">
+
+                <option value="default">
+                    الترتيب الأصلي
+                </option>
+
+                <option value="germanAsc">
+                    الألمانية A → Z
+                </option>
+
+                <option value="germanDesc">
+                    الألمانية Z → A
+                </option>
+
+                <option value="arabicAsc">
+                    العربية أ → ي
+                </option>
+
+                <option value="arabicDesc">
+                    العربية ي → أ
+                </option>
+
+                <option value="article">
+                    Artikel
+                </option>
+
+                <option value="type">
+                    نوع الكلمة
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         WORD COUNT
+    ================================================= -->
+
+    <div class="words-count">
+
+        <span id="wordCount">
+            0 كلمة
+        </span>
+
+    </div>
+
+
+
+    <!-- =================================================
+         WORDS
+    ================================================= -->
+
+    <section class="words-list-section">
+
+        <div
+            id="wordsGrid"
+            class="words-grid"
+        ></div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         NAVIGATION
+    ================================================= -->
+
+    <div class="words-navigation">
+
+        <button
+            id="previousWord"
+            type="button"
+        >
+            → السابق
+        </button>
+
+
+        <div
+            id="navigationInfo"
+            class="navigation-info"
+        >
+            Kapitel
+        </div>
+
+
+        <button
+            id="nextWord"
+            type="button"
+        >
+            التالي ←
+        </button>
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-logo">
+        Wortiva
+    </div>
+
+
+    <p>
+        تعلم الألمانية بطريقة أسهل 🇩🇪
+    </p>
+
+
+    <div class="copyright">
+        creating by mohamed Ibrahim khafagy
+    </div>
+
+</footer>
+
+
+
+<script>
+
+/* =====================================================
+   HEADER USER
+===================================================== */
+
+async function loadHeaderUser() {
+
+    try {
+
+        if (
+            typeof supabaseClient === "undefined"
+        ) {
+
+            console.warn(
+                "supabaseClient غير موجود"
+            );
+
+            return;
+
+        }
+
+
+        const {
+            data: {
+                session
+            }
+        } =
+            await supabaseClient.auth.getSession();
+
+
+        const username =
+            document.getElementById(
+                "headerUsername"
+            );
+
+
+        const accountText =
+            document.getElementById(
+                "headerAccountText"
+            );
+
+
+        const avatar =
+            document.getElementById(
+                "headerAvatar"
+            );
+
+
+        const defaultAvatar =
+            document.getElementById(
+                "headerAvatarDefault"
+            );
+
+
+        if (!session) {
+
+            username.textContent =
+                "حسابي";
+
+            accountText.textContent =
+                "تسجيل الدخول";
+
+            avatar.style.display =
+                "none";
+
+            defaultAvatar.style.display =
+                "inline";
+
+            return;
+
+        }
+
+
+        const user =
+            session.user;
+
+
+        const metadata =
+            user.user_metadata || {};
+
+
+        const name =
+            metadata.username ||
+            "مستخدم Wortiva";
+
+
+        const avatarUrl =
+            metadata.avatar_url ||
+            "";
+
+
+        username.textContent =
+            name;
+
+
+        accountText.textContent =
+            "حسابي";
+
+
+        if (avatarUrl) {
+
+            avatar.src =
+                avatarUrl;
+
+            avatar.style.display =
+                "block";
+
+            defaultAvatar.style.display =
+                "none";
+
+        } else {
+
+            avatar.style.display =
+                "none";
+
+            defaultAvatar.style.display =
+                "inline";
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Header profile error:",
+            error
+        );
+
+    }
+
+}
+
+
+loadHeaderUser();
+
+
+
+/* =====================================================
+   THEME
+===================================================== */
+
+const themeButton =
+    document.getElementById(
+        "themeButton"
+    );
+
+
+function loadTheme() {
+
+    if (
+        localStorage.getItem("theme")
+        ===
+        "dark"
+    ) {
+
+        document.body.classList.add(
+            "dark"
+        );
+
+        themeButton.textContent =
+            "☀️";
+
+    }
+
+}
+
+
+themeButton.addEventListener(
+    "click",
+    function () {
+
+        document.body.classList.toggle(
+            "dark"
+        );
+
+
+        const dark =
+            document.body.classList.contains(
+                "dark"
+            );
+
+
+        localStorage.setItem(
+            "theme",
+            dark
+                ? "dark"
+                : "light"
+        );
+
+
+        themeButton.textContent =
+            dark
+                ? "☀️"
+                : "🌙";
+
+    }
+);
+
+
+loadTheme();
+
+
+
+/* =====================================================
+   CURRENT LOCATION
+===================================================== */
+
+const level =
+    localStorage.getItem(
+        "netzwerkLevel"
+    ) ||
+    localStorage.getItem(
+        "selectedNetzwerkLevel"
+    ) ||
+    "A1";
+
+
+let chapter =
+    Number(
+        localStorage.getItem(
+            "netzwerkKapitel"
+        ) ||
+        1
+    );
+
+
+let category =
+    localStorage.getItem(
+        "netzwerkCategory"
+    ) ||
+    "";
+
+
+let categoryTitle =
+    localStorage.getItem(
+        "netzwerkCategoryTitle"
+    ) ||
+    "";
+
+
+let showAll =
+    localStorage.getItem(
+        "netzwerkShowAllChapterWords"
+    ) ===
+    "true";
+
+
+
+/* =====================================================
+   CHECK DATA
+===================================================== */
+
+if (
+    typeof netzwerkA1Words === "undefined"
+) {
+
+    document.getElementById(
+        "wordsGrid"
+    ).innerHTML = `
+
+        <div class="empty-chapters">
+
+            <div>
+                ⚠️
+            </div>
+
+            <h3>
+                لم يتم تحميل ملف الكلمات
+            </h3>
+
+            <p>
+                تأكد أن ملف a1.js موجود داخل مجلد data.
+            </p>
+
+        </div>
+
+    `;
+
+    throw new Error(
+        "a1.js لم يتم تحميله"
+    );
+
+}
+
+
+const words =
+    Array.isArray(netzwerkA1Words)
+        ? netzwerkA1Words
+        : [];
+
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const wordsGrid =
+    document.getElementById(
+        "wordsGrid"
+    );
+
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+
+const sortSelect =
+    document.getElementById(
+        "sortSelect"
+    );
+
+
+const wordCount =
+    document.getElementById(
+        "wordCount"
+    );
+
+
+const previousButton =
+    document.getElementById(
+        "previousWord"
+    );
+
+
+const nextButton =
+    document.getElementById(
+        "nextWord"
+    );
+
+
+const navigationInfo =
+    document.getElementById(
+        "navigationInfo"
+    );
+
+
+
+/* =====================================================
+   REVIEW / KNOWN STORAGE
+===================================================== */
+
+function getReviewWords() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                "wortivaReviewWords"
+            ) ||
+            "[]"
+        );
+
+    } catch {
+
+        return [];
+
+    }
+
+}
+
+
+function getKnownWords() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                "wortivaKnownWords"
+            ) ||
+            "[]"
+        );
+
+    } catch {
+
+        return [];
+
+    }
+
+}
+
+
+
+/* =====================================================
+   WORD KEY
+===================================================== */
+
+function getWordKey(word) {
+
+    return [
+
+        word.chapter,
+        word.category,
+        word.order,
+        word.german
+
+    ].join("|");
+
+}
+
+
+
+/* =====================================================
+   MARK AS KNOWN
+===================================================== */
+
+function markAsKnown(word) {
+
+    const key =
+        getWordKey(word);
+
+
+    let knownWords =
+        getKnownWords();
+
+
+    let reviewWords =
+        getReviewWords();
+
+
+    if (
+        !knownWords.includes(key)
+    ) {
+
+        knownWords.push(key);
+
+    }
+
+
+    reviewWords =
+        reviewWords.filter(
+            function (item) {
+
+                return item !== key;
+
+            }
+        );
+
+
+    localStorage.setItem(
+        "wortivaKnownWords",
+        JSON.stringify(
+            knownWords
+        )
+    );
+
+
+    localStorage.setItem(
+        "wortivaReviewWords",
+        JSON.stringify(
+            reviewWords
+        )
+    );
+
+
+    if (
+        typeof recordActivity === "function"
+    ) {
+
+        recordActivity();
+
+    }
+
+}
+
+
+
+/* =====================================================
+   MARK FOR REVIEW
+===================================================== */
+
+function markForReview(word) {
+
+    const key =
+        getWordKey(word);
+
+
+    let reviewWords =
+        getReviewWords();
+
+
+    let knownWords =
+        getKnownWords();
+
+
+    if (
+        !reviewWords.includes(key)
+    ) {
+
+        reviewWords.push(key);
+
+    }
+
+
+    knownWords =
+        knownWords.filter(
+            function (item) {
+
+                return item !== key;
+
+            }
+        );
+
+
+    localStorage.setItem(
+        "wortivaReviewWords",
+        JSON.stringify(
+            reviewWords
+        )
+    );
+
+
+    localStorage.setItem(
+        "wortivaKnownWords",
+        JSON.stringify(
+            knownWords
+        )
+    );
+
+
+    if (
+        typeof recordActivity === "function"
+    ) {
+
+        recordActivity();
+
+    }
+
+}
+
+
+
+/* =====================================================
+   BUILD CHAPTERS
+===================================================== */
+
+const chapterMap =
+    new Map();
+
+
+words.forEach(
+    function (word) {
+
+        const chapterNumber =
+            Number(word.chapter);
+
+
+        if (!chapterNumber) {
+
+            return;
+
+        }
+
+
+        if (
+            !chapterMap.has(
+                chapterNumber
+            )
+        ) {
+
+            chapterMap.set(
+                chapterNumber,
+                {
+
+                    id:
+                        chapterNumber,
+
+                    title:
+                        word.chapterTitle ||
+                        `Kapitel ${chapterNumber}`,
+
+                    arabic:
+                        word.chapterArabic ||
+                        ""
+
+                }
+            );
+
+        }
+
+    }
+);
+
+
+const chapters =
+    Array.from(
+        chapterMap.values()
+    )
+    .sort(
+        function (a, b) {
+
+            return a.id - b.id;
+
+        }
+    );
+
+
+
+/* =====================================================
+   BUILD CATEGORIES
+===================================================== */
+
+function getCategories(chapterNumber) {
+
+    const map =
+        new Map();
+
+
+    words
+        .filter(
+            function (word) {
+
+                return (
+                    Number(word.chapter)
+                    ===
+                    Number(chapterNumber)
+                );
+
+            }
+        )
+        .forEach(
+            function (word) {
+
+                const id =
+                    String(
+                        word.category ||
+                        "other"
+                    );
+
+
+                if (
+                    !map.has(id)
+                ) {
+
+                    map.set(
+                        id,
+                        {
+
+                            id: id,
+
+                            german:
+                                id === "other"
+                                    ? "Andere Wörter"
+                                    : id,
+
+                            arabic:
+                                id === "other"
+                                    ? "فئات أخرى"
+                                    : `القسم ${id}`
+
+                        }
+                    );
+
+                }
+
+            }
+        );
+
+
+    return Array.from(
+        map.values()
+    );
+
+}
+
+
+
+/* =====================================================
+   CHAPTER INDEX
+===================================================== */
+
+function getChapterIndex() {
+
+    return chapters.findIndex(
+        function (item) {
+
+            return (
+                item.id === chapter
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   CATEGORY INDEX
+===================================================== */
+
+function getCategoryIndex() {
+
+    const categories =
+        getCategories(
+            chapter
+        );
+
+
+    return categories.findIndex(
+        function (item) {
+
+            return (
+                item.id === category
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   SAVE LOCATION
+===================================================== */
+
+function saveLocation(
+    chapterData,
+    categoryData
+) {
+
+    if (!chapterData) {
+
+        return;
+
+    }
+
+
+    chapter =
+        Number(
+            chapterData.id
+        );
+
+
+    category =
+        categoryData
+            ? String(categoryData.id)
+            : "";
+
+
+    categoryTitle =
+        categoryData
+            ? categoryData.german
+            : "";
+
+
+    showAll =
+        false;
+
+
+    localStorage.setItem(
+        "netzwerkLevel",
+        level
+    );
+
+
+    localStorage.setItem(
+        "netzwerkKapitel",
+        String(chapter)
+    );
+
+
+    localStorage.setItem(
+        "netzwerkKapitelTitle",
+        chapterData.title
+    );
+
+
+    if (categoryData) {
+
+        localStorage.setItem(
+            "netzwerkCategory",
+            categoryData.id
+        );
+
+
+        localStorage.setItem(
+            "netzwerkCategoryTitle",
+            categoryData.german
+        );
+
+
+        localStorage.setItem(
+            "netzwerkShowAllChapterWords",
+            "false"
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   PAGE TITLE
+===================================================== */
+
+const currentChapter =
+    chapters.find(
+        function (item) {
+
+            return (
+                item.id === chapter
+            );
+
+        }
+    );
+
+
+if (currentChapter) {
+
+    if (showAll) {
+
+        document.getElementById(
+            "wordsTitle"
+        ).textContent =
+            `Kapitel ${currentChapter.id} – ${currentChapter.title}`;
+
+
+        document.getElementById(
+            "wordsSubtitle"
+        ).textContent =
+            `Netzwerk ${level} • جميع كلمات الـKapitel`;
+
+    } else {
+
+        document.getElementById(
+            "wordsTitle"
+        ).textContent =
+            categoryTitle ||
+            "الكلمات";
+
+
+        document.getElementById(
+            "wordsSubtitle"
+        ).textContent =
+            `Kapitel ${currentChapter.id} – ${currentChapter.title}`;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   GET DISPLAY WORDS
+===================================================== */
+
+function getDisplayWords() {
+
+    let result =
+        words.filter(
+            function (word) {
+
+                if (
+                    Number(word.chapter)
+                    !==
+                    Number(chapter)
+                ) {
+
+                    return false;
+
+                }
+
+
+                if (showAll) {
+
+                    return true;
+
+                }
+
+
+                return (
+                    String(
+                        word.category
+                    )
+                    ===
+                    String(
+                        category
+                    )
+                );
+
+            }
+        );
+
+
+    /* SEARCH */
+
+    const search =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+
+    if (search) {
+
+        result =
+            result.filter(
+                function (word) {
+
+                    return (
+
+                        String(
+                            word.german || ""
+                        )
+                        .toLowerCase()
+                        .includes(search)
+
+
+                        ||
+
+
+                        String(
+                            word.arabic || ""
+                        )
+                        .toLowerCase()
+                        .includes(search)
+
+
+                        ||
+
+
+                        String(
+                            word.plural || ""
+                        )
+                        .toLowerCase()
+                        .includes(search)
+
+
+                        ||
+
+
+                        String(
+                            word.article || ""
+                        )
+                        .toLowerCase()
+                        .includes(search)
+
+                    );
+
+                }
+            );
+
+    }
+
+
+
+    /* SORT */
+
+    const sort =
+        sortSelect.value;
+
+
+    if (sort === "default") {
+
+        result.sort(
+            function (a, b) {
+
+                return (
+                    Number(a.order || 0)
+                    -
+                    Number(b.order || 0)
+                );
+
+            }
+        );
+
+    }
+
+
+    else if (sort === "germanAsc") {
+
+        result.sort(
+            function (a, b) {
+
+                return String(
+                    a.german || ""
+                )
+                .localeCompare(
+                    String(
+                        b.german || ""
+                    ),
+                    "de"
+                );
+
+            }
+        );
+
+    }
+
+
+    else if (sort === "germanDesc") {
+
+        result.sort(
+            function (a, b) {
+
+                return String(
+                    b.german || ""
+                )
+                .localeCompare(
+                    String(
+                        a.german || ""
+                    ),
+                    "de"
+                );
+
+            }
+        );
+
+    }
+
+
+    else if (sort === "arabicAsc") {
+
+        result.sort(
+            function (a, b) {
+
+                return String(
+                    a.arabic || ""
+                )
+                .localeCompare(
+                    String(
+                        b.arabic || ""
+                    ),
+                    "ar"
+                );
+
+            }
+        );
+
+    }
+
+
+    else if (sort === "arabicDesc") {
+
+        result.sort(
+            function (a, b) {
+
+                return String(
+                    b.arabic || ""
+                )
+                .localeCompare(
+                    String(
+                        a.arabic || ""
+                    ),
+                    "ar"
+                );
+
+            }
+        );
+
+    }
+
+
+    else if (sort === "article") {
+
+        const articleOrder = {
+
+            "der": 1,
+            "die": 2,
+            "das": 3,
+            "": 4
+
+        };
+
+
+        result.sort(
+            function (a, b) {
+
+                const aArticle =
+                    String(
+                        a.article || ""
+                    )
+                    .toLowerCase();
+
+
+                const bArticle =
+                    String(
+                        b.article || ""
+                    )
+                    .toLowerCase();
+
+
+                return (
+                    (
+                        articleOrder[aArticle]
+                        ||
+                        4
+                    )
+                    -
+                    (
+                        articleOrder[bArticle]
+                        ||
+                        4
+                    )
+                );
+
+            }
+        );
+
+    }
+
+
+    else if (sort === "type") {
+
+        result.sort(
+            function (a, b) {
+
+                return String(
+                    a.type || ""
+                )
+                .localeCompare(
+                    String(
+                        b.type || ""
+                    ),
+                    "de"
+                );
+
+            }
+        );
+
+    }
+
+
+    return result;
+
+}
+
+
+
+/* =====================================================
+   RENDER WORDS
+===================================================== */
+
+function renderWords() {
+
+    const currentWords =
+        getDisplayWords();
+
+
+    wordsGrid.innerHTML =
+        "";
+
+
+    wordCount.textContent =
+        `${currentWords.length} كلمة`;
+
+
+    if (
+        currentWords.length === 0
+    ) {
+
+        wordsGrid.innerHTML = `
+
+            <div class="empty-chapters">
+
+                <div>
+                    📖
+                </div>
+
+                <h3>
+                    لا توجد كلمات هنا حاليًا
+                </h3>
+
+                <p>
+                    لا توجد كلمات مطابقة للفئة الحالية.
+                </p>
+
+            </div>
+
+        `;
+
+
+        updateNavigation();
+
+        return;
+
+    }
+
+
+
+    currentWords.forEach(
+        function (word) {
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+
+            card.className =
+                "word-card";
+
+
+            const fullWord =
+                word.article
+                    ? `${word.article} ${word.german}`
+                    : word.german;
+
+
+            const key =
+                getWordKey(word);
+
+
+            const knownWords =
+                getKnownWords();
+
+
+            const reviewWords =
+                getReviewWords();
+
+
+            const isKnown =
+                knownWords.includes(key);
+
+
+            const isReview =
+                reviewWords.includes(key);
+
+
+
+            if (isKnown) {
+
+                card.classList.add(
+                    "word-known"
+                );
+
+            }
+
+
+            if (isReview) {
+
+                card.classList.add(
+                    "word-review"
+                );
+
+            }
+
+
+
+            card.innerHTML = `
+
+                <div class="word-top">
+
+                    <span class="word-type">
+                        ${word.type || ""}
+                    </span>
+
+
+                    ${
+                        isKnown
+                            ? `
+                                <span class="word-status known-status">
+                                    ✓ عرفتها
+                                </span>
+                            `
+                            : isReview
+                                ? `
+                                    <span class="word-status review-status">
+                                        ↻ للمراجعة
+                                    </span>
+                                `
+                                : ""
+                    }
+
+
+                    <button
+                        type="button"
+                        class="pronunciation"
+                        data-text="${fullWord}"
+                        title="نطق الكلمة"
+                        aria-label="نطق الكلمة"
+                    >
+                        🔊
+                    </button>
+
+                </div>
+
+
+
+                <div class="german-word">
+
+                    ${
+                        word.article
+                            ? `
+                                <span class="word-article">
+                                    ${word.article}
+                                </span>
+                              `
+                            : ""
+                    }
+
+                    <span>
+                        ${word.german || ""}
+                    </span>
+
+                </div>
+
+
+
+                ${
+                    word.plural
+                        ? `
+                            <div class="word-plural">
+
+                                <strong>
+                                    Plural:
+                                </strong>
+
+                                ${word.plural}
+
+                                <button
+                                    type="button"
+                                    class="plural-sound"
+                                    data-text="${word.plural}"
+                                    title="نطق الجمع"
+                                    aria-label="نطق الجمع"
+                                >
+                                    🔊
+                                </button>
+
+                            </div>
+                          `
+                        : ""
+                }
+
+
+
+                <div class="word-arabic">
+                    ${word.arabic || ""}
+                </div>
+
+
+
+                ${
+                    word.sentence
+                        ? `
+                            <div class="example-box">
+
+                                <div class="example-title">
+                                    Beispiel
+                                </div>
+
+
+                                <div class="example-german">
+
+                                    🇩🇪
+                                    ${word.sentence}
+
+                                    <button
+                                        type="button"
+                                        class="sentence-sound"
+                                        data-text="${word.sentence}"
+                                        title="نطق الجملة"
+                                        aria-label="نطق الجملة"
+                                    >
+                                        🔊
+                                    </button>
+
+                                </div>
+
+
+                                ${
+                                    word.sentenceArabic
+                                        ? `
+                                            <div class="example-arabic">
+                                                🇪🇬
+                                                ${word.sentenceArabic}
+                                            </div>
+                                          `
+                                        : ""
+                                }
+
+                            </div>
+                          `
+                        : ""
+                }
+
+
+
+                <div class="word-actions">
+
+                    <button
+                        type="button"
+                        class="known-button ${
+                            isKnown
+                                ? "active"
+                                : ""
+                        }"
+                        data-word-key="${key}"
+                    >
+                        ✓ عرفتها
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="review-button ${
+                            isReview
+                                ? "active"
+                                : ""
+                        }"
+                        data-word-key="${key}"
+                    >
+                        ${
+                            isReview
+                                ? "↻ تمت إضافتها"
+                                : "↻ مراجعة"
+                        }
+                    </button>
+
+                </div>
+
+            `;
+
+
+            wordsGrid.appendChild(
+                card
+            );
+
+        }
+    );
+
+
+
+    /* =================================================
+       PRONUNCIATION
+    ================================================= */
+
+    document
+        .querySelectorAll(
+            ".pronunciation, .plural-sound, .sentence-sound"
+        )
+        .forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        speak(
+                            button.dataset.text
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+
+    /* =================================================
+       KNOWN BUTTON
+    ================================================= */
+
+    document
+        .querySelectorAll(
+            ".known-button"
+        )
+        .forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        const key =
+                            button.dataset.wordKey;
+
+
+                        const word =
+                            currentWords.find(
+                                function (item) {
+
+                                    return (
+                                        getWordKey(item)
+                                        ===
+                                        key
+                                    );
+
+                                }
+                            );
+
+
+                        if (!word) {
+
+                            return;
+
+                        }
+
+
+                        markAsKnown(
+                            word
+                        );
+
+
+                        renderWords();
+
+                    }
+                );
+
+            }
+        );
+
+
+
+    /* =================================================
+       REVIEW BUTTON
+    ================================================= */
+
+    document
+        .querySelectorAll(
+            ".review-button"
+        )
+        .forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        const key =
+                            button.dataset.wordKey;
+
+
+                        const word =
+                            currentWords.find(
+                                function (item) {
+
+                                    return (
+                                        getWordKey(item)
+                                        ===
+                                        key
+                                    );
+
+                                }
+                            );
+
+
+                        if (!word) {
+
+                            return;
+
+                        }
+
+
+                        markForReview(
+                            word
+                        );
+
+
+                        renderWords();
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+
+/* =====================================================
+   SPEECH
+===================================================== */
+
+function speak(text) {
+
+    if (
+        !("speechSynthesis" in window)
+    ) {
+
+        return;
+
+    }
+
+
+    window.speechSynthesis.cancel();
+
+
+    const utterance =
+        new SpeechSynthesisUtterance(
+            text
+        );
+
+
+    utterance.lang =
+        "de-DE";
+
+
+    utterance.rate =
+        0.85;
+
+
+    window.speechSynthesis.speak(
+        utterance
+    );
+
+}
+
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function updateNavigation() {
+
+    const chapterIndex =
+        getChapterIndex();
+
+
+    const categories =
+        getCategories(
+            chapter
+        );
+
+
+    const categoryIndex =
+        getCategoryIndex();
+
+
+
+    if (showAll) {
+
+        navigationInfo.textContent =
+            `Kapitel ${chapter} • جميع الكلمات`;
+
+    } else {
+
+        navigationInfo.textContent =
+            `Kapitel ${chapter} • ${categoryTitle || category}`;
+
+    }
+
+
+
+    let canPrevious =
+        false;
+
+
+    let canNext =
+        false;
+
+
+
+    /* PREVIOUS */
+
+    if (
+        !showAll
+        &&
+        categoryIndex > 0
+    ) {
+
+        canPrevious =
+            true;
+
+    }
+
+    else if (
+        chapterIndex > 0
+    ) {
+
+        canPrevious =
+            true;
+
+    }
+
+
+
+    /* NEXT */
+
+    if (
+        !showAll
+        &&
+        categoryIndex >= 0
+        &&
+        categoryIndex <
+            categories.length - 1
+    ) {
+
+        canNext =
+            true;
+
+    }
+
+    else if (
+        chapterIndex >= 0
+        &&
+        chapterIndex <
+            chapters.length - 1
+    ) {
+
+        canNext =
+            true;
+
+    }
+
+
+
+    previousButton.disabled =
+        !canPrevious;
+
+
+    nextButton.disabled =
+        !canNext;
+
+}
+
+
+
+/* =====================================================
+   NEXT
+===================================================== */
+
+nextButton.addEventListener(
+    "click",
+    function () {
+
+        const chapterIndex =
+            getChapterIndex();
+
+
+        const categories =
+            getCategories(
+                chapter
+            );
+
+
+        const categoryIndex =
+            getCategoryIndex();
+
+
+
+        /* NEXT CATEGORY */
+
+        if (
+            !showAll
+            &&
+            categoryIndex >= 0
+            &&
+            categoryIndex <
+                categories.length - 1
+        ) {
+
+            const nextCategory =
+                categories[
+                    categoryIndex + 1
+                ];
+
+
+            const currentChapter =
+                chapters[
+                    chapterIndex
+                ];
+
+
+            saveLocation(
+                currentChapter,
+                nextCategory
+            );
+
+
+            window.location.href =
+                "words.html";
+
+
+            return;
+
+        }
+
+
+
+        /* NEXT CHAPTER */
+
+        if (
+            chapterIndex >= 0
+            &&
+            chapterIndex <
+                chapters.length - 1
+        ) {
+
+            const nextChapter =
+                chapters[
+                    chapterIndex + 1
+                ];
+
+
+            const nextCategories =
+                getCategories(
+                    nextChapter.id
+                );
+
+
+            if (
+                nextCategories.length > 0
+            ) {
+
+                const firstCategory =
+                    nextCategories[0];
+
+
+                saveLocation(
+                    nextChapter,
+                    firstCategory
+                );
+
+
+                window.location.href =
+                    "words.html";
+
+            }
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   PREVIOUS
+===================================================== */
+
+previousButton.addEventListener(
+    "click",
+    function () {
+
+        const chapterIndex =
+            getChapterIndex();
+
+
+        const categories =
+            getCategories(
+                chapter
+            );
+
+
+        const categoryIndex =
+            getCategoryIndex();
+
+
+
+        /* PREVIOUS CATEGORY */
+
+        if (
+            !showAll
+            &&
+            categoryIndex > 0
+        ) {
+
+            const previousCategory =
+                categories[
+                    categoryIndex - 1
+                ];
+
+
+            const currentChapter =
+                chapters[
+                    chapterIndex
+                ];
+
+
+            saveLocation(
+                currentChapter,
+                previousCategory
+            );
+
+
+            window.location.href =
+                "words.html";
+
+
+            return;
+
+        }
+
+
+
+        /* PREVIOUS CHAPTER */
+
+        if (
+            chapterIndex > 0
+        ) {
+
+            const previousChapter =
+                chapters[
+                    chapterIndex - 1
+                ];
+
+
+            const previousCategories =
+                getCategories(
+                    previousChapter.id
+                );
+
+
+            if (
+                previousCategories.length > 0
+            ) {
+
+                const lastCategory =
+                    previousCategories[
+                        previousCategories.length - 1
+                    ];
+
+
+                saveLocation(
+                    previousChapter,
+                    lastCategory
+                );
+
+
+                window.location.href =
+                    "words.html";
+
+            }
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+searchInput.addEventListener(
+    "input",
+    function () {
+
+        renderWords();
+
+    }
+);
+
+
+
+/* =====================================================
+   SORT
+===================================================== */
+
+sortSelect.addEventListener(
+    "change",
+    function () {
+
+        renderWords();
+
+    }
+);
+
+
+
+/* =====================================================
+   START
+===================================================== */
+
+renderWords();
+
+updateNavigation();
+
+</script>
+
+
+</body>
+
+</html>
+

@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Wortiva - Netzwerk</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/main.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="topbar">
+
+    <a
+        class="logo"
+        href="../index.html"
+    >
+
+        <span class="logo-icon">
+            W
+        </span>
+
+        <span>
+            Wortiva
+        </span>
+
+    </a>
+
+
+    <div class="header-actions">
+
+        <!-- THEME -->
+
+        <button
+            id="themeButton"
+            class="icon-button"
+            type="button"
+            aria-label="تغيير الوضع"
+        >
+            🌙
+        </button>
+
+
+        <!-- PROFILE -->
+
+        <a
+            href="profile.html"
+            class="profile-button"
+        >
+
+            <div class="profile-avatar">
+
+                <img
+                    id="headerAvatar"
+                    src=""
+                    alt="صورة المستخدم"
+                    style="display:none;"
+                >
+
+                <span id="headerAvatarDefault">
+                    👤
+                </span>
+
+            </div>
+
+
+            <div class="profile-info">
+
+                <span
+                    id="headerUsername"
+                    class="profile-name"
+                >
+                    حسابي
+                </span>
+
+                <small id="headerAccountText">
+                    تسجيل الدخول
+                </small>
+
+            </div>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+
+    <!-- =================================================
+         PAGE HEADING
+    ================================================= -->
+
+    <section class="page-heading">
+
+        <a
+            class="back-button"
+            href="../index.html"
+        >
+            → الرئيسية
+        </a>
+
+
+        <div class="page-icon">
+            📚
+        </div>
+
+
+        <h1>
+            Netzwerk
+        </h1>
+
+
+        <p>
+            اختر المستوى الذي تريد تعلمه
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         LEVELS
+    ================================================= -->
+
+    <section class="levels-section">
+
+        <div
+            class="level-grid"
+            id="levels"
+        ></div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-logo">
+        Wortiva
+    </div>
+
+
+    <p>
+        تعلم الألمانية بطريقة أسهل 🇩🇪
+    </p>
+<div class="footer-support">
+
+    <a
+        href="support.html"
+        class="support-link"
+    >
+        <span class="support-link-icon">
+            🛠️
+        </span>
+
+        <span class="support-link-content">
+
+            <strong>
+                الدعم والشكاوى
+            </strong>
+
+            <small>
+                ساعدنا في تحسين Wortiva
+            </small>
+
+        </span>
+
+        <span class="support-link-arrow">
+            ←
+        </span>
+
+    </a>
+
+</div>
+
+    <div class="copyright">
+        creating by mohamed Ibrahim khafagy
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     THEME
+===================================================== -->
+
+<script>
+
+const themeButton =
+    document.getElementById("themeButton");
+
+
+function loadTheme() {
+
+    if (
+        localStorage.getItem("theme") === "dark"
+    ) {
+
+        document.body.classList.add("dark");
+
+        themeButton.textContent = "☀️";
+
+    }
+
+}
+
+
+themeButton.addEventListener(
+    "click",
+    function () {
+
+        document.body.classList.toggle("dark");
+
+
+        const dark =
+            document.body.classList.contains("dark");
+
+
+        localStorage.setItem(
+            "theme",
+            dark
+                ? "dark"
+                : "light"
+        );
+
+
+        themeButton.textContent =
+            dark
+                ? "☀️"
+                : "🌙";
+
+    }
+);
+
+
+loadTheme();
+
+</script>
+
+
+
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="../data/supabase.js"></script>
+
+
+
+<!-- =====================================================
+     HEADER USER
+===================================================== -->
+
+<script>
+
+async function loadHeaderUser() {
+
+    try {
+
+        const {
+            data: {
+                session
+            }
+        } =
+            await supabaseClient.auth.getSession();
+
+
+        const username =
+            document.getElementById(
+                "headerUsername"
+            );
+
+
+        const accountText =
+            document.getElementById(
+                "headerAccountText"
+            );
+
+
+        const avatar =
+            document.getElementById(
+                "headerAvatar"
+            );
+
+
+        const defaultAvatar =
+            document.getElementById(
+                "headerAvatarDefault"
+            );
+
+
+        if (!session) {
+
+            username.textContent =
+                "حسابي";
+
+
+            accountText.textContent =
+                "تسجيل الدخول";
+
+
+            avatar.style.display =
+                "none";
+
+
+            defaultAvatar.style.display =
+                "inline";
+
+
+            return;
+
+        }
+
+
+        const user =
+            session.user;
+
+
+        const metadata =
+            user.user_metadata || {};
+
+
+        const name =
+            metadata.username ||
+            "مستخدم Wortiva";
+
+
+        const avatarUrl =
+            metadata.avatar_url ||
+            "";
+
+
+        username.textContent =
+            name;
+
+
+        accountText.textContent =
+            "حسابي";
+
+
+        if (avatarUrl) {
+
+            avatar.src =
+                avatarUrl;
+
+
+            avatar.style.display =
+                "block";
+
+
+            defaultAvatar.style.display =
+                "none";
+
+        } else {
+
+            avatar.style.display =
+                "none";
+
+
+            defaultAvatar.style.display =
+                "inline";
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Header user error:",
+            error
+        );
+
+    }
+
+}
+
+
+loadHeaderUser();
+
+</script>
+
+
+
+<!-- =====================================================
+     NETWORK LEVELS
+===================================================== -->
+
+<script>
+
+const levelsContainer =
+    document.getElementById("levels");
+
+
+const levels = [
+
+    {
+        code: "A1",
+        title: "Anfänger",
+        arabic: "المستوى المبتدئ"
+    },
+
+    {
+        code: "A2",
+        title: "Grundstufe",
+        arabic: "المستوى الأساسي"
+    },
+
+    {
+        code: "B1",
+        title: "Mittelstufe",
+        arabic: "المستوى المتوسط"
+    },
+
+    {
+        code: "B2",
+        title: "Fortgeschritten",
+        arabic: "المستوى المتقدم"
+    }
+
+];
+
+
+levels.forEach(
+    function (level, index) {
+
+        const card =
+            document.createElement("button");
+
+
+        card.type =
+            "button";
+
+
+        card.className =
+            "level-card";
+
+
+        card.innerHTML = `
+
+            <div class="level-icon">
+                🇩🇪
+            </div>
+
+
+            <div class="level-content">
+
+                <span class="level-number">
+                    المستوى ${index + 1}
+                </span>
+
+
+                <h2>
+                    ${level.code}
+                </h2>
+
+
+                <p>
+                    ${level.title}
+                    •
+                    ${level.arabic}
+                </p>
+
+            </div>
+
+
+            <span class="level-arrow">
+                ←
+            </span>
+
+        `;
+
+
+        card.addEventListener(
+            "click",
+            function () {
+
+                /*
+                 * حفظ المستوى بالطريقة الأساسية
+                 * المستخدمة في Netzwerk
+                 */
+
+                localStorage.setItem(
+                    "netzwerkLevel",
+                    level.code
+                );
+
+
+                /*
+                 * دعم المفتاح القديم
+                 */
+
+                localStorage.setItem(
+                    "selectedNetzwerkLevel",
+                    level.code
+                );
+
+
+                /*
+                 * عند الدخول للمستوى
+                 * نبدأ من Kapitel 1
+                 */
+
+                localStorage.setItem(
+                    "netzwerkKapitel",
+                    "1"
+                );
+
+
+                localStorage.removeItem(
+                    "netzwerkCategory"
+                );
+
+
+                localStorage.removeItem(
+                    "netzwerkCategoryTitle"
+                );
+
+
+                localStorage.setItem(
+                    "netzwerkShowAllChapterWords",
+                    "false"
+                );
+
+
+                /*
+                 * الانتقال إلى Kapitel
+                 */
+
+                window.location.href =
+                    "chapters.html";
+
+            }
+        );
+
+
+        levelsContainer.appendChild(
+            card
+        );
+
+    }
+);
+
+</script>
+
+
+
+</body>
+
+</html>

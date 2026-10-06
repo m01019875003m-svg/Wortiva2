@@ -1,0 +1,1144 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Wortiva - الفئات</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/main.css"
+    >
+
+    <!-- بيانات Netzwerk A1 -->
+    <script src="../data/a1.js"></script>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="topbar">
+
+        <a
+            class="logo"
+            href="../index.html"
+        >
+
+            <span class="logo-icon">
+                W
+            </span>
+
+            <span>
+                Wortiva
+            </span>
+
+        </a>
+
+
+        <div class="header-actions">
+
+
+            <!-- Theme -->
+
+            <button
+                id="theme"
+                class="icon-button"
+                type="button"
+                aria-label="تغيير الوضع"
+            >
+                🌙
+            </button>
+
+
+            <!-- Profile -->
+
+            <a
+                class="profile-button"
+                href="profile.html"
+            >
+
+                <div class="profile-avatar">
+
+                    <img
+                        id="headerAvatar"
+                        src=""
+                        alt="صورة المستخدم"
+                        style="display:none;"
+                    >
+
+                    <span id="headerAvatarDefault">
+                        👤
+                    </span>
+
+                </div>
+
+
+                <div class="profile-info">
+
+                    <span
+                        id="headerUsername"
+                        class="profile-name"
+                    >
+                        حسابي
+                    </span>
+
+                    <small id="headerAccountText">
+                        تسجيل الدخول
+                    </small>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="categories-page">
+
+
+        <!-- =================================================
+             BACK TO CHAPTERS
+        ================================================== -->
+
+        <div class="page-back-wrapper">
+
+            <a
+                class="page-back-button"
+                href="chapters.html"
+            >
+
+                <span>
+                    →
+                </span>
+
+                <span>
+                    اختيار Kapitel
+                </span>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- =================================================
+             PAGE HEADING
+        ================================================== -->
+
+        <section class="page-heading">
+
+
+            <div class="page-icon">
+                📚
+            </div>
+
+
+            <h1 id="chapterTitle">
+                Kapitel
+            </h1>
+
+
+            <p id="chapterSubtitle">
+                اختر الفئة
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             CATEGORIES
+        ================================================== -->
+
+        <div
+            id="categoriesGrid"
+            class="categories-grid"
+        >
+        </div>
+
+
+
+        <!-- =================================================
+             ALL CHAPTER WORDS
+        ================================================== -->
+
+        <button
+            id="allChapterWords"
+            class="all-words-button"
+            type="button"
+        >
+
+            <span class="all-words-icon">
+                📖
+            </span>
+
+
+            <span class="all-words-text">
+                كل كلمات Kapitel
+            </span>
+
+
+            <span class="all-words-arrow">
+                ←
+            </span>
+
+        </button>
+
+
+
+        <!-- =================================================
+             NAVIGATION
+        ================================================== -->
+
+        <div class="category-navigation">
+
+
+            <button
+                id="previousCategory"
+                class="nav-button"
+                type="button"
+            >
+                → السابق
+            </button>
+
+
+            <div
+                id="navigationInfo"
+                class="navigation-info"
+            >
+                Kapitel 1
+            </div>
+
+
+            <button
+                id="nextCategory"
+                class="nav-button"
+                type="button"
+            >
+                التالي ←
+            </button>
+
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         SUPABASE
+    ====================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="../data/supabase.js"></script>
+
+    <script src="../data/header.js"></script>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           THEME
+        ===================================================== */
+
+        const themeButton =
+            document.getElementById("theme");
+
+
+        if (
+            localStorage.getItem("theme") === "dark"
+        ) {
+
+            document.body.classList.add("dark");
+
+            themeButton.textContent = "☀️";
+
+        }
+
+
+        themeButton.addEventListener(
+            "click",
+            function () {
+
+                document.body.classList.toggle("dark");
+
+                const dark =
+                    document.body.classList.contains("dark");
+
+                localStorage.setItem(
+                    "theme",
+                    dark ? "dark" : "light"
+                );
+
+                themeButton.textContent =
+                    dark ? "☀️" : "🌙";
+
+            }
+        );
+
+
+
+        /* =====================================================
+           CURRENT LEVEL
+        ===================================================== */
+
+        const level =
+            localStorage.getItem("netzwerkLevel") || "A1";
+
+
+
+        /* =====================================================
+           CURRENT CHAPTER
+        ===================================================== */
+
+        let currentChapter =
+            Number(
+                localStorage.getItem("netzwerkKapitel") || 1
+            );
+
+
+
+        /* =====================================================
+           DATA
+        ===================================================== */
+
+        const allWords =
+            Array.isArray(netzwerkA1Words)
+                ? netzwerkA1Words
+                : [];
+
+
+
+        /* =====================================================
+           ELEMENTS
+        ===================================================== */
+
+        const categoriesGrid =
+            document.getElementById(
+                "categoriesGrid"
+            );
+
+        const chapterTitle =
+            document.getElementById(
+                "chapterTitle"
+            );
+
+        const chapterSubtitle =
+            document.getElementById(
+                "chapterSubtitle"
+            );
+
+        const allChapterWords =
+            document.getElementById(
+                "allChapterWords"
+            );
+
+        const previousCategory =
+            document.getElementById(
+                "previousCategory"
+            );
+
+        const nextCategory =
+            document.getElementById(
+                "nextCategory"
+            );
+
+        const navigationInfo =
+            document.getElementById(
+                "navigationInfo"
+            );
+
+
+
+        /* =====================================================
+           CHAPTER TITLES
+        ===================================================== */
+
+        const chapterTitles = [
+
+            [
+                "Guten Tag!",
+                "مرحبًا!"
+            ],
+
+            [
+                "Meine Familie",
+                "عائلتي"
+            ],
+
+            [
+                "Freunde und Freizeit",
+                "الأصدقاء ووقت الفراغ"
+            ],
+
+            [
+                "Guten Appetit!",
+                "شهية طيبة!"
+            ],
+
+            [
+                "Alltag und Termine",
+                "الحياة اليومية والمواعيد"
+            ],
+
+            [
+                "Zeit mit Freunden",
+                "وقت مع الأصدقاء"
+            ],
+
+            [
+                "Arbeitsalltag",
+                "الحياة اليومية في العمل"
+            ],
+
+            [
+                "Fit und gesund",
+                "اللياقة والصحة"
+            ],
+
+            [
+                "Meine Wohnung",
+                "شقتي"
+            ],
+
+            [
+                "Studium und Beruf",
+                "الدراسة والمهنة"
+            ],
+
+            [
+                "Unterwegs",
+                "في الطريق / أثناء التنقل"
+            ],
+
+            [
+                "Freizeit und mehr",
+                "وقت الفراغ والمزيد"
+            ]
+
+        ];
+
+
+
+        /* =====================================================
+           GET KNOWN WORDS
+        ===================================================== */
+
+        function getKnownWords() {
+
+            try {
+
+                return JSON.parse(
+                    localStorage.getItem(
+                        "wortivaKnownWords"
+                    ) || "[]"
+                );
+
+            } catch {
+
+                return [];
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           WORD KEY
+        ===================================================== */
+
+        function getWordKey(word) {
+
+            return [
+
+                word.chapter,
+                word.category,
+                word.order,
+                word.german
+
+            ].join("|");
+
+        }
+
+
+
+        /* =====================================================
+           CATEGORY PROGRESS
+        ===================================================== */
+
+        function getCategoryProgress(
+            chapterNumber,
+            categoryId
+        ) {
+
+            const categoryWords =
+                allWords.filter(
+                    function (word) {
+
+                        return (
+
+                            Number(word.chapter) ===
+                                Number(chapterNumber)
+
+                            &&
+
+                            String(
+                                word.category || "other"
+                            ) ===
+                                String(categoryId)
+
+                            &&
+
+                            word.german
+
+                        );
+
+                    }
+                );
+
+
+            const total =
+                categoryWords.length;
+
+
+            const knownWords =
+                getKnownWords();
+
+
+            let known = 0;
+
+
+            categoryWords.forEach(
+                function (word) {
+
+                    const key =
+                        getWordKey(word);
+
+                    if (
+                        knownWords.includes(key)
+                    ) {
+
+                        known++;
+
+                    }
+
+                }
+            );
+
+
+            const percent =
+                total > 0
+                    ? Math.round(
+                        (known / total) * 100
+                    )
+                    : 0;
+
+
+            return {
+                total,
+                known,
+                percent
+            };
+
+        }
+
+
+
+        /* =====================================================
+           GET CURRENT CHAPTER
+        ===================================================== */
+
+        function getCurrentChapter() {
+
+            return allWords.filter(
+                function (word) {
+
+                    return (
+                        Number(word.chapter) ===
+                        Number(currentChapter)
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           GET CATEGORIES
+        ===================================================== */
+
+        function getCategoriesForChapter(
+            chapterNumber
+        ) {
+
+            const chapterWords =
+                allWords.filter(
+                    function (word) {
+
+                        return (
+                            Number(word.chapter) ===
+                            Number(chapterNumber)
+                        );
+
+                    }
+                );
+
+
+            const categories = [];
+
+
+            chapterWords.forEach(
+                function (word) {
+
+                    const categoryId =
+                        String(
+                            word.category || "other"
+                        );
+
+
+                    if (
+                        !categories.some(
+                            function (category) {
+
+                                return (
+                                    category.id ===
+                                    categoryId
+                                );
+
+                            }
+                        )
+                    ) {
+
+                        categories.push({
+
+                            id: categoryId,
+
+                            german:
+                                categoryId === "other"
+                                    ? "Andere Wörter"
+                                    : categoryId,
+
+                            arabic:
+                                categoryId === "other"
+                                    ? "فئات أخرى"
+                                    : "قسم " + categoryId
+
+                        });
+
+                    }
+
+                }
+            );
+
+
+            /*
+             * ترتيب الفئات حسب ظهورها
+             * في ملف الكلمات
+             */
+
+            return categories;
+
+        }
+
+
+
+        /* =====================================================
+           CHAPTER HEADER
+        ===================================================== */
+
+        function updateChapterHeader() {
+
+            const chapterData =
+                chapterTitles[
+                    currentChapter - 1
+                ];
+
+
+            if (chapterData) {
+
+                chapterTitle.textContent =
+                    `Kapitel ${currentChapter}: ${chapterData[0]}`;
+
+                chapterSubtitle.textContent =
+                    chapterData[1];
+
+            } else {
+
+                chapterTitle.textContent =
+                    `Kapitel ${currentChapter}`;
+
+                chapterSubtitle.textContent =
+                    "اختر الفئة";
+
+            }
+
+
+            navigationInfo.textContent =
+                `Kapitel ${currentChapter}`;
+
+
+            /*
+             * تعطيل السابق في Kapitel 1
+             */
+
+            previousCategory.disabled =
+                currentChapter <= 1;
+
+
+            /*
+             * تعطيل التالي في آخر Kapitel
+             */
+
+            nextCategory.disabled =
+                currentChapter >= chapterTitles.length;
+
+        }
+
+
+
+        /* =====================================================
+           RENDER CATEGORIES
+        ===================================================== */
+
+        function renderCategories() {
+
+            categoriesGrid.innerHTML = "";
+
+
+            const categories =
+                getCategoriesForChapter(
+                    currentChapter
+                );
+
+
+            /*
+             * لا توجد فئات
+             */
+
+            if (
+                categories.length === 0
+            ) {
+
+                categoriesGrid.innerHTML = `
+
+                    <div class="empty-state">
+
+                        <div class="empty-state-icon">
+                            📭
+                        </div>
+
+                        <h2>
+                            لا توجد فئات
+                        </h2>
+
+                        <p>
+                            لا توجد كلمات لهذا Kapitel حاليًا.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+
+            /* =================================================
+               CREATE CATEGORY CARDS
+            ================================================= */
+
+            categories.forEach(
+                function (category, index) {
+
+                    const progress =
+                        getCategoryProgress(
+                            currentChapter,
+                            category.id
+                        );
+
+
+                    const button =
+                        document.createElement(
+                            "button"
+                        );
+
+
+                    button.type = "button";
+
+                    button.className =
+                        "category-card";
+
+
+                    /*
+                     * أيقونة الفئة
+                     */
+
+                    const icons = [
+                        "📖",
+                        "💬",
+                        "📝",
+                        "🎯",
+                        "🧠",
+                        "📚"
+                    ];
+
+
+                    const icon =
+                        icons[
+                            index % icons.length
+                        ];
+
+
+                    button.innerHTML = `
+
+                        <div class="category-number">
+                            ${index + 1}
+                        </div>
+
+                        <div class="category-icon">
+                            ${icon}
+                        </div>
+
+                        <div class="category-content">
+
+                            <span class="category-german">
+                                ${category.german}
+                            </span>
+
+                            <h2>
+                                ${category.arabic}
+                            </h2>
+
+
+                            <!-- =========================
+                                 PROGRESS
+                            ========================== -->
+
+                            <div class="category-progress">
+
+                                <div
+                                    class="category-progress-top">
+
+                                    <span>
+                                        تقدمك
+                                    </span>
+
+                                    <strong>
+                                        ${progress.percent}%
+                                    </strong>
+
+                                </div>
+
+
+                                <div
+                                    class="category-progress-bar">
+
+                                    <div
+                                        class="category-progress-fill"
+                                        style="
+                                            width:${progress.percent}%;
+                                        ">
+                                    </div>
+
+                                </div>
+
+
+                                <small>
+                                    ${progress.known}
+                                    /
+                                    ${progress.total}
+                                    كلمة
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <span class="category-arrow">
+                            ←
+                        </span>
+
+                    `;
+
+
+
+                    /* =================================================
+                       CATEGORY CLICK
+                    ================================================= */
+
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+                            localStorage.setItem(
+                                "netzwerkLevel",
+                                level
+                            );
+
+
+                            localStorage.setItem(
+                                "netzwerkKapitel",
+                                currentChapter
+                            );
+
+
+                            localStorage.setItem(
+                                "netzwerkCategory",
+                                category.id
+                            );
+
+
+                            localStorage.setItem(
+                                "netzwerkCategoryTitle",
+                                category.german
+                            );
+
+
+                            localStorage.setItem(
+                                "netzwerkShowAllChapterWords",
+                                "false"
+                            );
+
+
+                            location.href =
+                                "words.html";
+
+                        }
+                    );
+
+
+                    categoriesGrid.appendChild(
+                        button
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           SAVE CHAPTER
+        ===================================================== */
+
+        function saveChapter() {
+
+            localStorage.setItem(
+                "netzwerkLevel",
+                level
+            );
+
+
+            localStorage.setItem(
+                "netzwerkKapitel",
+                currentChapter
+            );
+
+
+            const chapterData =
+                chapterTitles[
+                    currentChapter - 1
+                ];
+
+
+            if (chapterData) {
+
+                localStorage.setItem(
+                    "netzwerkKapitelTitle",
+                    chapterData[0]
+                );
+
+            }
+
+
+            /*
+             * عند تغيير Kapitel
+             * نلغي الفئة الحالية
+             */
+
+            localStorage.removeItem(
+                "netzwerkCategory"
+            );
+
+
+            localStorage.removeItem(
+                "netzwerkCategoryTitle"
+            );
+
+
+            localStorage.setItem(
+                "netzwerkShowAllChapterWords",
+                "false"
+            );
+
+        }
+
+
+
+        /* =====================================================
+           PREVIOUS CHAPTER
+        ===================================================== */
+
+        previousCategory.addEventListener(
+            "click",
+            function () {
+
+                if (
+                    currentChapter <= 1
+                ) {
+                    return;
+                }
+
+
+                currentChapter--;
+
+
+                saveChapter();
+
+                updateChapterHeader();
+
+                renderCategories();
+
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            }
+        );
+
+
+
+        /* =====================================================
+           NEXT CHAPTER
+        ===================================================== */
+
+        nextCategory.addEventListener(
+            "click",
+            function () {
+
+                if (
+                    currentChapter >=
+                    chapterTitles.length
+                ) {
+                    return;
+                }
+
+
+                currentChapter++;
+
+
+                saveChapter();
+
+                updateChapterHeader();
+
+                renderCategories();
+
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            }
+        );
+
+
+
+        /* =====================================================
+           ALL CHAPTER WORDS
+        ===================================================== */
+
+        allChapterWords.addEventListener(
+            "click",
+            function () {
+
+                localStorage.setItem(
+                    "netzwerkLevel",
+                    level
+                );
+
+
+                localStorage.setItem(
+                    "netzwerkKapitel",
+                    currentChapter
+                );
+
+
+                localStorage.removeItem(
+                    "netzwerkCategory"
+                );
+
+
+                localStorage.removeItem(
+                    "netzwerkCategoryTitle"
+                );
+
+
+                localStorage.setItem(
+                    "netzwerkShowAllChapterWords",
+                    "true"
+                );
+
+
+                location.href =
+                    "words.html";
+
+            }
+        );
+
+
+
+        /* =====================================================
+           INITIALIZE
+        ===================================================== */
+
+        updateChapterHeader();
+
+        renderCategories();
+
+
+    </script>
+
+
+</body>
+
+</html>
+

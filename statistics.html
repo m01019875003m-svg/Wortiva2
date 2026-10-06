@@ -1,0 +1,1234 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Wortiva - الإحصائيات</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/main.css">
+
+</head>
+
+
+<body>
+
+<header class="topbar">
+
+    <a
+        class="logo"
+        href="../index.html">
+
+        <span class="logo-icon">
+            W
+        </span>
+
+        <span>
+            Wortiva
+        </span>
+
+    </a>
+
+
+    <div class="header-actions">
+
+        <button
+            id="theme"
+            class="icon-button"
+            type="button">
+
+            🌙
+
+        </button>
+
+
+        <a
+            class="profile-button"
+            href="profile.html">
+
+           <div class="profile-avatar">
+
+    <img
+        id="headerAvatar"
+        src=""
+        alt="صورة المستخدم"
+        style="display:none;"
+    >
+
+    <span id="headerAvatarDefault">
+        👤
+    </span>
+
+</div>
+
+<div class="profile-info">
+
+    <span
+        id="headerUsername"
+        class="profile-name"
+    >
+        حسابي
+    </span>
+
+    <small id="headerAccountText">
+        تسجيل الدخول
+    </small>
+
+</div>
+        </a>
+
+    </div>
+
+</header>
+
+
+<main class="statistics-page">
+
+    <a
+        class="back-button"
+        href="../index.html">
+
+        → الرئيسية
+
+    </a>
+
+
+    <section class="page-heading">
+
+        <div class="page-icon">
+            📊
+        </div>
+
+        <h1>
+            الإحصائيات
+        </h1>
+
+        <p>
+            تابع تقدمك في تعلم كلمات Netzwerk
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         MAIN STATS
+         ========================= -->
+
+    <section class="profile-stats-grid">
+
+        <div class="profile-stat-card">
+
+            <div class="profile-stat-icon">
+                📚
+            </div>
+
+            <div class="profile-stat-content">
+
+                <span>
+                    إجمالي الكلمات
+                </span>
+
+                <strong id="totalWords">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="profile-stat-card">
+
+            <div class="profile-stat-icon">
+                ✅
+            </div>
+
+            <div class="profile-stat-content">
+
+                <span>
+                    الكلمات المتقنة
+                </span>
+
+                <strong id="knownWords">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="profile-stat-card">
+
+            <div class="profile-stat-icon">
+                🔄
+            </div>
+
+            <div class="profile-stat-content">
+
+                <span>
+                    للمراجعة
+                </span>
+
+                <strong id="reviewWords">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="profile-stat-card">
+
+            <div class="profile-stat-icon">
+                ⭐
+            </div>
+
+            <div class="profile-stat-content">
+
+                <span>
+                    XP
+                </span>
+
+                <strong id="xp">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="profile-stat-card">
+
+            <div class="profile-stat-icon">
+                🔥
+            </div>
+
+            <div class="profile-stat-content">
+
+                <span>
+                    Streak
+                </span>
+
+                <strong id="streak">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="profile-stat-card">
+
+            <div class="profile-stat-icon">
+                📈
+            </div>
+
+            <div class="profile-stat-content">
+
+                <span>
+                    نسبة التقدم
+                </span>
+
+                <strong id="progress">
+                    0%
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         XP LEVEL
+         ========================= -->
+
+    <section class="xp-level-card">
+
+        <div class="xp-level-header">
+
+            <div>
+
+                <span class="xp-level-label">
+                    ⭐ مستواك الحالي
+                </span>
+
+                <h2 id="levelName">
+                    Anfänger
+                </h2>
+
+            </div>
+
+
+            <div class="xp-level-number">
+
+                Level
+                <span id="levelNumber">
+                    1
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="xp-level-xp">
+
+            <span id="currentXP">
+                0 XP
+            </span>
+
+            <span id="nextXP">
+                100 XP
+            </span>
+
+        </div>
+
+
+        <div class="xp-level-bar">
+
+            <div
+                id="xpFill"
+                class="xp-level-fill">
+            </div>
+
+        </div>
+
+
+        <p id="levelProgress">
+            0% للمستوى التالي
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         PROGRESS
+         ========================= -->
+
+    <section class="profile-progress-card">
+
+        <div class="profile-progress-header">
+
+            <div>
+
+                <span class="profile-progress-label">
+                    📚 التقدم العام
+                </span>
+
+                <h2>
+                    Netzwerk A1
+                </h2>
+
+            </div>
+
+
+            <div
+                id="bigProgress"
+                class="profile-progress-percent">
+
+                0%
+
+            </div>
+
+        </div>
+
+
+        <div class="profile-progress-bar">
+
+            <div
+                id="bigProgressFill"
+                class="profile-progress-fill">
+            </div>
+
+        </div>
+
+
+        <div class="profile-progress-footer">
+
+            <span id="progressKnown">
+                0 كلمة متقنة
+            </span>
+
+            <span id="progressRemaining">
+                0 كلمة متبقية
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CHAPTERS
+         ========================= -->
+
+    <section class="profile-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-label">
+                    📖 Kapitel
+                </span>
+
+                <h2>
+                    تقدم الفصول
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="chapterList"
+            class="profile-chapter-list">
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SUMMARY
+         ========================= -->
+
+    <section class="profile-section">
+
+        <div class="profile-info-card">
+
+            <div class="profile-info-header">
+
+                <div class="profile-info-icon">
+                    📊
+                </div>
+
+                <div>
+
+                    <h2>
+                        ملخص تقدمك
+                    </h2>
+
+                    <p>
+                        معلومات مختصرة عن مستواك الحالي
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile-info-row">
+
+                <span>
+                    المستوى الحالي
+                </span>
+
+                <strong id="summaryLevel">
+                    Anfänger
+                </strong>
+
+            </div>
+
+
+            <div class="profile-info-row">
+
+                <span>
+                    الكلمات المتبقية
+                </span>
+
+                <strong id="summaryRemaining">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="profile-info-row">
+
+                <span>
+                    أكثر Kapitel تقدمًا
+                </span>
+
+                <strong id="bestChapter">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="profile-info-row">
+
+                <span>
+                    إجمالي XP
+                </span>
+
+                <strong id="summaryXP">
+                    0 XP
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-logo">
+        Wortiva
+    </div>
+
+    <p>
+        تعلم الألمانية بطريقة أسهل 🇩🇪
+    </p>
+<div class="footer-support">
+
+    <a
+        href="support.html"
+        class="support-link"
+    >
+        <span class="support-link-icon">
+            🛠️
+        </span>
+
+        <span class="support-link-content">
+
+            <strong>
+                الدعم والشكاوى
+            </strong>
+
+            <small>
+                ساعدنا في تحسين Wortiva
+            </small>
+
+        </span>
+
+        <span class="support-link-arrow">
+            ←
+        </span>
+
+    </a>
+
+</div>
+    <div class="copyright">
+        creating by mohamed Ibrahim khafagy
+    </div>
+
+</footer>
+
+
+<script src="../data/a1.js"></script>
+
+
+<script>
+
+/* =========================
+   THEME
+   ========================= */
+
+const themeButton =
+    document.getElementById("theme");
+
+
+if (
+    localStorage.getItem("theme") === "dark"
+) {
+
+    document.body.classList.add("dark");
+
+    themeButton.textContent = "☀️";
+
+}
+
+
+themeButton.addEventListener(
+    "click",
+    function () {
+
+        document.body.classList.toggle("dark");
+
+        const dark =
+            document.body.classList.contains("dark");
+
+        localStorage.setItem(
+            "theme",
+            dark ? "dark" : "light"
+        );
+
+        themeButton.textContent =
+            dark ? "☀️" : "🌙";
+
+    }
+);
+
+
+/* =========================
+   DATA
+   ========================= */
+
+const words =
+    Array.isArray(netzwerkA1Words)
+        ? netzwerkA1Words.filter(
+            word =>
+                word &&
+                word.german
+        )
+        : [];
+
+
+/* =========================
+   STORAGE
+   ========================= */
+
+function getKnownWords() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                "wortivaKnownWords"
+            ) || "[]"
+        );
+
+    } catch {
+
+        return [];
+
+    }
+
+}
+
+
+function getReviewWords() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                "wortivaReviewWords"
+            ) || "[]"
+        );
+
+    } catch {
+
+        return [];
+
+    }
+
+}
+
+
+function getXP() {
+
+    return Number(
+        localStorage.getItem(
+            "wortivaXP"
+        ) || 0
+    );
+
+}
+
+
+function getStreak() {
+
+    return Number(
+        localStorage.getItem(
+            "wortivaStreak"
+        ) || 0
+    );
+
+}
+
+
+function getWordKey(word) {
+
+    return [
+
+        word.chapter,
+
+        word.category,
+
+        word.order,
+
+        word.german
+
+    ].join("|");
+
+}
+
+
+/* =========================
+   KNOWN COUNT
+   ========================= */
+
+function calculateKnown() {
+
+    const known =
+        getKnownWords();
+
+    let count = 0;
+
+
+    words.forEach(
+        function(word) {
+
+            if (
+                known.includes(
+                    getWordKey(word)
+                )
+            ) {
+
+                count++;
+
+            }
+
+        }
+    );
+
+
+    return count;
+
+}
+
+
+/* =========================
+   XP LEVEL
+   ========================= */
+
+function getXPLevel(xp) {
+
+    if (xp >= 1000) {
+
+        return {
+            level: 5,
+            name: "Wortiva Meister",
+            start: 1000,
+            next: 1000
+        };
+
+    }
+
+
+    if (xp >= 500) {
+
+        return {
+            level: 4,
+            name: "Sprachprofi",
+            start: 500,
+            next: 1000
+        };
+
+    }
+
+
+    if (xp >= 250) {
+
+        return {
+            level: 3,
+            name: "Fortgeschritten",
+            start: 250,
+            next: 500
+        };
+
+    }
+
+
+    if (xp >= 100) {
+
+        return {
+            level: 2,
+            name: "Lernender",
+            start: 100,
+            next: 250
+        };
+
+    }
+
+
+    return {
+        level: 1,
+        name: "Anfänger",
+        start: 0,
+        next: 100
+    };
+
+}
+
+
+/* =========================
+   CHAPTER TITLES
+   ========================= */
+
+const chapterTitles = {
+
+    1: "Guten Tag!",
+
+    2: "Meine Familie",
+
+    3: "Essen und Trinken",
+
+    4: "Meine Wohnung",
+
+    5: "Mein Tag",
+
+    6: "Zeit mit Freunden",
+
+    7: "Arbeitsalltag",
+
+    8: "Fit und gesund",
+
+    9: "Meine Wohnung",
+
+    10: "Studium und Beruf",
+
+    11: "Unterwegs",
+
+    12: "Freizeit und mehr"
+
+};
+
+
+/* =========================
+   CHAPTER DATA
+   ========================= */
+
+function getChapterData(chapter) {
+
+    const chapterWords =
+        words.filter(
+            word =>
+                Number(word.chapter) === chapter
+        );
+
+
+    const total =
+        chapterWords.length;
+
+
+    const known =
+        getKnownWords();
+
+
+    let knownCount = 0;
+
+
+    chapterWords.forEach(
+        function(word) {
+
+            if (
+                known.includes(
+                    getWordKey(word)
+                )
+            ) {
+
+                knownCount++;
+
+            }
+
+        }
+    );
+
+
+    const percentage =
+        total > 0
+            ? Math.round(
+                (knownCount / total) * 100
+            )
+            : 0;
+
+
+    return {
+
+        total,
+
+        known: knownCount,
+
+        percentage
+
+    };
+
+}
+
+
+/* =========================
+   RENDER CHAPTERS
+   ========================= */
+
+function renderChapters() {
+
+    const container =
+        document.getElementById(
+            "chapterList"
+        );
+
+
+    container.innerHTML = "";
+
+
+    let bestChapterNumber = 0;
+
+    let bestPercentage = -1;
+
+
+    for (
+        let chapter = 1;
+        chapter <= 12;
+        chapter++
+    ) {
+
+        const data =
+            getChapterData(chapter);
+
+
+        if (
+            data.percentage >
+            bestPercentage
+        ) {
+
+            bestPercentage =
+                data.percentage;
+
+            bestChapterNumber =
+                chapter;
+
+        }
+
+
+        const item =
+            document.createElement(
+                "div"
+            );
+
+
+        item.className =
+            "profile-chapter-item";
+
+
+        item.innerHTML = `
+
+            <div class="profile-chapter-top">
+
+                <div>
+
+                    <strong>
+                        Kapitel ${chapter}
+                    </strong>
+
+                    <span>
+                        ${
+                            chapterTitles[chapter] ||
+                            "Netzwerk A1"
+                        }
+                    </span>
+
+                </div>
+
+                <b>
+                    ${data.percentage}%
+                </b>
+
+            </div>
+
+
+            <div class="profile-chapter-bar">
+
+                <div
+                    class="profile-chapter-fill"
+                    style="width:${data.percentage}%">
+                </div>
+
+            </div>
+
+
+            <div class="profile-chapter-bottom">
+
+                <span>
+                    ${data.known} متقنة
+                </span>
+
+                <span>
+                    من ${data.total}
+                </span>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(item);
+
+    }
+
+
+    if (
+        bestChapterNumber > 0 &&
+        bestPercentage >= 0
+    ) {
+
+        document.getElementById(
+            "bestChapter"
+        ).textContent =
+            `Kapitel ${bestChapterNumber} — ${bestPercentage}%`;
+
+    }
+
+}
+
+
+/* =========================
+   UPDATE ALL
+   ========================= */
+
+function updateStatistics() {
+
+    const total =
+        words.length;
+
+
+    const known =
+        calculateKnown();
+
+
+    const review =
+        getReviewWords().length;
+
+
+    const xp =
+        getXP();
+
+
+    const streak =
+        getStreak();
+
+
+    const percentage =
+        total > 0
+            ? Math.round(
+                (known / total) * 100
+            )
+            : 0;
+
+
+    const remaining =
+        Math.max(
+            0,
+            total - known
+        );
+
+
+    /* MAIN */
+
+    document.getElementById(
+        "totalWords"
+    ).textContent =
+        total;
+
+
+    document.getElementById(
+        "knownWords"
+    ).textContent =
+        known;
+
+
+    document.getElementById(
+        "reviewWords"
+    ).textContent =
+        review;
+
+
+    document.getElementById(
+        "xp"
+    ).textContent =
+        xp;
+
+
+    document.getElementById(
+        "streak"
+    ).textContent =
+        streak;
+
+
+    document.getElementById(
+        "progress"
+    ).textContent =
+        `${percentage}%`;
+
+
+    /* BIG PROGRESS */
+
+    document.getElementById(
+        "bigProgress"
+    ).textContent =
+        `${percentage}%`;
+
+
+    document.getElementById(
+        "bigProgressFill"
+    ).style.width =
+        `${percentage}%`;
+
+
+    document.getElementById(
+        "progressKnown"
+    ).textContent =
+        `${known} كلمة متقنة`;
+
+
+    document.getElementById(
+        "progressRemaining"
+    ).textContent =
+        `${remaining} كلمة متبقية`;
+
+
+    /* SUMMARY */
+
+    document.getElementById(
+        "summaryRemaining"
+    ).textContent =
+        remaining;
+
+
+    document.getElementById(
+        "summaryXP"
+    ).textContent =
+        `${xp} XP`;
+
+
+    /* XP LEVEL */
+
+    const levelData =
+        getXPLevel(xp);
+
+
+    let levelPercentage;
+
+
+    if (
+        levelData.level === 5
+    ) {
+
+        levelPercentage = 100;
+
+    }
+
+    else {
+
+        levelPercentage =
+            Math.round(
+                (
+                    (xp - levelData.start) /
+                    (levelData.next - levelData.start)
+                ) * 100
+            );
+
+
+        levelPercentage =
+            Math.max(
+                0,
+                Math.min(
+                    100,
+                    levelPercentage
+                )
+            );
+
+    }
+
+
+    document.getElementById(
+        "levelName"
+    ).textContent =
+        levelData.name;
+
+
+    document.getElementById(
+        "levelNumber"
+    ).textContent =
+        levelData.level;
+
+
+    document.getElementById(
+        "currentXP"
+    ).textContent =
+        `${xp} XP`;
+
+
+    document.getElementById(
+        "xpFill"
+    ).style.width =
+        `${levelPercentage}%`;
+
+
+    if (
+        levelData.level === 5
+    ) {
+
+        document.getElementById(
+            "nextXP"
+        ).textContent =
+            "MAX";
+
+
+        document.getElementById(
+            "levelProgress"
+        ).textContent =
+            "🏆 وصلت إلى أعلى مستوى";
+
+    }
+
+    else {
+
+        document.getElementById(
+            "nextXP"
+        ).textContent =
+            `${levelData.next} XP`;
+
+
+        document.getElementById(
+            "levelProgress"
+        ).textContent =
+            `${levelPercentage}% للمستوى التالي`;
+
+    }
+
+
+    document.getElementById(
+        "summaryLevel"
+    ).textContent =
+        levelData.name;
+
+}
+
+
+/* =========================
+   START
+   ========================= */
+
+updateStatistics();
+
+renderChapters();
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../data/supabase.js"></script>
+<script src="../data/header.js"></script>
+</body>
+
+</html>

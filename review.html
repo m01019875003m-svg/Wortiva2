@@ -1,0 +1,1070 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Wortiva - المراجعة الذكية</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/main.css"
+    >
+
+    <!-- كلمات Netzwerk A1 -->
+    <script src="../data/a1.js"></script>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="topbar">
+
+    <a
+        href="../index.html"
+        class="logo"
+    >
+
+        <span class="logo-icon">
+            W
+        </span>
+
+        <span>
+            Wortiva
+        </span>
+
+    </a>
+
+
+    <div class="header-actions">
+
+        <button
+            class="icon-button"
+            id="themeButton"
+            type="button"
+        >
+            🌙
+        </button>
+
+
+        <a
+            href="profile.html"
+            class="profile-button"
+        >
+
+           <div class="profile-avatar">
+
+    <img
+        id="headerAvatar"
+        src=""
+        alt="صورة المستخدم"
+        style="display:none;"
+    >
+
+    <span id="headerAvatarDefault">
+        👤
+    </span>
+
+</div>
+
+<div class="profile-info">
+
+    <span
+        id="headerUsername"
+        class="profile-name"
+    >
+        حسابي
+    </span>
+
+    <small id="headerAccountText">
+        تسجيل الدخول
+    </small>
+
+</div>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="words-page">
+
+
+    <!-- HEADER -->
+
+    <section class="words-heading">
+
+        <a
+            href="../index.html"
+            class="back-button"
+        >
+            → الرئيسية
+        </a>
+
+
+        <div class="page-icon">
+            🔄
+        </div>
+
+
+        <h1>
+            المراجعة الذكية
+        </h1>
+
+
+        <p>
+            راجع الكلمات التي تحتاج إلى مراجعة
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         REVIEW STATS
+    ================================================= -->
+
+    <section class="words-progress">
+
+
+        <div class="progress-stat">
+
+            <span>
+                جميع المراجعات
+            </span>
+
+            <strong id="totalReview">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="progress-stat">
+
+            <span>
+                تحتاج مراجعة
+            </span>
+
+            <strong id="reviewCount">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="progress-stat">
+
+            <span>
+                عرفتُها
+            </span>
+
+            <strong id="knownCount">
+                0
+            </strong>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         FILTER
+    ================================================= -->
+
+    <div class="word-filter-buttons">
+
+        <button
+            class="word-filter active"
+            data-filter="review"
+            type="button"
+        >
+            🔄 تحتاج مراجعة
+        </button>
+
+
+        <button
+            class="word-filter"
+            data-filter="known"
+            type="button"
+        >
+            ✓ عرفتها
+        </button>
+
+
+        <button
+            class="word-filter"
+            data-filter="all"
+            type="button"
+        >
+            📚 الكل
+        </button>
+
+    </div>
+
+
+
+    <!-- =================================================
+         WORD COUNT
+    ================================================= -->
+
+    <div class="words-count">
+
+        <span id="wordCount">
+            0 كلمة
+        </span>
+
+    </div>
+
+
+
+    <!-- =================================================
+         WORDS
+    ================================================= -->
+
+    <section>
+
+        <div
+            id="reviewGrid"
+            class="words-grid"
+        ></div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-logo">
+        Wortiva
+    </div>
+
+
+    <p>
+        تعلم الألمانية بطريقة أسهل 🇩🇪
+    </p>
+<div class="footer-support">
+
+    <a
+        href="support.html"
+        class="support-link"
+    >
+        <span class="support-link-icon">
+            🛠️
+        </span>
+
+        <span class="support-link-content">
+
+            <strong>
+                الدعم والشكاوى
+            </strong>
+
+            <small>
+                ساعدنا في تحسين Wortiva
+            </small>
+
+        </span>
+
+        <span class="support-link-arrow">
+            ←
+        </span>
+
+    </a>
+
+</div>
+
+    <div class="copyright">
+        creating by mohamed Ibrahim khafagy
+    </div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../data/supabase.js"></script>
+<script src="../data/header.js"></script>
+<script>
+
+/* =====================================================
+   THEME
+===================================================== */
+
+const themeButton =
+    document.getElementById("themeButton");
+
+
+function loadTheme() {
+
+    if (
+        localStorage.getItem("theme") === "dark"
+    ) {
+
+        document.body.classList.add("dark");
+
+        themeButton.textContent = "☀️";
+
+    }
+
+}
+
+
+themeButton.addEventListener(
+    "click",
+    function () {
+
+        document.body.classList.toggle("dark");
+
+
+        const dark =
+            document.body.classList.contains("dark");
+
+
+        localStorage.setItem(
+            "theme",
+            dark ? "dark" : "light"
+        );
+
+
+        themeButton.textContent =
+            dark ? "☀️" : "🌙";
+
+    }
+);
+
+
+loadTheme();
+
+
+
+/* =====================================================
+   CHECK a1.js
+===================================================== */
+
+if (
+    typeof netzwerkA1Words === "undefined"
+) {
+
+    document.getElementById(
+        "reviewGrid"
+    ).innerHTML = `
+
+        <div class="empty-chapters">
+
+            <div>
+                ⚠️
+            </div>
+
+            <h3>
+                لم يتم تحميل الكلمات
+            </h3>
+
+            <p>
+                تأكد أن ملف a1.js موجود داخل مجلد data.
+            </p>
+
+        </div>
+
+    `;
+
+    throw new Error(
+        "a1.js لم يتم تحميله"
+    );
+
+}
+
+
+
+/* =====================================================
+   DATA
+===================================================== */
+
+const allWords =
+    Array.isArray(netzwerkA1Words)
+        ? netzwerkA1Words
+        : [];
+
+
+
+/* =====================================================
+   STORAGE
+===================================================== */
+
+/*
+   الكلمات التي تحتاج مراجعة
+*/
+
+function getReviewWords() {
+
+    return JSON.parse(
+        localStorage.getItem(
+            "wortivaReviewWords"
+        ) || "[]"
+    );
+
+}
+
+
+/*
+   الكلمات التي عرفها المستخدم
+*/
+
+function getKnownWords() {
+
+    return JSON.parse(
+        localStorage.getItem(
+            "wortivaKnownWords"
+        ) || "[]"
+    );
+
+}
+
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const reviewGrid =
+    document.getElementById(
+        "reviewGrid"
+    );
+
+
+const wordCount =
+    document.getElementById(
+        "wordCount"
+    );
+
+
+const totalReview =
+    document.getElementById(
+        "totalReview"
+    );
+
+
+const reviewCount =
+    document.getElementById(
+        "reviewCount"
+    );
+
+
+const knownCount =
+    document.getElementById(
+        "knownCount"
+    );
+
+
+const filterButtons =
+    document.querySelectorAll(
+        ".word-filter"
+    );
+
+
+let currentFilter =
+    "review";
+
+
+
+/* =====================================================
+   CREATE WORD KEY
+===================================================== */
+
+function getWordKey(word) {
+
+    return [
+
+        word.chapter,
+
+        word.category,
+
+        word.order,
+
+        word.german
+
+    ].join("|");
+
+}
+
+
+
+/* =====================================================
+   GET STATUS
+===================================================== */
+
+function getWordStatus(word) {
+
+    const key =
+        getWordKey(word);
+
+
+    const reviewWords =
+        getReviewWords();
+
+
+    const knownWords =
+        getKnownWords();
+
+
+    if (
+        reviewWords.includes(key)
+    ) {
+
+        return "review";
+
+    }
+
+
+    if (
+        knownWords.includes(key)
+    ) {
+
+        return "known";
+
+    }
+
+
+    return "new";
+
+}
+
+
+
+/* =====================================================
+   GET DISPLAY WORDS
+===================================================== */
+
+function getDisplayWords() {
+
+    const reviewWords =
+        getReviewWords();
+
+
+    const knownWords =
+        getKnownWords();
+
+
+    if (
+        currentFilter === "review"
+    ) {
+
+        return allWords.filter(
+            function (word) {
+
+                return reviewWords.includes(
+                    getWordKey(word)
+                );
+
+            }
+        );
+
+    }
+
+
+    if (
+        currentFilter === "known"
+    ) {
+
+        return allWords.filter(
+            function (word) {
+
+                return knownWords.includes(
+                    getWordKey(word)
+                );
+
+            }
+        );
+
+    }
+
+
+    return allWords.filter(
+        function (word) {
+
+            const key =
+                getWordKey(word);
+
+            return (
+                reviewWords.includes(key)
+                ||
+                knownWords.includes(key)
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   RENDER
+===================================================== */
+
+function renderReviewWords() {
+
+    const reviewWords =
+        getReviewWords();
+
+
+    const knownWords =
+        getKnownWords();
+
+
+    const displayWords =
+        getDisplayWords();
+
+
+    totalReview.textContent =
+        reviewWords.length;
+
+
+    reviewCount.textContent =
+        reviewWords.length;
+
+
+    knownCount.textContent =
+        knownWords.length;
+
+
+    wordCount.textContent =
+        `${displayWords.length} كلمة`;
+
+
+    reviewGrid.innerHTML = "";
+
+
+    if (
+        displayWords.length === 0
+    ) {
+
+        reviewGrid.innerHTML = `
+
+            <div class="empty-chapters">
+
+                <div>
+                    🎉
+                </div>
+
+                <h3>
+                    لا توجد كلمات هنا
+                </h3>
+
+                <p>
+                    عندما تختار "مراجعة"
+                    من صفحة الكلمات ستظهر هنا.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+
+    displayWords.forEach(
+        function (word) {
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+
+            const status =
+                getWordStatus(word);
+
+
+            card.className =
+                "word-card";
+
+
+            if (
+                status === "known"
+            ) {
+
+                card.classList.add(
+                    "word-known"
+                );
+
+            }
+
+
+            if (
+                status === "review"
+            ) {
+
+                card.classList.add(
+                    "word-review"
+                );
+
+            }
+
+
+            const fullWord =
+                word.article
+                    ? `${word.article} ${word.german}`
+                    : word.german;
+
+
+            card.innerHTML = `
+
+                <div class="word-top">
+
+                    <span class="word-type">
+                        ${word.type || ""}
+                    </span>
+
+
+                    <span
+                        class="word-status ${
+                            status === "known"
+                                ? "known-status"
+                                : "review-status"
+                        }"
+                    >
+
+                        ${
+                            status === "known"
+                                ? "✓ عرفتها"
+                                : "↻ تحتاج مراجعة"
+                        }
+
+                    </span>
+
+                </div>
+
+
+                <div class="german-word">
+
+                    ${fullWord}
+
+                </div>
+
+
+                ${
+                    word.plural
+                        ? `
+
+                            <div class="word-plural">
+
+                                <strong>
+                                    Plural:
+                                </strong>
+
+                                ${word.plural}
+
+                            </div>
+
+                        `
+                        : ""
+                }
+
+
+                <div class="word-arabic">
+
+                    ${word.arabic || ""}
+
+                </div>
+
+
+                ${
+                    word.sentence
+                        ? `
+
+                            <div class="example-box">
+
+                                <div class="example-title">
+                                    Beispiel
+                                </div>
+
+
+                                <div class="example-german">
+
+                                    🇩🇪
+                                    ${word.sentence}
+
+                                </div>
+
+
+                                ${
+                                    word.sentenceArabic
+                                        ? `
+
+                                            <div class="example-arabic">
+
+                                                🇪🇬
+                                                ${word.sentenceArabic}
+
+                                            </div>
+
+                                        `
+                                        : ""
+                                }
+
+                            </div>
+
+                        `
+                        : ""
+                }
+
+
+                <div class="word-actions">
+
+                    <button
+                        type="button"
+                        class="known-button"
+                        data-key="${getWordKey(word)}"
+                    >
+                        ✓ عرفتها
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="review-button"
+                        data-key="${getWordKey(word)}"
+                    >
+                        ↻ مراجعة
+                    </button>
+
+                </div>
+
+            `;
+
+
+            reviewGrid.appendChild(card);
+
+        }
+    );
+
+
+    attachButtons();
+
+}
+
+
+
+/* =====================================================
+   BUTTON ACTIONS
+===================================================== */
+
+function attachButtons() {
+
+    document
+        .querySelectorAll(".known-button")
+        .forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        const key =
+                            button.dataset.key;
+
+
+                        let knownWords =
+                            getKnownWords();
+
+
+                        let reviewWords =
+                            getReviewWords();
+
+
+                        if (
+                            !knownWords.includes(key)
+                        ) {
+
+                            knownWords.push(key);
+
+                        }
+
+
+                        reviewWords =
+                            reviewWords.filter(
+                                function (item) {
+
+                                    return item !== key;
+
+                                }
+                            );
+
+
+                        localStorage.setItem(
+                            "wortivaKnownWords",
+                            JSON.stringify(
+                                knownWords
+                            )
+                        );
+
+
+                        localStorage.setItem(
+                            "wortivaReviewWords",
+                            JSON.stringify(
+                                reviewWords
+                            )
+                        );
+
+
+                        renderReviewWords();
+
+                    }
+                );
+
+            }
+        );
+
+
+
+    document
+        .querySelectorAll(".review-button")
+        .forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        const key =
+                            button.dataset.key;
+
+
+                        let reviewWords =
+                            getReviewWords();
+
+
+                        let knownWords =
+                            getKnownWords();
+
+
+                        if (
+                            !reviewWords.includes(key)
+                        ) {
+
+                            reviewWords.push(key);
+
+                        }
+
+
+                        knownWords =
+                            knownWords.filter(
+                                function (item) {
+
+                                    return item !== key;
+
+                                }
+                            );
+
+
+                        localStorage.setItem(
+                            "wortivaReviewWords",
+                            JSON.stringify(
+                                reviewWords
+                            )
+                        );
+
+
+                        localStorage.setItem(
+                            "wortivaKnownWords",
+                            JSON.stringify(
+                                knownWords
+                            )
+                        );
+
+
+                        renderReviewWords();
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+
+/* =====================================================
+   FILTER BUTTONS
+===================================================== */
+
+filterButtons.forEach(
+    function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                filterButtons.forEach(
+                    function (item) {
+
+                        item.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                currentFilter =
+                    button.dataset.filter;
+
+
+                renderReviewWords();
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   START
+===================================================== */
+
+renderReviewWords();
+
+</script>
+
+
+</body>
+
+</html>

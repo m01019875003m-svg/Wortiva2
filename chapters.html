@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Wortiva - Kapitel</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/main.css"
+    >
+
+    <!-- Netzwerk A1 -->
+    <script src="../data/a1.js"></script>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="topbar">
+
+    <a
+        href="../index.html"
+        class="logo"
+    >
+
+        <span class="logo-icon">
+            W
+        </span>
+
+        <span>
+            Wortiva
+        </span>
+
+    </a>
+
+
+    <div class="header-actions">
+
+
+        <!-- THEME -->
+
+        <button
+            class="icon-button"
+            id="themeButton"
+            type="button"
+            aria-label="تغيير الوضع"
+        >
+            🌙
+        </button>
+
+
+        <!-- PROFILE -->
+
+        <a
+            href="profile.html"
+            class="profile-button"
+        >
+
+            <div class="profile-avatar">
+
+                <img
+                    id="headerAvatar"
+                    src=""
+                    alt="صورة المستخدم"
+                    style="display:none;"
+                >
+
+                <span id="headerAvatarDefault">
+                    👤
+                </span>
+
+            </div>
+
+
+            <div class="profile-info">
+
+                <span
+                    id="headerUsername"
+                    class="profile-name"
+                >
+                    حسابي
+                </span>
+
+
+                <small id="headerAccountText">
+                    تسجيل الدخول
+                </small>
+
+            </div>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="chapters-page">
+
+
+    <!-- =================================================
+         BACK TO NETWORK LEVEL
+    ================================================== -->
+
+    <div class="page-back-wrapper">
+
+        <a
+            href="netzwerk.html"
+            class="page-back-button"
+        >
+
+            <span>
+                →
+            </span>
+
+            <span>
+                اختيار المستوى
+            </span>
+
+        </a>
+
+    </div>
+
+
+
+    <!-- =================================================
+         PAGE HEADING
+    ================================================== -->
+
+    <section class="page-heading">
+
+
+        <div class="page-icon">
+            📚
+        </div>
+
+
+        <h1 id="title">
+            Netzwerk A1
+        </h1>
+
+
+        <p>
+            اختر الـ Kapitel
+        </p>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         CHAPTERS
+    ================================================== -->
+
+    <div
+        id="grid"
+        class="chapters-grid"
+    ></div>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-logo">
+        Wortiva
+    </div>
+
+
+    <p>
+        تعلم الألمانية بطريقة أسهل 🇩🇪
+    </p>
+
+
+    <div class="footer-support">
+
+        <a
+            href="support.html"
+            class="support-link"
+        >
+
+            <span class="support-link-icon">
+                🛠️
+            </span>
+
+
+            <span class="support-link-content">
+
+                <strong>
+                    الدعم والشكاوى
+                </strong>
+
+                <small>
+                    ساعدنا في تحسين Wortiva
+                </small>
+
+            </span>
+
+
+            <span class="support-link-arrow">
+                ←
+            </span>
+
+        </a>
+
+    </div>
+
+
+    <div class="copyright">
+        creating by mohamed Ibrahim khafagy
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     THEME
+===================================================== -->
+
+<script>
+
+const themeButton =
+    document.getElementById(
+        "themeButton"
+    );
+
+
+function loadTheme() {
+
+    if (
+        localStorage.getItem("theme")
+        === "dark"
+    ) {
+
+        document.body.classList.add(
+            "dark"
+        );
+
+        themeButton.textContent =
+            "☀️";
+
+    }
+
+}
+
+
+themeButton.addEventListener(
+    "click",
+    function () {
+
+        document.body.classList.toggle(
+            "dark"
+        );
+
+
+        const dark =
+            document.body.classList.contains(
+                "dark"
+            );
+
+
+        localStorage.setItem(
+            "theme",
+            dark
+                ? "dark"
+                : "light"
+        );
+
+
+        themeButton.textContent =
+            dark
+                ? "☀️"
+                : "🌙";
+
+    }
+);
+
+
+loadTheme();
+
+</script>
+
+
+
+<!-- =====================================================
+     LEVEL
+===================================================== -->
+
+<script>
+
+const A1 = [
+
+    ["Guten Tag!", "مرحبًا!"],
+
+    ["Meine Familie", "عائلتي"],
+
+    ["Freunde und Freizeit", "الأصدقاء ووقت الفراغ"],
+
+    ["Guten Appetit!", "شهية طيبة!"],
+
+    ["Alltag und Termine", "الحياة اليومية والمواعيد"],
+
+    ["Zeit mit Freunden", "وقت مع الأصدقاء"],
+
+    ["Arbeitsalltag", "الحياة اليومية في العمل"],
+
+    ["Fit und gesund", "اللياقة والصحة"],
+
+    ["Meine Wohnung", "شقتي"],
+
+    ["Studium und Beruf", "الدراسة والمهنة"],
+
+    ["Unterwegs", "في الطريق / أثناء التنقل"],
+
+    ["Freizeit und mehr", "وقت الفراغ والمزيد"]
+
+];
+
+
+const level =
+    localStorage.getItem(
+        "selectedNetzwerkLevel"
+    ) || "A1";
+
+
+document.getElementById(
+    "title"
+).textContent =
+    `Netzwerk ${level}`;
+
+</script>
+
+
+
+<!-- =====================================================
+     KNOWN WORDS
+===================================================== -->
+
+<script>
+
+function getKnownWords() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                "wortivaKnownWords"
+            ) || "[]"
+        );
+
+    } catch {
+
+        return [];
+
+    }
+
+}
+
+
+function getWordKey(word) {
+
+    return [
+
+        word.chapter,
+
+        word.category,
+
+        word.order,
+
+        word.german
+
+    ].join("|");
+
+}
+
+</script>
+
+
+
+<!-- =====================================================
+     CHAPTER PROGRESS
+===================================================== -->
+
+<script>
+
+function getChapterProgress(
+    chapterNumber
+) {
+
+    const chapterWords =
+        Array.isArray(netzwerkA1Words)
+            ? netzwerkA1Words.filter(
+                function(word) {
+
+                    return (
+
+                        Number(word.chapter)
+                        ===
+                        Number(chapterNumber)
+
+                        &&
+
+                        word.german
+
+                    );
+
+                }
+            )
+            : [];
+
+
+    const total =
+        chapterWords.length;
+
+
+    const knownWords =
+        getKnownWords();
+
+
+    let known = 0;
+
+
+    chapterWords.forEach(
+        function(word) {
+
+            const key =
+                getWordKey(word);
+
+
+            if (
+                knownWords.includes(key)
+            ) {
+
+                known++;
+
+            }
+
+        }
+    );
+
+
+    const percent =
+        total > 0
+            ? Math.round(
+                (known / total) * 100
+            )
+            : 0;
+
+
+    return {
+
+        total,
+        known,
+        percent
+
+    };
+
+}
+
+</script>
+
+
+
+<!-- =====================================================
+     BUILD CHAPTERS
+===================================================== -->
+
+<script>
+
+const grid =
+    document.getElementById(
+        "grid"
+    );
+
+
+A1.forEach(
+    function(chapterData, index) {
+
+        const chapterNumber =
+            index + 1;
+
+
+        const progress =
+            getChapterProgress(
+                chapterNumber
+            );
+
+
+        const button =
+            document.createElement(
+                "button"
+            );
+
+
+        button.type =
+            "button";
+
+
+        button.className =
+            "chapter-card";
+
+
+        button.innerHTML = `
+
+            <div class="chapter-number">
+                ${chapterNumber}
+            </div>
+
+
+            <div class="chapter-content">
+
+                <span>
+                    Kapitel ${chapterNumber}
+                </span>
+
+
+                <h2>
+                    ${chapterData[0]}
+                </h2>
+
+
+                <p>
+                    ${chapterData[1]}
+                </p>
+
+
+                <div class="chapter-progress">
+
+                    <div class="chapter-progress-top">
+
+                        <span>
+                            تقدمك
+                        </span>
+
+
+                        <strong>
+                            ${progress.percent}%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="chapter-progress-bar">
+
+                        <div
+                            class="chapter-progress-fill"
+                            style="width:${progress.percent}%"
+                        ></div>
+
+                    </div>
+
+
+                    <small>
+                        ${progress.known}
+                        /
+                        ${progress.total}
+                        كلمة
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <span class="chapter-arrow">
+                ←
+            </span>
+
+        `;
+
+
+        button.addEventListener(
+            "click",
+            function() {
+
+                localStorage.setItem(
+                    "netzwerkLevel",
+                    level
+                );
+
+
+                localStorage.setItem(
+                    "netzwerkKapitel",
+                    chapterNumber
+                );
+
+
+                localStorage.setItem(
+                    "netzwerkKapitelTitle",
+                    chapterData[0]
+                );
+
+
+                localStorage.removeItem(
+                    "netzwerkCategory"
+                );
+
+
+                localStorage.removeItem(
+                    "netzwerkCategoryTitle"
+                );
+
+
+                localStorage.setItem(
+                    "netzwerkShowAllChapterWords",
+                    "false"
+                );
+
+
+                location.href =
+                    "categories.html";
+
+            }
+        );
+
+
+        grid.appendChild(
+            button
+        );
+
+    }
+);
+
+</script>
+
+
+
+<!-- =====================================================
+     HEADER USER
+===================================================== -->
+
+<!-- Supabase -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="../data/supabase.js"></script>
+
+
+<script>
+
+async function loadHeaderUser() {
+
+    try {
+
+        const {
+            data: {
+                session
+            }
+        } =
+            await supabaseClient.auth.getSession();
+
+
+        const username =
+            document.getElementById(
+                "headerUsername"
+            );
+
+
+        const accountText =
+            document.getElementById(
+                "headerAccountText"
+            );
+
+
+        const avatar =
+            document.getElementById(
+                "headerAvatar"
+            );
+
+
+        const defaultAvatar =
+            document.getElementById(
+                "headerAvatarDefault"
+            );
+
+
+        if (!session) {
+
+            username.textContent =
+                "حسابي";
+
+
+            accountText.textContent =
+                "تسجيل الدخول";
+
+
+            avatar.style.display =
+                "none";
+
+
+            defaultAvatar.style.display =
+                "inline";
+
+
+            return;
+
+        }
+
+
+        const user =
+            session.user;
+
+
+        const metadata =
+            user.user_metadata || {};
+
+
+        const name =
+            metadata.username ||
+            "مستخدم Wortiva";
+
+
+        const avatarUrl =
+            metadata.avatar_url ||
+            "";
+
+
+        username.textContent =
+            name;
+
+
+        accountText.textContent =
+            "حسابي";
+
+
+        if (avatarUrl) {
+
+            avatar.src =
+                avatarUrl;
+
+
+            avatar.style.display =
+                "block";
+
+
+            defaultAvatar.style.display =
+                "none";
+
+        } else {
+
+            avatar.style.display =
+                "none";
+
+
+            defaultAvatar.style.display =
+                "inline";
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Header profile error:",
+            error
+        );
+
+    }
+
+}
+
+
+loadHeaderUser();
+
+</script>
+
+
+</body>
+
+</html>

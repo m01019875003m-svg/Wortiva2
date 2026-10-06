@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Wortiva - الدعم والشكاوى</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/main.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="topbar">
+
+    <a
+        href="../index.html"
+        class="logo"
+    >
+
+        <span class="logo-icon">
+            W
+        </span>
+
+        <span>
+            Wortiva
+        </span>
+
+    </a>
+
+
+    <div class="header-actions">
+
+        <!-- THEME -->
+
+        <button
+            id="theme"
+            class="icon-button"
+            type="button"
+            aria-label="تغيير الوضع"
+        >
+            🌙
+        </button>
+
+
+        <!-- PROFILE -->
+
+        <a
+            href="profile.html"
+            class="profile-button"
+        >
+
+            <div class="profile-avatar">
+
+                <img
+                    id="headerAvatar"
+                    src=""
+                    alt="صورة المستخدم"
+                    style="display:none;"
+                >
+
+                <span id="headerAvatarDefault">
+                    👤
+                </span>
+
+            </div>
+
+
+            <div class="profile-info">
+
+                <span
+                    id="headerUsername"
+                    class="profile-name"
+                >
+                    حسابي
+                </span>
+
+                <small id="headerAccountText">
+                    تسجيل الدخول
+                </small>
+
+            </div>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+
+    <!-- BACK -->
+
+    <a
+        href="../index.html"
+        class="back-button"
+    >
+        → الرئيسية
+    </a>
+
+
+
+    <!-- PAGE HEADING -->
+
+    <section class="page-heading">
+
+        <div class="page-icon">
+            🛠️
+        </div>
+
+        <h1>
+            الدعم والشكاوى
+        </h1>
+
+        <p>
+            ساعدنا في تحسين Wortiva
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         SUPPORT CARD
+    ================================================= -->
+
+    <section class="support-card">
+
+
+        <div class="support-intro">
+
+            <h2>
+                📩 تواصل معنا
+            </h2>
+
+            <p>
+                إذا واجهت مشكلة أو لديك اقتراح لتطوير Wortiva،
+                اكتب لنا وسنعمل على تحسين التطبيق.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             FORM
+        ================================================= -->
+
+        <form id="supportForm">
+
+
+            <!-- NAME -->
+
+            <div class="form-group">
+
+                <label for="supportName">
+                    الاسم
+                </label>
+
+                <input
+                    id="supportName"
+                    type="text"
+                    placeholder="اكتب اسمك"
+                    autocomplete="name"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label for="supportEmail">
+                    البريد الإلكتروني
+                </label>
+
+                <input
+                    id="supportEmail"
+                    type="email"
+                    placeholder="example@email.com"
+                    autocomplete="email"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- TYPE -->
+
+            <div class="form-group">
+
+                <label for="supportType">
+                    نوع الرسالة
+                </label>
+
+                <select
+                    id="supportType"
+                    required
+                >
+
+                    <option value="">
+                        اختر نوع الرسالة
+                    </option>
+
+                    <option value="problem">
+                        🐛 مشكلة
+                    </option>
+
+                    <option value="suggestion">
+                        💡 اقتراح
+                    </option>
+
+                    <option value="complaint">
+                        ⚠️ شكوى
+                    </option>
+
+                    <option value="help">
+                        🆘 طلب مساعدة
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- MESSAGE -->
+
+            <div class="form-group">
+
+                <label for="supportMessage">
+                    الرسالة
+                </label>
+
+                <textarea
+                    id="supportMessage"
+                    rows="7"
+                    placeholder="اكتب المشكلة أو الاقتراح بالتفصيل..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+
+            <!-- SUBMIT -->
+
+            <button
+                id="supportSubmitButton"
+                type="submit"
+                class="primary-button"
+            >
+                📩 إرسال الرسالة
+            </button>
+
+
+
+            <!-- STATUS -->
+
+            <div
+                id="supportStatus"
+                class="support-status"
+                role="status"
+                aria-live="polite"
+            ></div>
+
+
+        </form>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-logo">
+        Wortiva
+    </div>
+
+    <p>
+        تعلم الألمانية بطريقة أسهل 🇩🇪
+    </p>
+
+    <div class="copyright">
+        creating by mohamed Ibrahim khafagy
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="../data/supabase.js"></script>
+
+
+
+<script>
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const themeButton =
+    document.getElementById("theme");
+
+const form =
+    document.getElementById("supportForm");
+
+const status =
+    document.getElementById("supportStatus");
+
+const submitButton =
+    document.getElementById(
+        "supportSubmitButton"
+    );
+
+const nameInput =
+    document.getElementById("supportName");
+
+const emailInput =
+    document.getElementById("supportEmail");
+
+
+
+/* =====================================================
+   THEME
+===================================================== */
+
+function loadTheme() {
+
+    if (
+        localStorage.getItem("theme") === "dark"
+    ) {
+
+        document.body.classList.add("dark");
+
+        themeButton.textContent = "☀️";
+
+    } else {
+
+        themeButton.textContent = "🌙";
+
+    }
+
+}
+
+
+themeButton.addEventListener(
+    "click",
+    function () {
+
+        document.body.classList.toggle("dark");
+
+        const dark =
+            document.body.classList.contains("dark");
+
+        localStorage.setItem(
+            "theme",
+            dark ? "dark" : "light"
+        );
+
+        themeButton.textContent =
+            dark ? "☀️" : "🌙";
+
+    }
+);
+
+
+loadTheme();
+
+
+
+/* =====================================================
+   HEADER USER
+===================================================== */
+
+async function loadHeaderUser() {
+
+    try {
+
+        const {
+            data: {
+                session
+            }
+        } =
+            await supabaseClient.auth.getSession();
+
+
+        const username =
+            document.getElementById(
+                "headerUsername"
+            );
+
+        const accountText =
+            document.getElementById(
+                "headerAccountText"
+            );
+
+        const avatar =
+            document.getElementById(
+                "headerAvatar"
+            );
+
+        const defaultAvatar =
+            document.getElementById(
+                "headerAvatarDefault"
+            );
+
+
+        /* =========================
+           NOT LOGGED IN
+        ========================= */
+
+        if (!session) {
+
+            username.textContent =
+                "حسابي";
+
+            accountText.textContent =
+                "تسجيل الدخول";
+
+            avatar.style.display =
+                "none";
+
+            defaultAvatar.style.display =
+                "inline";
+
+            return;
+
+        }
+
+
+        /* =========================
+           USER
+        ========================= */
+
+        const user =
+            session.user;
+
+        const metadata =
+            user.user_metadata || {};
+
+
+        const name =
+            metadata.username ||
+            metadata.name ||
+            (
+                user.email
+                    ? user.email.split("@")[0]
+                    : "مستخدم Wortiva"
+            );
+
+
+        const avatarUrl =
+            metadata.avatar_url ||
+            "";
+
+
+        username.textContent =
+            name;
+
+        accountText.textContent =
+            "حسابي";
+
+
+        /* =========================
+           AVATAR
+        ========================= */
+
+        if (avatarUrl) {
+
+            avatar.src =
+                avatarUrl;
+
+            avatar.style.display =
+                "block";
+
+            defaultAvatar.style.display =
+                "none";
+
+        } else {
+
+            avatar.style.display =
+                "none";
+
+            defaultAvatar.style.display =
+                "inline";
+
+        }
+
+
+        /* =========================
+           AUTO FILL
+        ========================= */
+
+        if (
+            !nameInput.value
+        ) {
+
+            nameInput.value =
+                name;
+
+        }
+
+
+        if (
+            !emailInput.value &&
+            user.email
+        ) {
+
+            emailInput.value =
+                user.email;
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Header user error:",
+            error
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   SUPPORT FORM
+===================================================== */
+
+form.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        /* =========================
+           RESET STATUS
+        ========================= */
+
+        status.className =
+            "support-status";
+
+        status.textContent =
+            "";
+
+        status.style.display =
+            "none";
+
+
+        /* =========================
+           DISABLE BUTTON
+        ========================= */
+
+        submitButton.disabled =
+            true;
+
+        submitButton.textContent =
+            "⏳ جاري إرسال الرسالة...";
+
+
+        try {
+
+
+            /* =========================
+               CHECK SUPABASE
+            ========================= */
+
+            if (
+                typeof supabaseClient ===
+                "undefined"
+            ) {
+
+                throw new Error(
+                    "Supabase client is not available."
+                );
+
+            }
+
+
+            /* =========================
+               CHECK LOGIN
+            ========================= */
+
+            const {
+                data: {
+                    session
+                },
+                error: sessionError
+            } =
+                await supabaseClient.auth.getSession();
+
+
+            if (sessionError) {
+
+                throw sessionError;
+
+            }
+
+
+            if (!session) {
+
+                status.textContent =
+                    "🔐 يجب تسجيل الدخول أولًا لإرسال رسالة الدعم.";
+
+                status.className =
+                    "support-status error";
+
+                status.style.display =
+                    "block";
+
+                return;
+
+            }
+
+
+            /* =========================
+               GET FORM DATA
+            ========================= */
+
+            const name =
+                nameInput.value.trim();
+
+
+            const email =
+                emailInput.value.trim();
+
+
+            const type =
+                document
+                    .getElementById("supportType")
+                    .value;
+
+
+            const message =
+                document
+                    .getElementById("supportMessage")
+                    .value.trim();
+
+
+            /* =========================
+               VALIDATION
+            ========================= */
+
+            if (
+                !name ||
+                !email ||
+                !type ||
+                !message
+            ) {
+
+                status.textContent =
+                    "⚠️ من فضلك أكمل جميع البيانات.";
+
+                status.className =
+                    "support-status error";
+
+                status.style.display =
+                    "block";
+
+                return;
+
+            }
+
+
+            /* =========================
+               INSERT
+            ========================= */
+
+            const {
+                error
+            } =
+                await supabaseClient
+                    .from("support_messages")
+                    .insert({
+
+                        user_id:
+                            session.user.id,
+
+                        name:
+                            name,
+
+                        email:
+                            email,
+
+                        type:
+                            type,
+
+                        message:
+                            message
+
+                    });
+
+
+            if (error) {
+
+                throw error;
+
+            }
+
+
+            /* =========================
+               SUCCESS
+            ========================= */
+
+            status.textContent =
+                "✅ تم إرسال رسالتك بنجاح. شكرًا لمساعدتنا في تحسين Wortiva.";
+
+            status.className =
+                "support-status success";
+
+            status.style.display =
+                "block";
+
+
+            form.reset();
+
+
+            /*
+             * إعادة الاسم والإيميل
+             * بعد reset
+             */
+
+            const metadata =
+                session.user.user_metadata ||
+                {};
+
+
+            nameInput.value =
+                metadata.username ||
+                metadata.name ||
+                "";
+
+
+            emailInput.value =
+                session.user.email ||
+                "";
+
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Support message error:",
+                error
+            );
+
+
+            status.textContent =
+                "❌ حدث خطأ أثناء إرسال الرسالة. حاول مرة أخرى.";
+
+            status.className =
+                "support-status error";
+
+            status.style.display =
+                "block";
+
+        }
+
+        finally {
+
+            submitButton.disabled =
+                false;
+
+            submitButton.textContent =
+                "📩 إرسال الرسالة";
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   START
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async function() {
+
+        await loadHeaderUser();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

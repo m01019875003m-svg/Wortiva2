@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Wortiva - إنشاء حساب</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/main.css"
+    >
+
+    <style>
+
+        /* =========================
+           AUTH PAGE
+        ========================= */
+
+        .auth-page {
+            min-height: calc(100vh - 160px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 20px;
+        }
+
+
+        .auth-wrapper {
+            width: 100%;
+            max-width: 480px;
+        }
+
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+
+        .auth-logo {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 22px;
+
+            font-size: 30px;
+            font-weight: 800;
+
+            background: var(--primary-color, #2563eb);
+            color: white;
+
+            box-shadow:
+                0 12px 30px rgba(37, 99, 235, .20);
+        }
+
+
+        .auth-header h1 {
+            margin: 0 0 8px;
+            font-size: 30px;
+        }
+
+
+        .auth-header p {
+            margin: 0;
+            opacity: .7;
+        }
+
+
+        .auth-card {
+            background: var(--card-bg, #ffffff);
+
+            border: 1px solid
+                var(--border-color, #e5e7eb);
+
+            border-radius: 24px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 15px 45px rgba(0, 0, 0, .08);
+        }
+
+
+        .auth-field {
+            margin-bottom: 18px;
+        }
+
+
+        .auth-field label {
+            display: block;
+            margin-bottom: 8px;
+
+            font-weight: 600;
+        }
+
+
+        .auth-field input {
+            width: 100%;
+            box-sizing: border-box;
+
+            padding: 14px 16px;
+
+            border-radius: 14px;
+
+            border: 1px solid
+                var(--border-color, #d1d5db);
+
+            background: transparent;
+
+            color: inherit;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition:
+                border-color .2s,
+                box-shadow .2s;
+        }
+
+
+        .auth-field input:focus {
+            border-color:
+                var(--primary-color, #2563eb);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(37, 99, 235, .10);
+        }
+
+
+        .auth-submit {
+            width: 100%;
+
+            border: 0;
+
+            border-radius: 15px;
+
+            padding: 15px;
+
+            margin-top: 8px;
+
+            background:
+                var(--primary-color, #2563eb);
+
+            color: white;
+
+            font-size: 16px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition:
+                transform .2s,
+                opacity .2s;
+        }
+
+
+        .auth-submit:hover {
+            transform: translateY(-2px);
+        }
+
+
+        .auth-submit:disabled {
+            opacity: .6;
+            cursor: wait;
+            transform: none;
+        }
+
+
+        .auth-message {
+            min-height: 24px;
+
+            margin-top: 18px;
+
+            text-align: center;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        .auth-footer {
+            text-align: center;
+
+            margin-top: 22px;
+
+            opacity: .85;
+        }
+
+
+        .auth-footer a {
+            font-weight: 700;
+
+            color:
+                var(--primary-color, #2563eb);
+
+            text-decoration: none;
+        }
+
+
+        .auth-back {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 18px;
+
+            text-decoration: none;
+
+            color: inherit;
+
+            opacity: .7;
+        }
+
+
+        .auth-back:hover {
+            opacity: 1;
+        }
+
+
+        @media (max-width: 600px) {
+
+            .auth-page {
+                padding: 35px 15px;
+            }
+
+
+            .auth-card {
+                padding: 23px 18px;
+
+                border-radius: 20px;
+            }
+
+
+            .auth-header h1 {
+                font-size: 26px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="topbar">
+
+    <a
+        class="logo"
+        href="../index.html"
+    >
+
+        <span class="logo-icon">
+            W
+        </span>
+
+        <span>
+            Wortiva
+        </span>
+
+    </a>
+
+
+    <div class="header-actions">
+
+        <button
+            id="theme"
+            class="icon-button"
+            type="button"
+            aria-label="تغيير الوضع"
+        >
+            🌙
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="auth-page">
+
+    <div class="auth-wrapper">
+
+
+        <div class="auth-header">
+
+            <div class="auth-logo">
+                W
+            </div>
+
+            <h1>
+                إنشاء حساب
+            </h1>
+
+            <p>
+                ابدأ رحلتك مع Wortiva 🇩🇪
+            </p>
+
+        </div>
+
+
+
+        <section class="auth-card">
+
+
+            <form id="signupForm">
+
+
+                <!-- USERNAME -->
+
+                <div class="auth-field">
+
+                    <label for="username">
+                        اسم المستخدم
+                    </label>
+
+                    <input
+                        id="username"
+                        type="text"
+                        required
+                        autocomplete="name"
+                        placeholder="مثال: Mohammed"
+                    >
+
+                </div>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="auth-field">
+
+                    <label for="email">
+                        البريد الإلكتروني
+                    </label>
+
+                    <input
+                        id="email"
+                        type="email"
+                        required
+                        autocomplete="email"
+                        placeholder="example@email.com"
+                    >
+
+                </div>
+
+
+
+                <!-- PHONE -->
+
+                <div class="auth-field">
+
+                    <label for="phone">
+                        رقم الهاتف
+                        <small>
+                            (اختياري)
+                        </small>
+                    </label>
+
+                    <input
+                        id="phone"
+                        type="tel"
+                        autocomplete="tel"
+                        placeholder="01xxxxxxxxx"
+                    >
+
+                </div>
+
+
+
+                <!-- PASSWORD -->
+
+                <div class="auth-field">
+
+                    <label for="password">
+                        كلمة المرور
+                    </label>
+
+                    <input
+                        id="password"
+                        type="password"
+                        required
+                        minlength="6"
+                        autocomplete="new-password"
+                        placeholder="6 أحرف على الأقل"
+                    >
+
+                </div>
+
+
+
+                <button
+                    id="signupButton"
+                    class="auth-submit"
+                    type="submit"
+                >
+
+                    🚀 إنشاء الحساب
+
+                </button>
+
+
+            </form>
+
+
+
+            <div
+                id="signupMessage"
+                class="auth-message"
+            ></div>
+
+
+
+            <div class="auth-footer">
+
+                لديك حساب بالفعل؟
+
+                <a href="login.html">
+                    تسجيل الدخول
+                </a>
+
+            </div>
+
+
+            <a
+                class="auth-back"
+                href="../index.html"
+            >
+                ← العودة إلى الرئيسية
+            </a>
+
+
+        </section>
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        Wortiva
+    </div>
+
+    <p>
+        تعلم الألمانية بطريقة أسهل 🇩🇪
+    </p>
+
+    <div class="copyright">
+        creating by mohamed Ibrahim khafagy
+    </div>
+
+</footer>
+
+
+
+<!-- =========================
+     SUPABASE
+========================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="../data/supabase.js"></script>
+
+
+
+<script>
+
+/* =========================
+   THEME
+========================= */
+
+const themeButton =
+    document.getElementById("theme");
+
+
+if (
+    localStorage.getItem("theme") === "dark"
+) {
+
+    document.body.classList.add("dark");
+
+    themeButton.textContent = "☀️";
+
+}
+
+
+themeButton.addEventListener(
+    "click",
+    function () {
+
+        document.body.classList.toggle("dark");
+
+        const dark =
+            document.body.classList.contains("dark");
+
+        localStorage.setItem(
+            "theme",
+            dark
+                ? "dark"
+                : "light"
+        );
+
+        themeButton.textContent =
+            dark
+                ? "☀️"
+                : "🌙";
+
+    }
+);
+
+
+
+/* =========================
+   SIGNUP
+========================= */
+
+const signupForm =
+    document.getElementById("signupForm");
+
+
+const signupButton =
+    document.getElementById("signupButton");
+
+
+const signupMessage =
+    document.getElementById("signupMessage");
+
+
+signupForm.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        const username =
+            document
+                .getElementById("username")
+                .value
+                .trim();
+
+
+        const email =
+            document
+                .getElementById("email")
+                .value
+                .trim();
+
+
+        const phone =
+            document
+                .getElementById("phone")
+                .value
+                .trim();
+
+
+        const password =
+            document
+                .getElementById("password")
+                .value;
+
+
+        if (username.length < 2) {
+
+            signupMessage.textContent =
+                "❌ اكتب اسم مستخدم صحيح.";
+
+            return;
+
+        }
+
+
+        if (password.length < 6) {
+
+            signupMessage.textContent =
+                "❌ كلمة المرور يجب أن تكون 6 أحرف على الأقل.";
+
+            return;
+
+        }
+
+
+        signupButton.disabled = true;
+
+        signupButton.textContent =
+            "⏳ جاري إنشاء الحساب...";
+
+
+        signupMessage.textContent =
+            "";
+
+
+        try {
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient.auth.signUp({
+
+                    email: email,
+
+                    password: password,
+
+                    options: {
+
+                        data: {
+
+                            username: username,
+
+                            phone: phone
+
+                        }
+
+                    }
+
+                });
+
+
+            if (error) {
+
+                console.error(
+                    "Signup error:",
+                    error
+                );
+
+                signupMessage.textContent =
+                    "❌ " + error.message;
+
+                signupButton.disabled = false;
+
+                signupButton.textContent =
+                    "🚀 إنشاء الحساب";
+
+                return;
+
+            }
+
+
+            console.log(
+                "Signup successful:",
+                data
+            );
+
+
+            /*
+             * لو تأكيد البريد الإلكتروني مطلوب
+             */
+
+            if (
+                data.user &&
+                !data.session
+            ) {
+
+                signupMessage.textContent =
+                    "✅ تم إنشاء الحساب. افتح بريدك الإلكتروني لتأكيد الحساب.";
+
+                signupButton.disabled = false;
+
+                signupButton.textContent =
+                    "🚀 تم إنشاء الحساب";
+
+                return;
+
+            }
+
+
+            /*
+             * لو تم تسجيل الدخول مباشرة
+             */
+
+            signupMessage.textContent =
+                "✅ تم إنشاء الحساب بنجاح!";
+
+
+            setTimeout(
+                function() {
+
+                    window.location.href =
+                        "../index.html";
+
+                },
+                900
+            );
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Signup failed:",
+                error
+            );
+
+
+            signupMessage.textContent =
+                "❌ حدث خطأ أثناء إنشاء الحساب.";
+
+
+            signupButton.disabled = false;
+
+            signupButton.textContent =
+                "🚀 إنشاء الحساب";
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

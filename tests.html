@@ -1,0 +1,2233 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Wortiva - الاختبارات</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/main.css">
+
+    <script src="../data/a1.js"></script>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="topbar">
+
+    <a
+        href="../index.html"
+        class="logo">
+
+        <span class="logo-icon">
+            W
+        </span>
+
+        <span>
+            Wortiva
+        </span>
+
+    </a>
+
+
+    <div class="header-actions">
+
+        <button
+            class="icon-button"
+            id="themeButton"
+            type="button">
+
+            🌙
+
+        </button>
+
+
+        <a
+            href="profile.html"
+            class="profile-button">
+
+           <div class="profile-avatar">
+
+    <img
+        id="headerAvatar"
+        src=""
+        alt="صورة المستخدم"
+        style="display:none;"
+    >
+
+    <span id="headerAvatarDefault">
+        👤
+    </span>
+
+</div>
+
+<div class="profile-info">
+
+    <span
+        id="headerUsername"
+        class="profile-name"
+    >
+        حسابي
+    </span>
+
+    <small id="headerAccountText">
+        تسجيل الدخول
+    </small>
+
+</div>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="tests-page">
+
+
+    <!-- =================================================
+         PAGE HEADING
+    ================================================== -->
+
+    <section class="page-heading">
+
+        <a
+            href="../index.html"
+            class="back-button">
+
+            → الرئيسية
+
+        </a>
+
+
+        <div class="page-icon">
+            📝
+        </div>
+
+
+        <h1>
+            اختبارات Wortiva
+        </h1>
+
+
+        <p>
+            اختبر نفسك في كلمات Netzwerk
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         TEST SETTINGS
+    ================================================== -->
+
+    <section class="test-settings">
+
+        <div class="settings-title">
+            ⚙️ إعداد الاختبار
+        </div>
+
+
+        <div class="settings-grid">
+
+
+            <!-- Kapitel -->
+
+            <div class="setting-box">
+
+                <label for="chapterSelect">
+                    📚 اختر Kapitel
+                </label>
+
+
+                <select id="chapterSelect">
+
+                    <option value="all">
+                        كل الـ Kapitel
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- عدد الأسئلة -->
+
+            <div class="setting-box">
+
+                <label for="questionCountSelect">
+                    🔢 عدد الأسئلة
+                </label>
+
+
+                <select id="questionCountSelect">
+
+                    <option value="5">
+                        5 أسئلة
+                    </option>
+
+                    <option
+                        value="10"
+                        selected>
+                        10 أسئلة
+                    </option>
+
+                    <option value="15">
+                        15 سؤال
+                    </option>
+
+                    <option value="20">
+                        20 سؤال
+                    </option>
+
+                    <option value="all">
+                        كل الأسئلة المتاحة
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="availableWords"
+            class="available-words">
+
+            عدد الكلمات المتاحة: 0
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         TEST TYPES
+    ================================================== -->
+
+    <section class="tests-section">
+
+        <h2 class="section-title">
+            اختر نوع الاختبار
+        </h2>
+
+
+        <div class="tests-grid">
+
+
+            <!-- ألماني عربي -->
+
+            <button
+                class="test-card"
+                data-test="germanArabic">
+
+                <div class="test-icon">
+                    🇩🇪
+                </div>
+
+
+                <div class="test-content">
+
+                    <span>
+                        اختبار 1
+                    </span>
+
+                    <h2>
+                        ألماني → عربي
+                    </h2>
+
+                    <p>
+                        شاهد الكلمة الألمانية واختر معناها
+                    </p>
+
+                </div>
+
+
+                <span class="test-arrow">
+                    ←
+                </span>
+
+            </button>
+
+
+
+            <!-- عربي ألماني -->
+
+            <button
+                class="test-card"
+                data-test="arabicGerman">
+
+                <div class="test-icon">
+                    🇪🇬
+                </div>
+
+
+                <div class="test-content">
+
+                    <span>
+                        اختبار 2
+                    </span>
+
+                    <h2>
+                        عربي → ألماني
+                    </h2>
+
+                    <p>
+                        شاهد المعنى واختر الكلمة الألمانية
+                    </p>
+
+                </div>
+
+
+                <span class="test-arrow">
+                    ←
+                </span>
+
+            </button>
+
+
+
+            <!-- Artikel -->
+
+            <button
+                class="test-card"
+                data-test="article">
+
+                <div class="test-icon">
+                    📚
+                </div>
+
+
+                <div class="test-content">
+
+                    <span>
+                        اختبار 3
+                    </span>
+
+                    <h2>
+                        Artikel
+                    </h2>
+
+                    <p>
+                        اختر der أو die أو das
+                    </p>
+
+                </div>
+
+
+                <span class="test-arrow">
+                    ←
+                </span>
+
+            </button>
+
+
+
+            <!-- Plural -->
+
+            <button
+                class="test-card"
+                data-test="plural">
+
+                <div class="test-icon">
+                    🔤
+                </div>
+
+
+                <div class="test-content">
+
+                    <span>
+                        اختبار 4
+                    </span>
+
+                    <h2>
+                        Plural
+                    </h2>
+
+                    <p>
+                        اختر صيغة الجمع الصحيحة
+                    </p>
+
+                </div>
+
+
+                <span class="test-arrow">
+                    ←
+                </span>
+
+            </button>
+
+
+
+            <!-- Mixed -->
+
+            <button
+                class="test-card"
+                data-test="mixed">
+
+                <div class="test-icon">
+                    🎯
+                </div>
+
+
+                <div class="test-content">
+
+                    <span>
+                        اختبار 5
+                    </span>
+
+                    <h2>
+                        اختبار متنوع
+                    </h2>
+
+                    <p>
+                        أسئلة متنوعة من الكلمات
+                    </p>
+
+                </div>
+
+
+                <span class="test-arrow">
+                    ←
+                </span>
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         QUIZ
+    ================================================== -->
+
+    <section
+        id="quizSection"
+        class="quiz-section"
+        style="display:none;">
+
+
+        <div class="quiz-header">
+
+            <div>
+
+                <span id="quizType">
+                    الاختبار
+                </span>
+
+                <h2 id="questionNumber">
+                    السؤال 1
+                </h2>
+
+            </div>
+
+
+            <div
+                id="scoreDisplay"
+                class="score-display">
+
+                0 / 0
+
+            </div>
+
+        </div>
+
+
+        <div class="progress-container">
+
+            <div
+                id="progressBar"
+                class="progress-bar">
+
+            </div>
+
+        </div>
+
+
+        <div class="question-card">
+
+            <div
+                id="questionLabel"
+                class="question-label">
+
+                اختر الإجابة الصحيحة
+
+            </div>
+
+
+            <div
+                id="questionText"
+                class="question-text">
+
+            </div>
+
+
+            <div
+                id="answersGrid"
+                class="answers-grid">
+
+            </div>
+
+
+            <div
+                id="answerMessage"
+                class="answer-message">
+
+            </div>
+
+
+            <button
+                id="nextQuestion"
+                class="next-question-button"
+                type="button"
+                disabled>
+
+                السؤال التالي ←
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         RESULT
+    ================================================== -->
+
+    <section
+        id="resultSection"
+        class="result-section"
+        style="display:none;">
+
+
+        <div class="result-icon">
+            🏆
+        </div>
+
+
+        <h2>
+            انتهى الاختبار!
+        </h2>
+
+
+        <p id="resultText">
+            نتيجتك
+        </p>
+
+
+        <div
+            id="resultScore"
+            class="result-score">
+
+            0 / 0
+
+        </div>
+
+
+        <div
+            id="resultXP"
+            class="result-xp">
+
+            ⭐ +0 XP
+
+        </div>
+
+
+        <button
+            id="restartButton"
+            class="restart-button"
+            type="button">
+
+            🔄 اختبار جديد
+
+        </button>
+
+
+        <button
+            id="backTestsButton"
+            class="back-tests-button"
+            type="button">
+
+            ← أنواع الاختبارات
+
+        </button>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-logo">
+        Wortiva
+    </div>
+
+
+    <p>
+        تعلم الألمانية بطريقة أسهل 🇩🇪
+    </p>
+<div class="footer-support">
+
+    <a
+        href="support.html"
+        class="support-link"
+    >
+        <span class="support-link-icon">
+            🛠️
+        </span>
+
+        <span class="support-link-content">
+
+            <strong>
+                الدعم والشكاوى
+            </strong>
+
+            <small>
+                ساعدنا في تحسين Wortiva
+            </small>
+
+        </span>
+
+        <span class="support-link-arrow">
+            ←
+        </span>
+
+    </a>
+
+</div>
+
+    <div class="copyright">
+        creating by mohamed Ibrahim khafagy
+    </div>
+
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../data/supabase.js"></script>
+<script src="../data/header.js"></script>
+
+
+<script>
+
+
+/* =====================================================
+   THEME
+===================================================== */
+
+const themeButton =
+    document.getElementById("themeButton");
+
+
+if (
+    localStorage.getItem("theme") === "dark"
+) {
+
+    document.body.classList.add("dark");
+
+    themeButton.textContent = "☀️";
+
+}
+
+
+themeButton.addEventListener(
+    "click",
+    function () {
+
+        document.body.classList.toggle("dark");
+
+        const dark =
+            document.body.classList.contains("dark");
+
+
+        localStorage.setItem(
+            "theme",
+            dark ? "dark" : "light"
+        );
+
+
+        themeButton.textContent =
+            dark ? "☀️" : "🌙";
+
+    }
+);
+
+
+
+/* =====================================================
+   DATA
+===================================================== */
+
+const allWords =
+    Array.isArray(netzwerkA1Words)
+        ? netzwerkA1Words.filter(
+            function(word) {
+
+                return (
+                    word.german &&
+                    word.arabic
+                );
+
+            }
+        )
+        : [];
+
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const chapterSelect =
+    document.getElementById(
+        "chapterSelect"
+    );
+
+
+const questionCountSelect =
+    document.getElementById(
+        "questionCountSelect"
+    );
+
+
+const availableWords =
+    document.getElementById(
+        "availableWords"
+    );
+
+
+const testCards =
+    document.querySelectorAll(
+        ".test-card"
+    );
+
+
+const quizSection =
+    document.getElementById(
+        "quizSection"
+    );
+
+
+const resultSection =
+    document.getElementById(
+        "resultSection"
+    );
+
+
+const quizType =
+    document.getElementById(
+        "quizType"
+    );
+
+
+const questionNumber =
+    document.getElementById(
+        "questionNumber"
+    );
+
+
+const scoreDisplay =
+    document.getElementById(
+        "scoreDisplay"
+    );
+
+
+const progressBar =
+    document.getElementById(
+        "progressBar"
+    );
+
+
+const questionText =
+    document.getElementById(
+        "questionText"
+    );
+
+
+const answersGrid =
+    document.getElementById(
+        "answersGrid"
+    );
+
+
+const answerMessage =
+    document.getElementById(
+        "answerMessage"
+    );
+
+
+const nextQuestion =
+    document.getElementById(
+        "nextQuestion"
+    );
+
+
+const resultText =
+    document.getElementById(
+        "resultText"
+    );
+
+
+const resultScore =
+    document.getElementById(
+        "resultScore"
+    );
+
+
+const resultXP =
+    document.getElementById(
+        "resultXP"
+    );
+
+
+const restartButton =
+    document.getElementById(
+        "restartButton"
+    );
+
+
+const backTestsButton =
+    document.getElementById(
+        "backTestsButton"
+    );
+
+
+
+/* =====================================================
+   QUIZ STATE
+===================================================== */
+
+let currentTest = "";
+
+let questions = [];
+
+let currentQuestion = 0;
+
+let score = 0;
+
+let answered = false;
+
+
+
+/* =====================================================
+   XP SYSTEM
+===================================================== */
+
+const XP_PER_CORRECT_ANSWER = 10;
+
+
+function getXP() {
+
+    return Number(
+        localStorage.getItem(
+            "wortivaXP"
+        ) || 0
+    );
+
+}
+
+
+function saveXP(amount) {
+
+    const currentXP =
+        getXP();
+
+
+    const newXP =
+        currentXP + amount;
+
+
+    localStorage.setItem(
+        "wortivaXP",
+        String(newXP)
+    );
+
+
+    return newXP;
+
+}
+
+
+
+/* =====================================================
+   STREAK SYSTEM
+===================================================== */
+
+function getTodayKey() {
+
+    const today =
+        new Date();
+
+
+    const year =
+        today.getFullYear();
+
+
+    const month =
+        String(
+            today.getMonth() + 1
+        ).padStart(2, "0");
+
+
+    const day =
+        String(
+            today.getDate()
+        ).padStart(2, "0");
+
+
+    return `${year}-${month}-${day}`;
+
+}
+
+
+function getYesterdayKey() {
+
+    const yesterday =
+        new Date();
+
+
+    yesterday.setDate(
+        yesterday.getDate() - 1
+    );
+
+
+    const year =
+        yesterday.getFullYear();
+
+
+    const month =
+        String(
+            yesterday.getMonth() + 1
+        ).padStart(2, "0");
+
+
+    const day =
+        String(
+            yesterday.getDate()
+        ).padStart(2, "0");
+
+
+    return `${year}-${month}-${day}`;
+
+}
+
+
+function updateStreak() {
+
+    const today =
+        getTodayKey();
+
+
+    const yesterday =
+        getYesterdayKey();
+
+
+    const lastActivity =
+        localStorage.getItem(
+            "wortivaLastActivity"
+        );
+
+
+    let streak =
+        Number(
+            localStorage.getItem(
+                "wortivaStreak"
+            ) || 0
+        );
+
+
+    /*
+     * أول نشاط في Wortiva
+     */
+
+    if (!lastActivity) {
+
+        streak = 1;
+
+    }
+
+
+    /*
+     * نشاط جديد في اليوم التالي
+     */
+
+    else if (
+        lastActivity === yesterday
+    ) {
+
+        streak++;
+
+    }
+
+
+    /*
+     * نفس اليوم
+     */
+
+    else if (
+        lastActivity === today
+    ) {
+
+        /*
+         * لا نزيد الـ Streak
+         */
+
+    }
+
+
+    /*
+     * انقطاع أكثر من يوم
+     */
+
+    else {
+
+        streak = 1;
+
+    }
+
+
+    localStorage.setItem(
+        "wortivaStreak",
+        String(streak)
+    );
+
+
+    localStorage.setItem(
+        "wortivaLastActivity",
+        today
+    );
+
+
+    return streak;
+
+}
+
+
+
+/* =====================================================
+   BUILD CHAPTERS
+===================================================== */
+
+const chapterMap =
+    new Map();
+
+
+allWords.forEach(
+    function(word) {
+
+        const chapter =
+            Number(word.chapter);
+
+
+        if (!chapter) {
+
+            return;
+
+        }
+
+
+        if (
+            !chapterMap.has(chapter)
+        ) {
+
+            chapterMap.set(
+                chapter,
+                {
+                    id: chapter,
+
+                    title:
+                        word.chapterTitle ||
+                        `Kapitel ${chapter}`,
+
+                    arabic:
+                        word.chapterArabic ||
+                        ""
+
+                }
+            );
+
+        }
+
+    }
+);
+
+
+const chapters =
+    Array.from(
+        chapterMap.values()
+    ).sort(
+        function(a, b) {
+
+            return a.id - b.id;
+
+        }
+    );
+
+
+chapters.forEach(
+    function(chapter) {
+
+        const option =
+            document.createElement(
+                "option"
+            );
+
+
+        option.value =
+            String(chapter.id);
+
+
+        option.textContent =
+            `Kapitel ${chapter.id} – ${chapter.title}`;
+
+
+        chapterSelect.appendChild(
+            option
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   GET SELECTED WORDS
+===================================================== */
+
+function getSelectedWords() {
+
+    const selectedChapter =
+        chapterSelect.value;
+
+
+    if (
+        selectedChapter === "all"
+    ) {
+
+        return [
+            ...allWords
+        ];
+
+    }
+
+
+    return allWords.filter(
+        function(word) {
+
+            return (
+                Number(word.chapter)
+                ===
+                Number(selectedChapter)
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   UPDATE AVAILABLE WORDS
+===================================================== */
+
+function updateAvailableWords() {
+
+    const selected =
+        getSelectedWords();
+
+
+    availableWords.textContent =
+        `عدد الكلمات المتاحة في الاختبار: ${selected.length} كلمة`;
+
+}
+
+
+chapterSelect.addEventListener(
+    "change",
+    updateAvailableWords
+);
+
+
+questionCountSelect.addEventListener(
+    "change",
+    updateAvailableWords
+);
+
+
+updateAvailableWords();
+
+
+
+/* =====================================================
+   SHUFFLE
+===================================================== */
+
+function shuffle(array) {
+
+    const copy =
+        [...array];
+
+
+    for (
+        let i = copy.length - 1;
+        i > 0;
+        i--
+    ) {
+
+        const j =
+            Math.floor(
+                Math.random() *
+                (i + 1)
+            );
+
+
+        [
+            copy[i],
+            copy[j]
+        ] =
+        [
+            copy[j],
+            copy[i]
+        ];
+
+    }
+
+
+    return copy;
+
+}
+
+
+
+/* =====================================================
+   QUESTION COUNT
+===================================================== */
+
+function getQuestionCount() {
+
+    const value =
+        questionCountSelect.value;
+
+
+    if (
+        value === "all"
+    ) {
+
+        return Infinity;
+
+    }
+
+
+    return Number(value);
+
+}
+
+
+
+/* =====================================================
+   WRONG ANSWERS
+===================================================== */
+
+function getWrongAnswers(
+    correct,
+    property,
+    sourceWords
+) {
+
+    const values =
+        sourceWords
+            .map(
+                function(word) {
+
+                    return String(
+                        word[property] || ""
+                    ).trim();
+
+                }
+            )
+            .filter(
+                function(value) {
+
+                    return (
+                        value &&
+                        value !== correct
+                    );
+
+                }
+            );
+
+
+    return shuffle(
+        [
+            ...new Set(values)
+        ]
+    ).slice(
+        0,
+        3
+    );
+
+}
+
+
+
+/* =====================================================
+   CREATE QUESTIONS
+===================================================== */
+
+function createQuestions() {
+
+    const selectedWords =
+        getSelectedWords();
+
+
+    let usableWords =
+        [
+            ...selectedWords
+        ];
+
+
+    /*
+     * Artikel
+     */
+
+    if (
+        currentTest === "article"
+    ) {
+
+        usableWords =
+            usableWords.filter(
+                function(word) {
+
+                    return (
+                        word.article &&
+                        word.article.trim()
+                    );
+
+                }
+            );
+
+    }
+
+
+    /*
+     * Plural
+     */
+
+    if (
+        currentTest === "plural"
+    ) {
+
+        usableWords =
+            usableWords.filter(
+                function(word) {
+
+                    return (
+                        word.plural &&
+                        word.plural.trim()
+                    );
+
+                }
+            );
+
+    }
+
+
+    const count =
+        getQuestionCount();
+
+
+    const selected =
+        shuffle(
+            usableWords
+        ).slice(
+            0,
+            count
+        );
+
+
+    return selected.map(
+        function(word) {
+
+            let question;
+
+            let correct;
+
+            let property;
+
+
+
+            /* =============================================
+               GERMAN → ARABIC
+            ============================================== */
+
+            if (
+                currentTest ===
+                "germanArabic"
+            ) {
+
+                question =
+                    word.article
+                        ? `${word.article} ${word.german}`
+                        : word.german;
+
+
+                correct =
+                    word.arabic;
+
+
+                property =
+                    "arabic";
+
+            }
+
+
+
+            /* =============================================
+               ARABIC → GERMAN
+            ============================================== */
+
+            else if (
+                currentTest ===
+                "arabicGerman"
+            ) {
+
+                question =
+                    word.arabic;
+
+
+                correct =
+                    word.article
+                        ? `${word.article} ${word.german}`
+                        : word.german;
+
+
+                property =
+                    "german";
+
+            }
+
+
+
+            /* =============================================
+               ARTIKEL
+            ============================================== */
+
+            else if (
+                currentTest ===
+                "article"
+            ) {
+
+                question =
+                    word.german;
+
+
+                correct =
+                    word.article;
+
+
+                property =
+                    "article";
+
+            }
+
+
+
+            /* =============================================
+               PLURAL
+            ============================================== */
+
+            else if (
+                currentTest ===
+                "plural"
+            ) {
+
+                question =
+                    word.article
+                        ? `${word.article} ${word.german}`
+                        : word.german;
+
+
+                correct =
+                    word.plural;
+
+
+                property =
+                    "plural";
+
+            }
+
+
+
+            /* =============================================
+               MIXED
+            ============================================== */
+
+            else {
+
+                const possibleTypes = [
+
+                    "germanArabic",
+
+                    "arabicGerman",
+
+                    "article",
+
+                    "plural"
+
+                ];
+
+
+                let type =
+                    possibleTypes[
+                        Math.floor(
+                            Math.random() *
+                            possibleTypes.length
+                        )
+                    ];
+
+
+                /*
+                 * لو لا يوجد Artikel
+                 */
+
+                if (
+                    type === "article" &&
+                    !word.article
+                ) {
+
+                    type =
+                        "germanArabic";
+
+                }
+
+
+                /*
+                 * لو لا يوجد Plural
+                 */
+
+                if (
+                    type === "plural" &&
+                    !word.plural
+                ) {
+
+                    type =
+                        "germanArabic";
+
+                }
+
+
+                if (
+                    type ===
+                    "arabicGerman"
+                ) {
+
+                    question =
+                        word.arabic;
+
+
+                    correct =
+                        word.article
+                            ? `${word.article} ${word.german}`
+                            : word.german;
+
+
+                    property =
+                        "german";
+
+                }
+
+
+                else if (
+                    type === "article"
+                ) {
+
+                    question =
+                        word.german;
+
+
+                    correct =
+                        word.article;
+
+
+                    property =
+                        "article";
+
+                }
+
+
+                else if (
+                    type === "plural"
+                ) {
+
+                    question =
+                        word.article
+                            ? `${word.article} ${word.german}`
+                            : word.german;
+
+
+                    correct =
+                        word.plural;
+
+
+                    property =
+                        "plural";
+
+                }
+
+
+                else {
+
+                    question =
+                        word.article
+                            ? `${word.article} ${word.german}`
+                            : word.german;
+
+
+                    correct =
+                        word.arabic;
+
+
+                    property =
+                        "arabic";
+
+                }
+
+            }
+
+
+            const wrong =
+                getWrongAnswers(
+                    correct,
+                    property,
+                    selectedWords
+                );
+
+
+            const answers =
+                shuffle(
+                    [
+                        correct,
+                        ...wrong
+                    ]
+                );
+
+
+            return {
+
+                word,
+                question,
+                correct,
+                answers
+
+            };
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   START TEST
+===================================================== */
+
+function startTest(type) {
+
+    const selected =
+        getSelectedWords();
+
+
+    if (
+        selected.length < 2
+    ) {
+
+        alert(
+            "لا توجد كلمات كافية في هذا الـKapitel لإجراء الاختبار."
+        );
+
+        return;
+
+    }
+
+
+    currentTest =
+        type;
+
+
+    currentQuestion =
+        0;
+
+
+    score =
+        0;
+
+
+    answered =
+        false;
+
+
+    questions =
+        createQuestions();
+
+
+    if (
+        questions.length === 0
+    ) {
+
+        alert(
+            "لا توجد كلمات مناسبة لهذا النوع من الاختبار في هذا الـKapitel."
+        );
+
+        return;
+
+    }
+
+
+    document.querySelector(
+        ".tests-section"
+    ).style.display =
+        "none";
+
+
+    document.querySelector(
+        ".test-settings"
+    ).style.display =
+        "none";
+
+
+    resultSection.style.display =
+        "none";
+
+
+    quizSection.style.display =
+        "block";
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+
+    showQuestion();
+
+}
+
+
+
+/* =====================================================
+   TEST TITLE
+===================================================== */
+
+function getTestTitle() {
+
+    const titles = {
+
+        germanArabic:
+            "ألماني → عربي",
+
+        arabicGerman:
+            "عربي → ألماني",
+
+        article:
+            "Artikel",
+
+        plural:
+            "Plural",
+
+        mixed:
+            "اختبار متنوع"
+
+    };
+
+
+    return (
+        titles[currentTest]
+        ||
+        "اختبار"
+    );
+
+}
+
+
+
+/* =====================================================
+   SHOW QUESTION
+===================================================== */
+
+function showQuestion() {
+
+    const question =
+        questions[
+            currentQuestion
+        ];
+
+
+    if (!question) {
+
+        finishTest();
+
+        return;
+
+    }
+
+
+    answered =
+        false;
+
+
+    answerMessage.textContent =
+        "";
+
+
+    answerMessage.className =
+        "answer-message";
+
+
+    nextQuestion.disabled =
+        true;
+
+
+    quizType.textContent =
+        getTestTitle();
+
+
+    questionNumber.textContent =
+        `السؤال ${currentQuestion + 1} من ${questions.length}`;
+
+
+    scoreDisplay.textContent =
+        `${score} / ${currentQuestion}`;
+
+
+    progressBar.style.width =
+        `${
+            (
+                currentQuestion /
+                questions.length
+            ) * 100
+        }%`;
+
+
+    questionText.textContent =
+        question.question;
+
+
+    answersGrid.innerHTML =
+        "";
+
+
+    question.answers.forEach(
+        function(answer) {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.type =
+                "button";
+
+
+            button.className =
+                "answer-button";
+
+
+            button.textContent =
+                answer;
+
+
+            button.addEventListener(
+                "click",
+                function() {
+
+                    chooseAnswer(
+                        button,
+                        answer,
+                        question.correct
+                    );
+
+                }
+            );
+
+
+            answersGrid.appendChild(
+                button
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   CHOOSE ANSWER
+===================================================== */
+
+function chooseAnswer(
+    button,
+    answer,
+    correct
+) {
+
+    if (answered) {
+
+        return;
+
+    }
+
+
+    answered =
+        true;
+
+
+    const buttons =
+        answersGrid.querySelectorAll(
+            ".answer-button"
+        );
+
+
+    buttons.forEach(
+        function(btn) {
+
+            btn.disabled =
+                true;
+
+        }
+    );
+
+
+    if (
+        answer === correct
+    ) {
+
+        score++;
+
+
+        button.classList.add(
+            "correct"
+        );
+
+
+        answerMessage.textContent =
+            "🎉 إجابة صحيحة!";
+
+
+        answerMessage.classList.add(
+            "correct-message"
+        );
+
+    }
+
+
+    else {
+
+        button.classList.add(
+            "wrong"
+        );
+
+
+        buttons.forEach(
+            function(btn) {
+
+                if (
+                    btn.textContent ===
+                    correct
+                ) {
+
+                    btn.classList.add(
+                        "correct"
+                    );
+
+                }
+
+            }
+        );
+
+
+        answerMessage.textContent =
+            `❌ الإجابة الصحيحة: ${correct}`;
+
+
+        answerMessage.classList.add(
+            "wrong-message"
+        );
+
+    }
+
+
+    scoreDisplay.textContent =
+        `${score} / ${currentQuestion + 1}`;
+
+
+    nextQuestion.disabled =
+        false;
+
+}
+
+
+
+/* =====================================================
+   NEXT QUESTION
+===================================================== */
+
+nextQuestion.addEventListener(
+    "click",
+    function() {
+
+        currentQuestion++;
+
+
+        showQuestion();
+
+    }
+);
+
+
+
+/* =====================================================
+   FINISH TEST
+===================================================== */
+
+function finishTest() {
+
+    quizSection.style.display =
+        "none";
+
+
+    resultSection.style.display =
+        "block";
+
+
+    const total =
+        questions.length;
+
+
+    const percentage =
+        total
+            ? Math.round(
+                (score / total) * 100
+            )
+            : 0;
+
+
+    /*
+     * XP المكتسب في الاختبار
+     */
+
+    const earnedXP =
+        score *
+        XP_PER_CORRECT_ANSWER;
+
+
+    /*
+     * حفظ XP
+     */
+
+    const totalXP =
+        saveXP(
+            earnedXP
+        );
+
+
+    /*
+     * تحديث Streak
+     */
+
+    const streak =
+        updateStreak();
+
+
+    /*
+     * عرض النتيجة
+     */
+
+    resultScore.textContent =
+        `${score} / ${total}`;
+
+
+    resultText.textContent =
+        `حصلت على ${percentage}%`;
+
+
+    resultXP.innerHTML =
+        `
+        ⭐ +${earnedXP} XP
+        <br>
+        <small>
+            إجمالي XP: ${totalXP}
+        </small>
+        <br>
+        <small>
+            🔥 Streak: ${streak} يوم
+        </small>
+        `;
+
+
+    /*
+     * أفضل نتيجة
+     */
+
+    const key =
+        `wortivaTestBest_${currentTest}_${chapterSelect.value}`;
+
+
+    const oldBest =
+        Number(
+            localStorage.getItem(key)
+            || 0
+        );
+
+
+    if (
+        score > oldBest
+    ) {
+
+        localStorage.setItem(
+            key,
+            String(score)
+        );
+
+    }
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+
+/* =====================================================
+   RESTART
+===================================================== */
+
+restartButton.addEventListener(
+    "click",
+    function() {
+
+        startTest(
+            currentTest
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   BACK TO TEST TYPES
+===================================================== */
+
+backTestsButton.addEventListener(
+    "click",
+    function() {
+
+        resultSection.style.display =
+            "none";
+
+
+        quizSection.style.display =
+            "none";
+
+
+        document.querySelector(
+            ".tests-section"
+        ).style.display =
+            "block";
+
+
+        document.querySelector(
+            ".test-settings"
+        ).style.display =
+            "block";
+
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    }
+);
+
+
+
+/* =====================================================
+   TEST CARDS
+===================================================== */
+
+testCards.forEach(
+    function(card) {
+
+        card.addEventListener(
+            "click",
+            function() {
+
+                startTest(
+                    card.dataset.test
+                );
+
+            }
+        );
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>

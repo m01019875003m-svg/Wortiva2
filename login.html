@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Wortiva - تسجيل الدخول</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/main.css"
+    >
+
+    <style>
+
+        .auth-page {
+            min-height: calc(100vh - 160px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 20px;
+        }
+
+        .auth-wrapper {
+            width: 100%;
+            max-width: 480px;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .auth-logo {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 22px;
+
+            font-size: 30px;
+            font-weight: 800;
+
+            background: var(--primary-color, #2563eb);
+            color: white;
+
+            box-shadow:
+                0 12px 30px rgba(37, 99, 235, .20);
+        }
+
+        .auth-header h1 {
+            margin: 0 0 8px;
+            font-size: 30px;
+        }
+
+        .auth-header p {
+            margin: 0;
+            opacity: .7;
+        }
+
+        .auth-card {
+            background: var(--card-bg, #ffffff);
+
+            border: 1px solid
+                var(--border-color, #e5e7eb);
+
+            border-radius: 24px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 15px 45px rgba(0, 0, 0, .08);
+        }
+
+        .auth-field {
+            margin-bottom: 18px;
+        }
+
+        .auth-field label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .auth-field input {
+            width: 100%;
+            box-sizing: border-box;
+
+            padding: 14px 16px;
+
+            border-radius: 14px;
+
+            border: 1px solid
+                var(--border-color, #d1d5db);
+
+            background: transparent;
+
+            color: inherit;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition:
+                border-color .2s,
+                box-shadow .2s;
+        }
+
+        .auth-field input:focus {
+            border-color:
+                var(--primary-color, #2563eb);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(37, 99, 235, .10);
+        }
+
+        .auth-submit {
+            width: 100%;
+
+            border: 0;
+
+            border-radius: 15px;
+
+            padding: 15px;
+
+            margin-top: 8px;
+
+            background:
+                var(--primary-color, #2563eb);
+
+            color: white;
+
+            font-size: 16px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition:
+                transform .2s,
+                opacity .2s;
+        }
+
+        .auth-submit:hover {
+            transform: translateY(-2px);
+        }
+
+        .auth-submit:disabled {
+            opacity: .6;
+            cursor: wait;
+            transform: none;
+        }
+
+        .auth-message {
+            min-height: 24px;
+
+            margin-top: 18px;
+
+            text-align: center;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+        .auth-footer {
+            text-align: center;
+
+            margin-top: 22px;
+
+            opacity: .85;
+        }
+
+        .auth-footer a {
+            font-weight: 700;
+
+            color:
+                var(--primary-color, #2563eb);
+
+            text-decoration: none;
+        }
+
+        .auth-back {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 18px;
+
+            text-decoration: none;
+
+            color: inherit;
+
+            opacity: .7;
+        }
+
+        @media (max-width: 600px) {
+
+            .auth-page {
+                padding: 35px 15px;
+            }
+
+            .auth-card {
+                padding: 23px 18px;
+                border-radius: 20px;
+            }
+
+            .auth-header h1 {
+                font-size: 26px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="topbar">
+
+    <a
+        class="logo"
+        href="../index.html"
+    >
+
+        <span class="logo-icon">
+            W
+        </span>
+
+        <span>
+            Wortiva
+        </span>
+
+    </a>
+
+
+    <div class="header-actions">
+
+        <button
+            id="theme"
+            class="icon-button"
+            type="button"
+            aria-label="تغيير الوضع"
+        >
+            🌙
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<main class="auth-page">
+
+    <div class="auth-wrapper">
+
+
+        <div class="auth-header">
+
+            <div class="auth-logo">
+                W
+            </div>
+
+            <h1>
+                تسجيل الدخول
+            </h1>
+
+            <p>
+                أهلاً بك مرة أخرى في Wortiva 🇩🇪
+            </p>
+
+        </div>
+
+
+
+        <section class="auth-card">
+
+
+            <form id="loginForm">
+
+
+                <div class="auth-field">
+
+                    <label for="email">
+                        البريد الإلكتروني
+                    </label>
+
+                    <input
+                        id="email"
+                        type="email"
+                        required
+                        autocomplete="email"
+                        placeholder="example@email.com"
+                    >
+
+                </div>
+
+
+
+                <div class="auth-field">
+
+                    <label for="password">
+                        كلمة المرور
+                    </label>
+
+                    <input
+                        id="password"
+                        type="password"
+                        required
+                        autocomplete="current-password"
+                        placeholder="كلمة المرور"
+                    >
+
+                </div>
+
+
+
+                <button
+                    id="loginButton"
+                    class="auth-submit"
+                    type="submit"
+                >
+
+                    🔐 تسجيل الدخول
+
+                </button>
+
+
+            </form>
+
+
+
+            <div
+                id="loginMessage"
+                class="auth-message"
+            ></div>
+
+
+
+            <div class="auth-footer">
+
+                ليس لديك حساب؟
+
+                <a href="signup.html">
+                    إنشاء حساب
+                </a>
+
+            </div>
+
+
+            <a
+                class="auth-back"
+                href="../index.html"
+            >
+                ← العودة إلى الرئيسية
+            </a>
+
+
+        </section>
+
+    </div>
+
+</main>
+
+
+
+<footer>
+
+    <div class="footer-logo">
+        Wortiva
+    </div>
+
+    <p>
+        تعلم الألمانية بطريقة أسهل 🇩🇪
+    </p>
+
+    <div class="copyright">
+        creating by mohamed Ibrahim khafagy
+    </div>
+
+</footer>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="../data/supabase.js"></script>
+
+
+<script>
+
+/* =========================
+   THEME
+========================= */
+
+const themeButton =
+    document.getElementById("theme");
+
+
+if (
+    localStorage.getItem("theme") === "dark"
+) {
+
+    document.body.classList.add("dark");
+
+    themeButton.textContent = "☀️";
+
+}
+
+
+themeButton.addEventListener(
+    "click",
+    function () {
+
+        document.body.classList.toggle("dark");
+
+        const dark =
+            document.body.classList.contains("dark");
+
+        localStorage.setItem(
+            "theme",
+            dark
+                ? "dark"
+                : "light"
+        );
+
+        themeButton.textContent =
+            dark
+                ? "☀️"
+                : "🌙";
+
+    }
+);
+
+
+
+/* =========================
+   LOGIN
+========================= */
+
+const loginForm =
+    document.getElementById("loginForm");
+
+
+const loginButton =
+    document.getElementById("loginButton");
+
+
+const loginMessage =
+    document.getElementById("loginMessage");
+
+
+loginForm.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        const email =
+            document
+                .getElementById("email")
+                .value
+                .trim();
+
+
+        const password =
+            document
+                .getElementById("password")
+                .value;
+
+
+        loginButton.disabled = true;
+
+        loginButton.textContent =
+            "⏳ جاري تسجيل الدخول...";
+
+
+        loginMessage.textContent = "";
+
+
+        try {
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient.auth
+                    .signInWithPassword({
+
+                        email: email,
+
+                        password: password
+
+                    });
+
+
+            if (error) {
+
+                console.error(
+                    "Login error:",
+                    error
+                );
+
+
+                loginMessage.textContent =
+                    "❌ " + error.message;
+
+
+                loginButton.disabled = false;
+
+                loginButton.textContent =
+                    "🔐 تسجيل الدخول";
+
+                return;
+
+            }
+
+
+            console.log(
+                "Login successful:",
+                data
+            );
+
+
+            loginMessage.textContent =
+                "✅ تم تسجيل الدخول بنجاح";
+
+
+            setTimeout(
+                function() {
+
+                    window.location.href =
+                        "../index.html";
+
+                },
+                800
+            );
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Login failed:",
+                error
+            );
+
+
+            loginMessage.textContent =
+                "❌ حدث خطأ أثناء تسجيل الدخول.";
+
+
+            loginButton.disabled = false;
+
+            loginButton.textContent =
+                "🔐 تسجيل الدخول";
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

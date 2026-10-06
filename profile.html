@@ -1,0 +1,2322 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Wortiva - حسابي</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/main.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     TOP BAR
+===================================================== -->
+
+<header class="topbar">
+
+    <a
+        class="logo"
+        href="../index.html"
+    >
+
+        <span class="logo-icon">
+            W
+        </span>
+
+        <span>
+            Wortiva
+        </span>
+
+    </a>
+
+
+    <div class="header-actions">
+
+        <!-- THEME -->
+
+        <button
+            id="theme"
+            class="icon-button"
+            type="button"
+            aria-label="تغيير الوضع"
+        >
+            🌙
+        </button>
+
+
+        <!-- PROFILE -->
+
+        <a
+            class="profile-button"
+            href="profile.html"
+        >
+
+            <div class="profile-avatar">
+
+    <img
+        id="headerAvatar"
+        src=""
+        alt="صورة المستخدم"
+        style="display:none;"
+    >
+
+    <span id="headerAvatarDefault">
+        👤
+    </span>
+
+</div>
+
+<div class="profile-info">
+
+    <span
+        id="headerUsername"
+        class="profile-name"
+    >
+        حسابي
+    </span>
+
+    <small id="headerAccountText">
+        تسجيل الدخول
+    </small>
+
+</div>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="profile-page">
+
+
+    <!-- BACK -->
+
+    <a
+        class="back-button"
+        href="../index.html"
+    >
+        → الرئيسية
+    </a>
+
+
+
+    <!-- =================================================
+         PROFILE HERO
+    ================================================= -->
+
+    <section class="profile-hero">
+
+
+        <!-- PROFILE IMAGE -->
+
+        <div class="profile-avatar-large profile-avatar-edit">
+
+            <img
+                id="profileAvatar"
+                src=""
+                alt="صورة المستخدم"
+                style="display:none;"
+            >
+
+            <span id="profileAvatarDefault">
+                👤
+            </span>
+
+
+            <label
+                for="avatarInput"
+                class="avatar-upload-button"
+                title="تغيير الصورة"
+            >
+                📷
+            </label>
+
+
+            <input
+                id="avatarInput"
+                type="file"
+                accept="image/*"
+                hidden
+            >
+
+        </div>
+
+
+
+        <!-- PROFILE INFO -->
+
+        <div class="profile-hero-info">
+
+            <span class="profile-label">
+                ملفك الشخصي
+            </span>
+
+
+            <h1 id="profileUsername">
+                Mohammed
+            </h1>
+
+
+            <p>
+                استمر في تعلم الألمانية مع Wortiva 🇩🇪
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         USERNAME EDIT
+    ================================================= -->
+
+    <section class="profile-section">
+
+        <div class="profile-info-card">
+
+            <div class="profile-info-header">
+
+                <div class="profile-info-icon">
+                    ✏️
+                </div>
+
+                <div>
+
+                    <h2>
+                        تعديل الحساب
+                    </h2>
+
+                    <p>
+                        غيّر اسم المستخدم أو صورة الحساب
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile-info-row profile-edit-row">
+
+                <span>
+                    اسم المستخدم
+                </span>
+
+
+                <div class="profile-edit-field">
+
+                    <input
+                        id="usernameInput"
+                        type="text"
+                        placeholder="اكتب اسم المستخدم"
+                        maxlength="30"
+                    >
+
+
+                    <button
+                        id="saveUsernameButton"
+                        type="button"
+                        class="profile-save-button"
+                    >
+                        💾 حفظ
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         OVERALL PROGRESS
+    ================================================= -->
+
+    <section class="profile-progress-card">
+
+        <div class="profile-progress-header">
+
+            <div>
+
+                <span class="profile-progress-label">
+                    📚 التقدم العام
+                </span>
+
+                <h2>
+                    Netzwerk A1
+                </h2>
+
+            </div>
+
+
+            <div
+                id="overallProgressPercent"
+                class="profile-progress-percent"
+            >
+                0%
+            </div>
+
+        </div>
+
+
+        <div class="profile-progress-bar">
+
+            <div
+                id="overallProgressFill"
+                class="profile-progress-fill"
+            >
+            </div>
+
+        </div>
+
+
+        <div class="profile-progress-footer">
+
+            <span id="overallKnownWords">
+                0 كلمة متقنة
+            </span>
+
+            <span id="overallTotalWords">
+                من 0 كلمة
+            </span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         XP LEVEL
+    ================================================= -->
+
+    <section class="xp-level-card">
+
+        <div class="xp-level-header">
+
+            <div>
+
+                <span class="xp-level-label">
+                    ⭐ مستوى التعلم
+                </span>
+
+                <h2 id="xpLevelName">
+                    Anfänger
+                </h2>
+
+            </div>
+
+
+            <div class="xp-level-number">
+
+                Level
+
+                <span id="xpLevelNumber">
+                    1
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="xp-level-xp">
+
+            <span id="xpCurrentText">
+                0 XP
+            </span>
+
+            <span id="xpNextText">
+                100 XP
+            </span>
+
+        </div>
+
+
+        <div class="xp-level-bar">
+
+            <div
+                id="xpLevelFill"
+                class="xp-level-fill"
+            >
+            </div>
+
+        </div>
+
+
+        <p id="xpLevelProgress">
+            0% للمستوى التالي
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         STATISTICS
+    ================================================= -->
+
+    <section class="profile-stats-grid">
+
+
+        <!-- KNOWN -->
+
+        <div class="profile-stat-card">
+
+            <div class="profile-stat-icon">
+                📖
+            </div>
+
+            <div class="profile-stat-content">
+
+                <span>
+                    الكلمات المتقنة
+                </span>
+
+                <strong id="knownCount">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- REVIEW -->
+
+        <div class="profile-stat-card">
+
+            <div class="profile-stat-icon">
+                🔄
+            </div>
+
+            <div class="profile-stat-content">
+
+                <span>
+                    كلمات المراجعة
+                </span>
+
+                <strong id="reviewCount">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- XP -->
+
+        <div class="profile-stat-card">
+
+            <div class="profile-stat-icon">
+                ⭐
+            </div>
+
+            <div class="profile-stat-content">
+
+                <span>
+                    XP
+                </span>
+
+                <strong id="xpCount">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- STREAK -->
+
+        <div class="profile-stat-card">
+
+            <div class="profile-stat-icon">
+                🔥
+            </div>
+
+            <div class="profile-stat-content">
+
+                <span>
+                    Streak
+                </span>
+
+                <strong id="streakCount">
+                    0
+                </strong>
+
+                <small>
+                    يوم
+                </small>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         CHAPTER PROGRESS
+    ================================================= -->
+
+    <section class="profile-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-label">
+                    📊 تقدمك
+                </span>
+
+                <h2>
+                    Kapitel 1–12
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="chapterProgressList"
+            class="profile-chapter-list"
+        >
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         ACCOUNT INFO
+    ================================================= -->
+
+    <section class="profile-section">
+
+        <div class="profile-info-card">
+
+            <div class="profile-info-header">
+
+                <div class="profile-info-icon">
+                    👤
+                </div>
+
+                <div>
+
+                    <h2>
+                        معلومات الحساب
+                    </h2>
+
+                    <p>
+                        بياناتك في Wortiva
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile-info-row">
+
+                <span>
+                    الاسم
+                </span>
+
+                <strong id="accountName">
+                    Mohammed
+                </strong>
+
+            </div>
+
+
+            <div class="profile-info-row">
+
+                <span>
+                    البرنامج
+                </span>
+
+                <strong>
+                    Netzwerk
+                </strong>
+
+            </div>
+
+
+            <div class="profile-info-row">
+
+                <span>
+                    المستوى
+                </span>
+
+                <strong>
+                    A1
+                </strong>
+
+            </div>
+<div class="profile-logout-area">
+
+    <button
+        id="logoutButton"
+        type="button"
+        class="profile-logout-button"
+    >
+        🚪 تسجيل الخروج
+    </button>
+
+</div>
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-logo">
+        Wortiva
+    </div>
+
+    <p>
+        تعلم الألمانية بطريقة أسهل 🇩🇪
+    </p>
+
+    <div class="copyright">
+        creating by mohamed Ibrahim khafagy
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="../data/supabase.js"></script>
+
+<script src="../data/header.js"></script>
+
+<!-- =====================================================
+     DATA
+===================================================== -->
+
+<script src="../data/a1.js"></script>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   THEME
+===================================================== */
+
+const themeButton =
+    document.getElementById("theme");
+
+
+if (
+    localStorage.getItem("theme") === "dark"
+) {
+
+    document.body.classList.add("dark");
+
+    themeButton.textContent = "☀️";
+
+}
+
+
+themeButton.addEventListener(
+    "click",
+    function () {
+
+        document.body.classList.toggle("dark");
+
+        const dark =
+            document.body.classList.contains("dark");
+
+
+        localStorage.setItem(
+            "theme",
+            dark
+                ? "dark"
+                : "light"
+        );
+
+
+        themeButton.textContent =
+            dark
+                ? "☀️"
+                : "🌙";
+
+    }
+);
+
+
+
+/* =====================================================
+   DATA
+===================================================== */
+
+const allWords =
+    Array.isArray(netzwerkA1Words)
+        ? netzwerkA1Words.filter(
+            word =>
+                word &&
+                word.german
+        )
+        : [];
+
+
+
+/* =====================================================
+   KNOWN WORDS
+===================================================== */
+
+function getKnownWords() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                "wortivaKnownWords"
+            ) || "[]"
+        );
+
+    } catch {
+
+        return [];
+
+    }
+
+}
+
+
+
+/* =====================================================
+   REVIEW WORDS
+===================================================== */
+
+function getReviewWords() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                "wortivaReviewWords"
+            ) || "[]"
+        );
+
+    } catch {
+
+        return [];
+
+    }
+
+}
+
+
+
+/* =====================================================
+   WORD KEY
+===================================================== */
+
+function getWordKey(word) {
+
+    return [
+
+        word.chapter,
+        word.category,
+        word.order,
+        word.german
+
+    ].join("|");
+
+}
+
+
+
+/* =====================================================
+   XP
+===================================================== */
+
+function getXP() {
+
+    return Number(
+        localStorage.getItem(
+            "wortivaXP"
+        ) || 0
+    );
+
+}
+
+
+
+/* =====================================================
+   STREAK
+===================================================== */
+
+function getStreak() {
+
+    return Number(
+        localStorage.getItem(
+            "wortivaStreak"
+        ) || 0
+    );
+
+}
+
+
+
+/* =====================================================
+   OVERALL PROGRESS
+===================================================== */
+
+function updateOverallProgress() {
+
+    const knownWords =
+        getKnownWords();
+
+    let known = 0;
+
+
+    allWords.forEach(
+        function (word) {
+
+            const key =
+                getWordKey(word);
+
+
+            if (
+                knownWords.includes(key)
+            ) {
+
+                known++;
+
+            }
+
+        }
+    );
+
+
+    const total =
+        allWords.length;
+
+
+    const percentage =
+        total > 0
+            ? Math.round(
+                (known / total) * 100
+            )
+            : 0;
+
+
+    const percentElement =
+        document.getElementById(
+            "overallProgressPercent"
+        );
+
+
+    const fillElement =
+        document.getElementById(
+            "overallProgressFill"
+        );
+
+
+    const knownElement =
+        document.getElementById(
+            "overallKnownWords"
+        );
+
+
+    const totalElement =
+        document.getElementById(
+            "overallTotalWords"
+        );
+
+
+    const knownCount =
+        document.getElementById(
+            "knownCount"
+        );
+
+
+    if (percentElement) {
+
+        percentElement.textContent =
+            `${percentage}%`;
+
+    }
+
+
+    if (fillElement) {
+
+        fillElement.style.width =
+            `${percentage}%`;
+
+    }
+
+
+    if (knownElement) {
+
+        knownElement.textContent =
+            `${known} كلمة متقنة`;
+
+    }
+
+
+    if (totalElement) {
+
+        totalElement.textContent =
+            `من ${total} كلمة`;
+
+    }
+
+
+    if (knownCount) {
+
+        knownCount.textContent =
+            known;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   REVIEW
+===================================================== */
+
+function updateReview() {
+
+    const reviewWords =
+        getReviewWords();
+
+
+    const element =
+        document.getElementById(
+            "reviewCount"
+        );
+
+
+    if (element) {
+
+        element.textContent =
+            reviewWords.length;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   XP
+===================================================== */
+
+function updateXP() {
+
+    const xp =
+        getXP();
+
+
+    const element =
+        document.getElementById(
+            "xpCount"
+        );
+
+
+    if (element) {
+
+        element.textContent =
+            xp;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   STREAK
+===================================================== */
+
+function updateStreak() {
+
+    const streak =
+        getStreak();
+
+
+    const element =
+        document.getElementById(
+            "streakCount"
+        );
+
+
+    if (element) {
+
+        element.textContent =
+            streak;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   XP LEVEL
+===================================================== */
+
+function updateXPLevel() {
+
+    const xp =
+        getXP();
+
+
+    let level = 1;
+
+    let name = "Anfänger";
+
+    let currentStart = 0;
+
+    let nextXP = 100;
+
+
+    if (xp >= 1000) {
+
+        level = 5;
+
+        name = "Wortiva Meister";
+
+        currentStart = 1000;
+
+        nextXP = 1000;
+
+    }
+
+    else if (xp >= 500) {
+
+        level = 4;
+
+        name = "Sprachprofi";
+
+        currentStart = 500;
+
+        nextXP = 1000;
+
+    }
+
+    else if (xp >= 250) {
+
+        level = 3;
+
+        name = "Fortgeschritten";
+
+        currentStart = 250;
+
+        nextXP = 500;
+
+    }
+
+    else if (xp >= 100) {
+
+        level = 2;
+
+        name = "Lernender";
+
+        currentStart = 100;
+
+        nextXP = 250;
+
+    }
+
+
+    let percentage;
+
+
+    if (level === 5) {
+
+        percentage = 100;
+
+    }
+
+    else {
+
+        percentage =
+            Math.round(
+                (
+                    (xp - currentStart) /
+                    (nextXP - currentStart)
+                ) * 100
+            );
+
+
+        percentage =
+            Math.max(
+                0,
+                Math.min(
+                    100,
+                    percentage
+                )
+            );
+
+    }
+
+
+    const levelName =
+        document.getElementById(
+            "xpLevelName"
+        );
+
+
+    const levelNumber =
+        document.getElementById(
+            "xpLevelNumber"
+        );
+
+
+    const currentText =
+        document.getElementById(
+            "xpCurrentText"
+        );
+
+
+    const nextText =
+        document.getElementById(
+            "xpNextText"
+        );
+
+
+    const fill =
+        document.getElementById(
+            "xpLevelFill"
+        );
+
+
+    const progress =
+        document.getElementById(
+            "xpLevelProgress"
+        );
+
+
+    if (levelName) {
+
+        levelName.textContent =
+            name;
+
+    }
+
+
+    if (levelNumber) {
+
+        levelNumber.textContent =
+            level;
+
+    }
+
+
+    if (currentText) {
+
+        currentText.textContent =
+            `${xp} XP`;
+
+    }
+
+
+    if (fill) {
+
+        fill.style.width =
+            `${percentage}%`;
+
+    }
+
+
+    if (level === 5) {
+
+        if (nextText) {
+
+            nextText.textContent =
+                "MAX";
+
+        }
+
+
+        if (progress) {
+
+            progress.textContent =
+                "🏆 وصلت إلى أعلى مستوى";
+
+        }
+
+    }
+
+    else {
+
+        if (nextText) {
+
+            nextText.textContent =
+                `${nextXP} XP`;
+
+        }
+
+
+        if (progress) {
+
+            progress.textContent =
+                `${percentage}% للمستوى التالي`;
+
+        }
+
+    }
+
+}
+
+
+
+/* =====================================================
+   CHAPTER TITLES
+===================================================== */
+
+const chapterTitles = {
+
+    1: "Guten Tag!",
+    2: "Meine Familie",
+    3: "Essen und Trinken",
+    4: "Meine Wohnung",
+    5: "Mein Tag",
+    6: "Zeit mit Freunden",
+    7: "Arbeitsalltag",
+    8: "Fit und gesund",
+    9: "Meine Wohnung",
+    10: "Studium und Beruf",
+    11: "Unterwegs",
+    12: "Freizeit und mehr"
+
+};
+
+
+
+/* =====================================================
+   CHAPTER PROGRESS
+===================================================== */
+
+function renderChapterProgress() {
+
+    const container =
+        document.getElementById(
+            "chapterProgressList"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    const knownWords =
+        getKnownWords();
+
+
+    for (
+        let chapter = 1;
+        chapter <= 12;
+        chapter++
+    ) {
+
+
+        const chapterWords =
+            allWords.filter(
+                word =>
+                    Number(word.chapter) ===
+                    chapter
+            );
+
+
+        const total =
+            chapterWords.length;
+
+
+        let known = 0;
+
+
+        chapterWords.forEach(
+            function (word) {
+
+                const key =
+                    getWordKey(word);
+
+
+                if (
+                    knownWords.includes(key)
+                ) {
+
+                    known++;
+
+                }
+
+            }
+        );
+
+
+        const percentage =
+            total > 0
+                ? Math.round(
+                    (known / total) * 100
+                )
+                : 0;
+
+
+        const card =
+            document.createElement(
+                "div"
+            );
+
+
+        card.className =
+            "profile-chapter-item";
+
+
+        card.innerHTML = `
+
+            <div class="profile-chapter-top">
+
+                <div>
+
+                    <strong>
+                        Kapitel ${chapter}
+                    </strong>
+
+                    <span>
+                        ${
+                            chapterTitles[chapter] ||
+                            "Netzwerk A1"
+                        }
+                    </span>
+
+                </div>
+
+                <b>
+                    ${percentage}%
+                </b>
+
+            </div>
+
+
+            <div class="profile-chapter-bar">
+
+                <div
+                    class="profile-chapter-fill"
+                    style="width:${percentage}%">
+                </div>
+
+            </div>
+
+
+            <div class="profile-chapter-bottom">
+
+                <span>
+                    ${known} متقنة
+                </span>
+
+                <span>
+                    من ${total}
+                </span>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(
+            card
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   UPDATE USER UI
+===================================================== */
+
+function updateUserUI(user) {
+
+    if (!user) {
+        return;
+    }
+
+
+    const username =
+        user.user_metadata?.username ||
+        user.user_metadata?.name ||
+        user.email?.split("@")[0] ||
+        "Mohammed";
+
+
+    const avatarUrl =
+        user.user_metadata?.avatar_url ||
+        "";
+
+
+    /* HEADER NAME */
+
+    const headerName =
+        document.getElementById(
+            "profileName"
+        );
+
+
+    if (headerName) {
+
+        headerName.textContent =
+            username;
+
+    }
+
+
+    /* HERO NAME */
+
+    const heroName =
+        document.getElementById(
+            "profileUsername"
+        );
+
+
+    if (heroName) {
+
+        heroName.textContent =
+            username;
+
+    }
+
+
+    /* ACCOUNT NAME */
+
+    const accountName =
+        document.getElementById(
+            "accountName"
+        );
+
+
+    if (accountName) {
+
+        accountName.textContent =
+            username;
+
+    }
+
+
+    /* HEADER AVATAR */
+
+    const headerAvatar =
+        document.getElementById(
+            "headerAvatar"
+        );
+
+
+    const headerDefault =
+        document.getElementById(
+            "headerAvatarDefault"
+        );
+
+
+    if (
+        headerAvatar &&
+        headerDefault
+    ) {
+
+        if (avatarUrl) {
+
+            headerAvatar.src =
+                avatarUrl;
+
+            headerAvatar.style.display =
+                "block";
+
+            headerDefault.style.display =
+                "none";
+
+        }
+
+        else {
+
+            headerAvatar.style.display =
+                "none";
+
+            headerDefault.style.display =
+                "inline";
+
+        }
+
+    }
+
+
+    /* LARGE PROFILE AVATAR */
+
+    const profileAvatar =
+        document.getElementById(
+            "profileAvatar"
+        );
+
+
+    const profileDefault =
+        document.getElementById(
+            "profileAvatarDefault"
+        );
+
+
+    if (
+        profileAvatar &&
+        profileDefault
+    ) {
+
+        if (avatarUrl) {
+
+            profileAvatar.src =
+                avatarUrl;
+
+            profileAvatar.style.display =
+                "block";
+
+            profileDefault.style.display =
+                "none";
+
+        }
+
+        else {
+
+            profileAvatar.style.display =
+                "none";
+
+            profileDefault.style.display =
+                "inline";
+
+        }
+
+    }
+
+}
+
+
+
+/* =====================================================
+   LOAD PROFILE + PROGRESS
+===================================================== */
+
+async function loadProfileData() {
+
+    try {
+
+        if (
+            typeof supabaseClient ===
+            "undefined"
+        ) {
+
+            console.warn(
+                "Supabase client not found."
+            );
+
+            refreshProfile();
+
+            return;
+
+        }
+
+
+        const {
+            data: {
+                session
+            },
+            error
+        } =
+            await supabaseClient.auth.getSession();
+
+
+        if (error) {
+
+            console.error(
+                "Session error:",
+                error
+            );
+
+            refreshProfile();
+
+            return;
+
+        }
+
+
+        if (!session) {
+
+            console.log(
+                "No logged-in user. Using local progress."
+            );
+
+            refreshProfile();
+
+            return;
+
+        }
+
+
+        const user =
+            session.user;
+
+
+        /* USER UI */
+
+        updateUserUI(user);
+
+
+        /* USERNAME INPUT */
+
+        const usernameInput =
+            document.getElementById(
+                "usernameInput"
+            );
+
+
+        if (usernameInput) {
+
+            usernameInput.value =
+                user.user_metadata?.username ||
+                "";
+
+        }
+
+
+        /* PROGRESS */
+
+        const {
+            data,
+            error: progressError
+        } =
+            await supabaseClient
+                .from("user_progress")
+                .select("*")
+                .eq(
+                    "user_id",
+                    user.id
+                )
+                .maybeSingle();
+
+
+        if (progressError) {
+
+            console.error(
+                "Progress error:",
+                progressError
+            );
+
+            refreshProfile();
+
+            return;
+
+        }
+
+
+        if (data) {
+
+            localStorage.setItem(
+                "wortivaXP",
+                String(
+                    data.xp ?? 0
+                )
+            );
+
+
+            localStorage.setItem(
+                "wortivaStreak",
+                String(
+                    data.streak ?? 0
+                )
+            );
+
+
+            localStorage.setItem(
+                "wortivaLastActivity",
+                data.last_activity || ""
+            );
+
+
+            localStorage.setItem(
+                "wortivaKnownWords",
+                JSON.stringify(
+                    data.known_words || []
+                )
+            );
+
+
+            localStorage.setItem(
+                "wortivaReviewWords",
+                JSON.stringify(
+                    data.review_words || []
+                )
+            );
+
+        }
+
+
+        refreshProfile();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Profile loading failed:",
+            error
+        );
+
+        refreshProfile();
+
+    }
+
+}
+
+
+
+/* =====================================================
+   REFRESH PROFILE
+===================================================== */
+
+function refreshProfile() {
+
+    updateOverallProgress();
+
+    updateReview();
+
+    updateXP();
+
+    updateStreak();
+
+    updateXPLevel();
+
+    renderChapterProgress();
+
+}
+
+
+
+/* =====================================================
+   UPLOAD AVATAR
+===================================================== */
+
+const avatarInput =
+    document.getElementById(
+        "avatarInput"
+    );
+
+
+if (avatarInput) {
+
+    avatarInput.addEventListener(
+        "change",
+        async function () {
+
+            const file =
+                avatarInput.files[0];
+
+
+            if (!file) {
+                return;
+            }
+
+
+            if (
+                !file.type.startsWith(
+                    "image/"
+                )
+            ) {
+
+                alert(
+                    "من فضلك اختر صورة."
+                );
+
+                avatarInput.value = "";
+
+                return;
+
+            }
+
+
+            if (
+                file.size >
+                5 * 1024 * 1024
+            ) {
+
+                alert(
+                    "حجم الصورة يجب أن يكون أقل من 5MB."
+                );
+
+                avatarInput.value = "";
+
+                return;
+
+            }
+
+
+            try {
+
+                const {
+                    data: {
+                        session
+                    }
+                } =
+                    await supabaseClient.auth
+                        .getSession();
+
+
+                if (!session) {
+
+                    alert(
+                        "يجب تسجيل الدخول أولًا."
+                    );
+
+                    return;
+
+                }
+
+
+                const userId =
+                    session.user.id;
+
+
+                const extension =
+                    file.name
+                        .split(".")
+                        .pop()
+                        .toLowerCase();
+
+
+                const filePath =
+                    `${userId}/avatar_${Date.now()}.${extension}`;
+
+
+                /* UPLOAD */
+
+                const {
+                    error: uploadError
+                } =
+                    await supabaseClient.storage
+                        .from("avatars")
+                        .upload(
+                            filePath,
+                            file
+                        );
+
+
+                if (uploadError) {
+
+                    console.error(
+                        "Avatar upload error:",
+                        uploadError
+                    );
+
+
+                    alert(
+                        "خطأ رفع الصورة: " +
+                        uploadError.message
+                    );
+
+                    return;
+
+                }
+
+
+                /* PUBLIC URL */
+
+                const {
+                    data
+                } =
+                    supabaseClient.storage
+                        .from("avatars")
+                        .getPublicUrl(
+                            filePath
+                        );
+
+
+                const avatarUrl =
+                    data.publicUrl;
+
+
+                /* SAVE IN AUTH */
+
+                const {
+                    error:
+                        updateAuthError
+                } =
+                    await supabaseClient.auth
+                        .updateUser({
+
+                            data: {
+                                avatar_url:
+                                    avatarUrl
+                            }
+
+                        });
+
+
+                if (updateAuthError) {
+
+                    console.error(
+                        "Auth avatar error:",
+                        updateAuthError
+                    );
+
+
+                    alert(
+                        "تم رفع الصورة لكن لم يتم حفظها في الحساب."
+                    );
+
+                    return;
+
+                }
+
+
+                /* SAVE IN PROGRESS */
+
+                const {
+                    error:
+                        progressError
+                } =
+                    await supabaseClient
+                        .from("user_progress")
+                        .update({
+
+                            avatar_url:
+                                avatarUrl
+
+                        })
+                        .eq(
+                            "user_id",
+                            userId
+                        );
+
+
+                if (progressError) {
+
+                    console.warn(
+                        "Progress avatar update:",
+                        progressError
+                    );
+
+                }
+
+
+                /* UPDATE UI */
+
+                updateUserUI({
+
+                    ...session.user,
+
+                    user_metadata: {
+
+                        ...session.user.user_metadata,
+
+                        avatar_url:
+                            avatarUrl
+
+                    }
+
+                });
+
+
+                avatarInput.value = "";
+
+
+                alert(
+                    "✅ تم تغيير صورة الحساب بنجاح"
+                );
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Avatar upload failed:",
+                    error
+                );
+
+
+                alert(
+                    "حدث خطأ أثناء رفع الصورة."
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   SAVE USERNAME
+===================================================== */
+
+const usernameInput =
+    document.getElementById(
+        "usernameInput"
+    );
+
+
+const saveUsernameButton =
+    document.getElementById(
+        "saveUsernameButton"
+    );
+
+
+if (saveUsernameButton) {
+
+    saveUsernameButton.addEventListener(
+        "click",
+        async function () {
+
+            const username =
+                usernameInput.value.trim();
+
+
+            if (!username) {
+
+                alert(
+                    "من فضلك اكتب اسم المستخدم."
+                );
+
+                return;
+
+            }
+
+
+            if (username.length < 2) {
+
+                alert(
+                    "اسم المستخدم يجب أن يكون حرفين على الأقل."
+                );
+
+                return;
+
+            }
+
+
+            saveUsernameButton.disabled =
+                true;
+
+
+            saveUsernameButton.textContent =
+                "⏳ جاري الحفظ...";
+
+
+            try {
+
+                const {
+                    data: {
+                        session
+                    }
+                } =
+                    await supabaseClient.auth
+                        .getSession();
+
+
+                if (!session) {
+
+                    alert(
+                        "يجب تسجيل الدخول أولًا."
+                    );
+
+                    return;
+
+                }
+
+
+                const userId =
+                    session.user.id;
+
+
+                /* SAVE IN AUTH */
+
+                const {
+                    data:
+                        updatedUser,
+                    error:
+                        authError
+                } =
+                    await supabaseClient.auth
+                        .updateUser({
+
+                            data: {
+
+                                username:
+                                    username
+
+                            }
+
+                        });
+
+
+                if (authError) {
+
+                    console.error(
+                        "Username Auth error:",
+                        authError
+                    );
+
+
+                    alert(
+                        "حدث خطأ أثناء حفظ الاسم."
+                    );
+
+                    return;
+
+                }
+
+
+                /* SAVE IN PROGRESS */
+
+                const {
+                    error:
+                        progressError
+                } =
+                    await supabaseClient
+                        .from("user_progress")
+                        .update({
+
+                            username:
+                                username
+
+                        })
+                        .eq(
+                            "user_id",
+                            userId
+                        );
+
+
+                if (progressError) {
+
+                    console.warn(
+                        "Username progress update:",
+                        progressError
+                    );
+
+                }
+
+
+                /* UPDATE ALL NAME LOCATIONS */
+
+                updateUserUI(
+                    updatedUser.user
+                );
+
+
+                alert(
+                    "✅ تم حفظ اسم المستخدم بنجاح"
+                );
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Username save error:",
+                    error
+                );
+
+
+                alert(
+                    "حدث خطأ أثناء حفظ الاسم."
+                );
+
+            }
+
+            finally {
+
+                saveUsernameButton.disabled =
+                    false;
+
+
+                saveUsernameButton.textContent =
+                    "💾 حفظ";
+
+            }
+
+        }
+    );
+
+}
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+const logoutButton =
+    document.getElementById("logoutButton");
+
+
+if (logoutButton) {
+
+    logoutButton.addEventListener(
+        "click",
+        async function () {
+
+            const confirmed =
+                confirm(
+                    "هل تريد تسجيل الخروج من Wortiva؟"
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            logoutButton.disabled =
+                true;
+
+
+            logoutButton.textContent =
+                "⏳ جاري تسجيل الخروج...";
+
+
+            try {
+
+                const {
+                    error
+                } =
+                    await supabaseClient.auth.signOut();
+
+
+                if (error) {
+
+                    console.error(
+                        "Logout error:",
+                        error
+                    );
+
+
+                    alert(
+                        "حدث خطأ أثناء تسجيل الخروج."
+                    );
+
+
+                    logoutButton.disabled =
+                        false;
+
+
+                    logoutButton.textContent =
+                        "🚪 تسجيل الخروج";
+
+                    return;
+
+                }
+
+
+                /*
+                 * نرجع للصفحة الرئيسية
+                 */
+
+                window.location.href =
+                    "../index.html";
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Logout failed:",
+                    error
+                );
+
+
+                alert(
+                    "حدث خطأ أثناء تسجيل الخروج."
+                );
+
+
+                logoutButton.disabled =
+                    false;
+
+
+                logoutButton.textContent =
+                    "🚪 تسجيل الخروج";
+
+            }
+
+        }
+    );
+
+}
+
+/* =====================================================
+   START
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async function () {
+
+        await loadProfileData();
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>
